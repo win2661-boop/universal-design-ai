@@ -1,125 +1,334 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#2563eb" />
-  <title>우리 반 유니버설 디자인 AI</title>
-  <link rel="stylesheet" href="./styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2563eb">
+<title>우리 반 유니버설 디자인 AI</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --blue:#2563eb;--blue2:#1d4ed8;--ink:#16315b;--muted:#60708a;
+  --line:#d9e7fb;--bg:#f4f9ff;--shadow:0 12px 34px rgba(38,79,130,.12)
+}
+body{margin:0;font-family:Pretendard,"Noto Sans KR",system-ui,-apple-system,sans-serif;background:linear-gradient(#eef8ff,#f8fbff);color:#17233b}
+button,input,textarea{font:inherit}
+.hero{background:#fff;border-bottom:1px solid var(--line)}
+.hero-inner{max-width:1100px;margin:auto;padding:34px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.eyebrow{font-size:13px;font-weight:800;color:#0f766e;letter-spacing:.08em;margin:0}
+.hero h1{margin:4px 0 8px;font-size:clamp(30px,5vw,50px);color:#173b72}
+.hero h1 span{color:#0f9f8f}
+.hero p{margin:0;color:#5c6c84}
+.robot{font-size:72px}
+.wrap{max-width:980px;margin:34px auto;padding:0 18px}
+.card{background:#fff;border:1px solid #dce9f9;border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+.step{padding:22px 0;border-top:1px solid #eef3f9}
+.step:first-child{border-top:0}
+.step h2{font-size:20px;color:var(--ink);margin:0 0 14px}
+.step h2 b{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#e7f0ff;color:var(--blue);margin-right:8px}
+.radio-hidden{position:absolute;opacity:0;pointer-events:none}
+.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.choice-label,.place-label{
+  border:2px solid #e2ecf8;background:#fff;cursor:pointer;transition:.15s;
+  user-select:none
+}
+.choice-label{border-radius:18px;padding:20px 12px;display:flex;flex-direction:column;gap:7px;align-items:center;text-align:center}
+.choice-label .emoji{font-size:30px}
+.choice-label strong{font-size:16px}
+.choice-label small{font-size:12px;color:var(--muted);line-height:1.5}
+.place-grid{display:flex;flex-wrap:wrap;gap:9px}
+.place-label{border-radius:16px;padding:12px 16px}
+.radio-hidden:checked + .choice-label,
+.radio-hidden:checked + .place-label{
+  border-color:var(--blue);
+  background:#eaf2ff;
+  box-shadow:0 0 0 3px #cfe0ff inset;
+  color:#123e83
+}
+.radio-hidden:focus-visible + .choice-label,
+.radio-hidden:focus-visible + .place-label{
+  outline:3px solid #93b7ff;outline-offset:2px
+}
+textarea,input[type="text"]{width:100%;border:1.5px solid #d8e4f3;border-radius:14px;padding:14px;background:#fbfdff;outline:none;font-size:16px}
+textarea:focus,input[type="text"]:focus{border-color:#6ea1f7;box-shadow:0 0 0 3px #e8f1ff}
+.counter{text-align:right;color:#8695aa;font-size:12px;margin-top:5px}
+.hidden{display:none!important}
+.privacy-note{background:#effaf7;color:#315f57;border:1px solid #cfeee4;border-radius:14px;padding:12px 14px;margin:16px 0;font-size:14px}
+.primary{width:100%;border:0;border-radius:16px;padding:16px 18px;background:linear-gradient(135deg,var(--blue),#4f7df5);color:#fff;font-weight:900;font-size:18px;cursor:pointer;box-shadow:0 8px 18px rgba(37,99,235,.22)}
+.primary:disabled{opacity:.55;cursor:not-allowed}
+.limit,.status{text-align:center;color:#68778d;font-size:13px}
+.status{min-height:20px;color:#b45309}
+.result-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start}
+.image-box{aspect-ratio:1/1;background:#eef5ff;border-radius:22px;overflow:hidden;display:grid;place-items:center;border:1px solid #d9e6f7}
+.image-box img{width:100%;height:100%;object-fit:cover}
+.summary{background:#f7faff;border-radius:15px;padding:16px;line-height:1.7;white-space:pre-line}
+.actions{display:grid;gap:9px;margin-top:14px}
+.secondary,.text-btn{border:1px solid #cdddf2;background:#fff;color:#24446f;border-radius:12px;padding:11px 14px;cursor:pointer}
+.text-btn{padding:6px 0;border:0}
+.teacher-panel{margin:22px 0;background:#fff;border:1px solid #dce8f8;border-radius:18px;overflow:hidden}
+.teacher-panel summary{cursor:pointer;font-weight:800;padding:17px 20px;color:#29486f}
+.teacher-body{padding:0 20px 20px;display:grid;gap:12px}
+.teacher-body label{display:grid;gap:7px;font-size:13px;font-weight:700}
+.switch-row{display:flex!important;align-items:center;gap:8px}
+.switch-row input{width:auto}
+.teacher-body p{font-size:12px;color:#718099;line-height:1.6;margin:0}
+footer{text-align:center;color:#8290a5;padding:20px;font-size:12px}
+@media(max-width:720px){
+  .robot{display:none}.choice-grid,.result-grid{grid-template-columns:1fr}
+  .choice-label{padding:14px 8px}.card{padding:18px;border-radius:20px}.step h2{font-size:17px}
+}
+</style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <div>
-        <p class="eyebrow">3학년 사회 × 예술 융합</p>
-        <h1>우리 반 <span>유니버설 디자인 AI</span></h1>
-        <p>다양한 문화가 함께하는 더 좋은 세상을 디자인해요.</p>
-      </div>
-      <div class="robot" aria-hidden="true">🤖</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">3학년 사회 × 예술 융합</p>
+      <h1>우리 반 <span>유니버설 디자인 AI</span></h1>
+      <p>다양한 문화가 함께하는 더 좋은 세상을 디자인해요.</p>
     </div>
-  </header>
+    <div class="robot" aria-hidden="true">🤖</div>
+  </div>
+</header>
 
-  <main class="wrap">
-    <section id="studentView" class="card">
-      <div class="progress">
-        <span class="dot active">1</span><span></span>
-        <span class="dot">2</span><span></span>
-        <span class="dot">3</span>
-      </div>
+<main class="wrap">
 
-      <section class="step">
-        <h2><b>1</b> 누구를 위한 디자인인가요?</h2>
-        <div class="choice-grid" id="audienceChoices">
-          <button class="choice" data-value="이주민·외국인">🌏<strong>이주민·외국인</strong><small>다른 언어나 문화 때문에 불편한 사람</small></button>
-          <button class="choice" data-value="1인 가구">🏠<strong>1인 가구</strong><small>혼자 생활하는 사람</small></button>
-          <button class="choice" data-value="반려동물 가구">🐶<strong>반려동물 가구</strong><small>반려동물과 함께 생활하는 사람</small></button>
-        </div>
-      </section>
+<section id="studentView" class="card">
 
-      <section class="step">
-        <h2><b>2</b> 어디에서 사용하는 디자인인가요?</h2>
-        <div class="place-grid" id="placeChoices">
-          <button class="pill" data-value="학교">🏫 학교</button>
-          <button class="pill" data-value="공원">🌳 공원</button>
-          <button class="pill" data-value="마트">🛒 마트</button>
-          <button class="pill" data-value="아파트">🏢 아파트</button>
-          <button class="pill" data-value="버스·지하철">🚌 버스·지하철</button>
-          <button class="pill" data-value="기타">✏️ 기타</button>
-        </div>
-        <input id="customPlace" class="hidden" maxlength="30" placeholder="장소를 짧게 써 주세요." />
-      </section>
-
-      <section class="step">
-        <h2><b>3</b> 어떤 불편함이 있나요?</h2>
-        <textarea id="problem" maxlength="160" rows="4"
-          placeholder="예) 한국어를 잘 모르면 학교 안내판의 내용을 이해하기 어려워요."></textarea>
-        <div class="counter"><span id="problemCount">0</span>/160</div>
-      </section>
-
-      <section class="step">
-        <h2><b>4</b> 어떻게 바꾸고 싶나요?</h2>
-        <textarea id="idea" maxlength="160" rows="4"
-          placeholder="예) 그림과 여러 나라 언어를 함께 사용해서 누구나 쉽게 알 수 있게 만들고 싶어요."></textarea>
-        <div class="counter"><span id="ideaCount">0</span>/160</div>
-      </section>
-
-      <div class="privacy-note">
-        🔒 이름, 전화번호, 주소, 얼굴 사진 같은 개인정보는 입력하지 않아요.
-      </div>
-
-      <button id="generateBtn" class="primary">✨ AI로 디자인 만들기</button>
-      <p class="limit">오늘 <b id="usedCount">0</b>/3회 사용했어요.</p>
-      <p id="status" class="status" role="status" aria-live="polite"></p>
-    </section>
-
-    <section id="resultView" class="card result hidden">
-      <button id="backBtn" class="text-btn">← 다시 입력하기</button>
-      <h2>AI가 만든 디자인</h2>
-
-      <div class="result-grid">
-        <div class="image-box">
-          <img id="resultImage" alt="AI가 만든 유니버설 디자인 이미지" />
-          <div id="mockPlaceholder" class="mock-placeholder hidden">
-            <div>🎨</div>
-            <strong>미리보기 모드</strong>
-            <span>실제 AI 서버를 연결하면 여기에 생성 이미지가 나타납니다.</span>
-          </div>
-        </div>
-        <div>
-          <h3 id="designName">우리의 유니버설 디자인</h3>
-          <div class="summary" id="summary"></div>
-          <div class="actions">
-            <button id="downloadBtn" class="secondary">💾 이미지 저장</button>
-            <button id="copyBtn" class="secondary">📋 설명 복사</button>
-            <button id="againBtn" class="secondary">↻ 다시 만들기</button>
-          </div>
-          <p class="padlet-tip">저장한 이미지를 선생님이 안내한 Padlet에 올려 주세요.</p>
-        </div>
-      </div>
-    </section>
-
-    <details class="teacher-panel">
-      <summary>👩‍🏫 교사용 설정 보기</summary>
-      <div class="teacher-body">
-        <label>
-          AI 서버 주소
-          <input id="apiEndpoint" placeholder="예: https://your-worker.workers.dev" />
+  <section class="step">
+    <h2><b>1</b> 누구를 위한 디자인인가요?</h2>
+    <div class="choice-grid">
+      <div>
+        <input class="radio-hidden" type="radio" name="audience" id="audience1" value="이주민·외국인">
+        <label class="choice-label" for="audience1">
+          <span class="emoji">🌏</span>
+          <strong>이주민·외국인</strong>
+          <small>다른 언어나 문화 때문에 불편한 사람</small>
         </label>
-        <label class="switch-row">
-          <input id="mockMode" type="checkbox" checked />
-          <span>미리보기 모드 사용</span>
-        </label>
-        <p>수업 전 테스트할 때는 미리보기 모드를 켜 두세요. 실제 이미지 생성 시 서버 주소를 입력하고 미리보기 모드를 끕니다.</p>
-        <button id="saveSettings" class="secondary">설정 저장</button>
-        <button id="resetUsage" class="secondary">오늘 사용 횟수 초기화</button>
       </div>
-    </details>
-  </main>
+      <div>
+        <input class="radio-hidden" type="radio" name="audience" id="audience2" value="1인 가구">
+        <label class="choice-label" for="audience2">
+          <span class="emoji">🏠</span>
+          <strong>1인 가구</strong>
+          <small>혼자 생활하는 사람</small>
+        </label>
+      </div>
+      <div>
+        <input class="radio-hidden" type="radio" name="audience" id="audience3" value="반려동물 가구">
+        <label class="choice-label" for="audience3">
+          <span class="emoji">🐶</span>
+          <strong>반려동물 가구</strong>
+          <small>반려동물과 함께 생활하는 사람</small>
+        </label>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>수업용 제한형 AI 활동 도구 · 자유 채팅 기능 없음</p>
-  </footer>
+  <section class="step">
+    <h2><b>2</b> 어디에서 사용하는 디자인인가요?</h2>
+    <div class="place-grid">
+      <div><input class="radio-hidden" type="radio" name="place" id="place1" value="학교"><label class="place-label" for="place1">🏫 학교</label></div>
+      <div><input class="radio-hidden" type="radio" name="place" id="place2" value="공원"><label class="place-label" for="place2">🌳 공원</label></div>
+      <div><input class="radio-hidden" type="radio" name="place" id="place3" value="마트"><label class="place-label" for="place3">🛒 마트</label></div>
+      <div><input class="radio-hidden" type="radio" name="place" id="place4" value="아파트"><label class="place-label" for="place4">🏢 아파트</label></div>
+      <div><input class="radio-hidden" type="radio" name="place" id="place5" value="버스·지하철"><label class="place-label" for="place5">🚌 버스·지하철</label></div>
+      <div><input class="radio-hidden" type="radio" name="place" id="place6" value="기타"><label class="place-label" for="place6">✏️ 기타</label></div>
+    </div>
+    <input id="customPlace" type="text" class="hidden" maxlength="30" placeholder="장소를 짧게 써 주세요." style="margin-top:10px">
+  </section>
 
-  <script src="./app.js"></script>
+  <section class="step">
+    <h2><b>3</b> 어떤 불편함이 있나요?</h2>
+    <textarea id="problem" maxlength="160" rows="4" placeholder="예) 한국어를 잘 모르면 도서관 안내판을 이해하기 어려워요."></textarea>
+    <div class="counter"><span id="problemCount">0</span>/160</div>
+  </section>
+
+  <section class="step">
+    <h2><b>4</b> 어떤 디자인을 만들고 싶나요?</h2>
+    <textarea id="idea" maxlength="160" rows="4" placeholder="예) 책 그림, 여러 나라 언어, 색깔 화살표가 있는 도서관 안내판을 만들고 싶어요."></textarea>
+    <div class="counter"><span id="ideaCount">0</span>/160</div>
+  </section>
+
+  <div class="privacy-note">🔒 이름, 전화번호, 주소, 얼굴 사진 같은 개인정보는 입력하지 않아요.</div>
+  <button id="generateBtn" type="button" class="primary">✨ AI로 디자인 만들기</button>
+  <p class="limit">오늘 <b id="usedCount">0</b>/3회 사용했어요.</p>
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+
+</section>
+
+<section id="resultView" class="card hidden">
+  <button id="backBtn" type="button" class="text-btn">← 다시 입력하기</button>
+  <h2>우리 아이디어로 만든 디자인 시안</h2>
+  <div class="result-grid">
+    <div class="image-box">
+      <img id="resultImage" alt="AI가 만든 유니버설 디자인 시안">
+    </div>
+    <div>
+      <h3 id="designName">우리의 유니버설 디자인</h3>
+      <div class="summary" id="summary"></div>
+      <div class="actions">
+        <button id="downloadBtn" type="button" class="secondary">💾 이미지 저장</button>
+        <button id="againBtn" type="button" class="secondary">↻ 다시 만들기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<details class="teacher-panel">
+  <summary>👩‍🏫 교사용 설정 보기</summary>
+  <div class="teacher-body">
+    <label>
+      AI 서버 주소
+      <input id="apiEndpoint" type="text">
+    </label>
+    <label class="switch-row">
+      <input id="mockMode" type="checkbox">
+      <span>미리보기 모드 사용</span>
+    </label>
+    <button id="saveSettings" type="button" class="secondary">설정 저장</button>
+    <button id="resetUsage" type="button" class="secondary">오늘 사용 횟수 초기화</button>
+  </div>
+</details>
+
+</main>
+
+<footer>수업용 제한형 AI 활동 도구 · 자유 채팅 기능 없음</footer>
+
+<script>
+(() => {
+  const DEFAULT_ENDPOINT = "https://universal-design-ai-api.win2661.workers.dev";
+  const MAX_DAILY = 3;
+  const TODAY_KEY = "udai-usage-" + new Date().toISOString().slice(0,10);
+  const $ = (s) => document.querySelector(s);
+
+  function usage(){ return Number(localStorage.getItem(TODAY_KEY) || 0); }
+  function updateUsage(){
+    $("#usedCount").textContent = usage();
+    $("#generateBtn").disabled = usage() >= MAX_DAILY;
+  }
+
+  document.querySelectorAll('input[name="place"]').forEach(radio => {
+    radio.addEventListener("change", () => {
+      $("#customPlace").classList.toggle("hidden", radio.value !== "기타" || !radio.checked);
+    });
+  });
+
+  [["problem","problemCount"],["idea","ideaCount"]].forEach(([id,count]) => {
+    $("#"+id).addEventListener("input", e => {
+      $("#"+count).textContent = e.target.value.length;
+    });
+  });
+
+  function getValues(){
+    const audience = document.querySelector('input[name="audience"]:checked')?.value || "";
+    let place = document.querySelector('input[name="place"]:checked')?.value || "";
+    if(place === "기타") place = $("#customPlace").value.trim();
+    return {
+      audience,
+      place,
+      problem: $("#problem").value.trim(),
+      idea: $("#idea").value.trim()
+    };
+  }
+
+  function validate(v){
+    if(!v.audience) return "누구를 위한 디자인인지 선택해 주세요.";
+    if(!v.place) return "사용할 장소를 선택해 주세요.";
+    if(v.problem.length < 8) return "불편한 점을 한 문장 이상 써 주세요.";
+    if(v.idea.length < 8) return "만들고 싶은 디자인을 한 문장 이상 써 주세요.";
+    return "";
+  }
+
+  function titleFor(v){
+    if(v.audience === "이주민·외국인") return "모두가 이해하는 " + v.place + " 디자인";
+    if(v.audience === "1인 가구") return "혼자서도 편리한 " + v.place + " 디자인";
+    return "함께 편안한 " + v.place + " 디자인";
+  }
+
+  $("#generateBtn").addEventListener("click", async () => {
+    $("#status").textContent = "";
+    const v = getValues();
+    const err = validate(v);
+    if(err){ $("#status").textContent = err; return; }
+    if(usage() >= MAX_DAILY){ $("#status").textContent = "오늘 만들 수 있는 횟수를 모두 사용했어요."; return; }
+
+    const endpoint = localStorage.getItem("udai-endpoint") || DEFAULT_ENDPOINT;
+    const mock = localStorage.getItem("udai-mock") === "true";
+
+    $("#generateBtn").disabled = true;
+    $("#generateBtn").textContent = "AI가 디자인 시안을 만들고 있어요…";
+
+    try{
+      if(mock) throw new Error("미리보기 모드가 켜져 있습니다.");
+
+      const res = await fetch(endpoint.replace(/\/$/,"") + "/generate", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(v)
+      });
+
+      if(!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      if(!data.image) throw new Error("이미지가 없습니다.");
+
+      localStorage.setItem(TODAY_KEY, String(usage()+1));
+      $("#resultImage").src = data.image;
+      $("#designName").textContent = titleFor(v);
+      $("#summary").textContent =
+        "대상: " + v.audience + "\n\n" +
+        "장소: " + v.place + "\n\n" +
+        "우리가 해결하려는 불편함\n" + v.problem + "\n\n" +
+        "우리가 만들고 싶은 디자인\n" + v.idea;
+
+      $("#studentView").classList.add("hidden");
+      $("#resultView").classList.remove("hidden");
+      window.scrollTo({top:0,behavior:"smooth"});
+    }catch(e){
+      console.error(e);
+      $("#status").textContent = "디자인 생성에 실패했어요. 선생님께 알려 주세요.";
+    }finally{
+      $("#generateBtn").textContent = "✨ AI로 디자인 만들기";
+      updateUsage();
+    }
+  });
+
+  $("#backBtn").addEventListener("click", () => {
+    $("#resultView").classList.add("hidden");
+    $("#studentView").classList.remove("hidden");
+  });
+
+  $("#againBtn").addEventListener("click", () => {
+    $("#resultView").classList.add("hidden");
+    $("#studentView").classList.remove("hidden");
+  });
+
+  $("#downloadBtn").addEventListener("click", () => {
+    const a = document.createElement("a");
+    a.href = $("#resultImage").src;
+    a.download = "universal-design.png";
+    a.click();
+  });
+
+  $("#apiEndpoint").value = localStorage.getItem("udai-endpoint") || DEFAULT_ENDPOINT;
+  $("#mockMode").checked = localStorage.getItem("udai-mock") === "true";
+
+  $("#saveSettings").addEventListener("click", () => {
+    localStorage.setItem("udai-endpoint", $("#apiEndpoint").value.trim() || DEFAULT_ENDPOINT);
+    localStorage.setItem("udai-mock", String($("#mockMode").checked));
+    alert("설정을 저장했습니다.");
+  });
+
+  $("#resetUsage").addEventListener("click", () => {
+    localStorage.setItem(TODAY_KEY, "0");
+    updateUsage();
+    alert("오늘 사용 횟수를 초기화했습니다.");
+  });
+
+  updateUsage();
+})();
+</script>
+
 </body>
 </html>
