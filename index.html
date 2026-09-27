@@ -1,20 +1,37 @@
 <!doctype html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>우리 학교 유니버설 디자인 AI</title>
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>
+우리 학교 유니버설 디자인 AI
+</title>
+
 
 <style>
+
 *{
   box-sizing:border-box;
 }
 
 body{
   margin:0;
-  font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    "Noto Sans KR",
+    sans-serif;
+
   background:#f3f8ff;
+
   color:#183153;
 }
 
@@ -28,21 +45,35 @@ input{
   display:none!important;
 }
 
+
 header{
   background:#fff;
-  border-bottom:1px solid #dce8f7;
-  padding:28px 18px;
+
+  border-bottom:
+    1px solid #dce8f7;
+
+  padding:
+    28px 18px;
 }
 
 header>div{
   max-width:900px;
+
   margin:auto;
 }
 
 h1{
-  margin:0 0 8px;
+  margin:
+    0 0 8px;
+
   color:#173b72;
-  font-size:clamp(28px,5vw,44px);
+
+  font-size:
+    clamp(
+      28px,
+      5vw,
+      44px
+    );
 }
 
 h1 span{
@@ -51,422 +82,668 @@ h1 span{
 
 header p{
   margin:0;
+
   color:#66768d;
+
   line-height:1.6;
 }
 
+
 main{
   max-width:900px;
-  margin:28px auto;
-  padding:0 16px 36px;
+
+  margin:
+    28px auto;
+
+  padding:
+    0 16px 36px;
 }
+
 
 .card{
   background:#fff;
-  border:1px solid #dce8f7;
+
+  border:
+    1px solid #dce8f7;
+
   border-radius:24px;
+
   padding:24px;
-  box-shadow:0 10px 28px rgba(40,80,130,.1);
+
+  box-shadow:
+    0 10px 28px
+    rgba(40,80,130,.1);
 }
 
+
 .step{
-  padding:24px 0;
-  border-top:1px solid #edf2f8;
+  padding:
+    24px 0;
+
+  border-top:
+    1px solid #edf2f8;
 }
 
 .step:first-child{
   border-top:0;
+
   padding-top:0;
 }
 
+
 .step h2{
-  margin:0 0 8px;
+  margin:
+    0 0 8px;
+
   font-size:20px;
 }
 
+
 .num{
   display:inline-grid;
+
   place-items:center;
+
   width:30px;
+
   height:30px;
+
   border-radius:50%;
+
   background:#e8f1ff;
+
   color:#2563eb;
+
   margin-right:8px;
 }
 
+
 .desc{
-  margin:0 0 12px;
+  margin:
+    0 0 12px;
+
   color:#66768d;
+
   font-size:14px;
+
   line-height:1.65;
 }
 
-.example{
-  background:#f0f8ff;
-  border:1px solid #d9ebff;
+
+.help-box{
+  background:#fff9e9;
+
+  border:
+    1px solid #f1dfad;
+
   border-radius:14px;
-  padding:13px 15px;
-  margin:10px 0 14px;
-  color:#385678;
+
+  padding:
+    12px 14px;
+
+  margin:
+    10px 0 14px;
+
+  color:#705724;
+
   font-size:13px;
+
   line-height:1.65;
 }
 
-.example b{
+
+.example-wrap{
+  margin:
+    12px 0 14px;
+}
+
+
+.example-wrap>summary{
+  cursor:pointer;
+
+  font-weight:850;
+
+  color:#174c99;
+
+  background:#f0f8ff;
+
+  border:
+    1px solid #d9ebff;
+
+  border-radius:14px;
+
+  padding:
+    12px 14px;
+}
+
+
+.example-content{
+  background:#f8fbff;
+
+  border:
+    1px solid #d9ebff;
+
+  border-top:0;
+
+  border-radius:
+    0 0 14px 14px;
+
+  padding:14px;
+
+  color:#385678;
+
+  font-size:13px;
+
+  line-height:1.75;
+}
+
+
+.example-card{
+  padding:
+    12px 0;
+
+  border-top:
+    1px solid #deebf7;
+}
+
+
+.example-card:first-child{
+  border-top:0;
+
+  padding-top:0;
+}
+
+
+.example-card b{
   color:#174c99;
 }
 
-.example-row{
-  margin-top:8px;
-}
 
 textarea{
   width:100%;
+
   min-height:125px;
+
   resize:vertical;
-  border:1.5px solid #d6e3f3;
+
+  border:
+    1.5px solid #d6e3f3;
+
   border-radius:14px;
+
   padding:14px;
+
   background:#fbfdff;
+
   outline:none;
+
   line-height:1.65;
 }
+
 
 textarea:focus,
 input:focus{
   border-color:#6ea1f7;
-  box-shadow:0 0 0 3px #e8f1ff;
+
+  box-shadow:
+    0 0 0 3px #e8f1ff;
 }
+
+
+.design-text{
+  min-height:230px;
+}
+
 
 .count{
   text-align:right;
+
   color:#8896a8;
+
   font-size:12px;
+
   margin-top:5px;
 }
 
+
 .tips{
   display:flex;
+
   gap:7px;
+
   flex-wrap:wrap;
+
   margin-top:9px;
 }
 
+
 .tip{
-  padding:6px 10px;
+  padding:
+    6px 10px;
+
   border-radius:999px;
+
   background:#f7fafc;
-  border:1px solid #dde7f1;
+
+  border:
+    1px solid #dde7f1;
+
   color:#52657e;
+
   font-size:12px;
 }
 
+
 .upload{
-  border:2px dashed #bfd4ef;
+  border:
+    2px dashed #bfd4ef;
+
   background:#f8fbff;
+
   border-radius:18px;
+
   padding:20px;
+
   text-align:center;
 }
 
+
 .upload label{
   display:inline-block;
+
   background:#eaf2ff;
+
   color:#174c99;
+
   font-weight:800;
-  padding:12px 16px;
+
+  padding:
+    12px 16px;
+
   border-radius:13px;
+
   cursor:pointer;
 }
+
 
 #schoolPhoto{
   position:absolute;
+
   opacity:0;
+
   width:1px;
+
   height:1px;
 }
 
+
 .upload small{
   display:block;
+
   margin-top:9px;
+
   color:#7b879a;
+
   line-height:1.5;
 }
 
+
 .preview{
   margin-top:14px;
+
   border-radius:16px;
+
   overflow:hidden;
+
   background:#edf4fb;
-  border:1px solid #d9e5f2;
+
+  border:
+    1px solid #d9e5f2;
 }
+
 
 .preview img{
   display:block;
+
   max-width:100%;
+
   max-height:440px;
+
   margin:auto;
 }
 
-.feature-box{
-  margin-top:18px;
-  padding:18px;
-  border-radius:18px;
-  background:#f8fbff;
-  border:1px solid #dce8f7;
-}
-
-.feature-box h3{
-  margin:0 0 6px;
-  color:#173b72;
-  font-size:18px;
-}
-
-.feature-help{
-  margin:0 0 15px;
-  color:#66768d;
-  font-size:13px;
-  line-height:1.6;
-}
-
-.feature-item{
-  margin-top:14px;
-}
-
-.feature-item:first-of-type{
-  margin-top:0;
-}
-
-.feature-label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:800;
-  margin-bottom:7px;
-  color:#24476f;
-}
-
-.feature-number{
-  display:inline-grid;
-  place-items:center;
-  width:26px;
-  height:26px;
-  border-radius:50%;
-  background:#dfeeff;
-  color:#1759a8;
-  font-size:13px;
-}
-
-.optional{
-  color:#8a98aa;
-  font-size:12px;
-  font-weight:500;
-}
-
-.feature-item textarea{
-  min-height:78px;
-}
 
 .privacy{
-  margin:18px 0;
-  padding:12px 14px;
+  margin:
+    18px 0;
+
+  padding:
+    12px 14px;
+
   border-radius:13px;
+
   background:#effaf7;
-  border:1px solid #cfeee4;
+
+  border:
+    1px solid #cfeee4;
+
   color:#315f57;
+
   font-size:13px;
+
   line-height:1.6;
 }
+
 
 .primary{
   width:100%;
+
   border:0;
+
   border-radius:15px;
+
   padding:16px;
+
   background:#2563eb;
+
   color:#fff;
+
   font-weight:900;
+
   font-size:18px;
+
   cursor:pointer;
 }
+
 
 .primary:disabled,
 .secondary:disabled{
   opacity:.5;
+
   cursor:not-allowed;
 }
 
+
 .status{
   text-align:center;
+
   min-height:22px;
+
   color:#b45309;
+
   font-size:13px;
+
   line-height:1.6;
 }
 
+
 .limit{
   text-align:center;
+
   color:#6c7d92;
+
   font-size:13px;
 }
 
+
 .result-title{
   text-align:center;
-  margin:0 0 8px;
+
+  margin:
+    0 0 8px;
 }
+
 
 .result-sub{
   text-align:center;
-  margin:0 0 24px;
+
+  margin:
+    0 0 24px;
+
   color:#6b7b91;
 }
 
+
 .result-block{
   padding-top:22px;
+
   margin-top:22px;
-  border-top:1px solid #edf2f8;
+
+  border-top:
+    1px solid #edf2f8;
 }
+
 
 .result-block:first-of-type{
   border-top:0;
+
   margin-top:0;
+
   padding-top:0;
 }
 
+
 .result-block h3{
-  margin:0 0 12px;
+  margin:
+    0 0 12px;
 }
+
 
 .photo-frame{
   background:#edf4fb;
-  border:1px solid #d9e5f2;
+
+  border:
+    1px solid #d9e5f2;
+
   border-radius:18px;
+
   overflow:hidden;
+
   display:grid;
+
   place-items:center;
+
   min-height:220px;
 }
 
+
 .photo-frame img{
   max-width:100%;
+
   max-height:540px;
+
   display:block;
 }
 
+
 .proposal{
   display:grid;
-  grid-template-columns:1.05fr .95fr;
+
+  grid-template-columns:
+    1.05fr .95fr;
+
   gap:18px;
 }
 
+
 .design-frame{
   aspect-ratio:1/1;
+
   background:#eef5ff;
+
   border-radius:18px;
+
   overflow:hidden;
-  border:1px solid #d9e6f7;
+
+  border:
+    1px solid #d9e6f7;
 }
+
 
 .design-frame img{
   width:100%;
+
   height:100%;
+
   object-fit:cover;
 }
 
+
 .explain{
   background:#f7faff;
-  border:1px solid #e2ebf6;
+
+  border:
+    1px solid #e2ebf6;
+
   border-radius:18px;
+
   padding:18px;
 }
 
+
 .explain h4{
-  margin:0 0 12px;
+  margin:
+    0 0 12px;
+
   color:#173b72;
+
   font-size:20px;
 }
 
+
 .item{
-  padding:12px 0;
-  border-top:1px solid #e6edf6;
+  padding:
+    12px 0;
+
+  border-top:
+    1px solid #e6edf6;
 }
+
 
 .item:first-of-type{
   border-top:0;
 }
 
+
 .label{
   font-size:12px;
+
   font-weight:900;
+
   color:#56708f;
 }
 
+
 .item p{
-  margin:5px 0 0;
+  margin:
+    5px 0 0;
+
   line-height:1.7;
+
   white-space:pre-wrap;
 }
 
-.result-features{
-  margin:8px 0 0;
+
+.feature-list{
+  margin:
+    8px 0 0;
+
   padding-left:24px;
+
   line-height:1.75;
 }
 
-.result-features li{
-  margin:5px 0;
+
+.feature-list li{
+  margin:
+    5px 0;
 }
+
 
 .actions{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:10px;
+
   margin-top:22px;
 }
 
+
 .secondary{
-  border:1.5px solid #cbdcf0;
+  border:
+    1.5px solid #cbdcf0;
+
   background:#fff;
+
   color:#24446f;
+
   border-radius:13px;
+
   padding:13px;
+
   cursor:pointer;
+
   font-weight:800;
 }
+
 
 .save{
   background:#edf5ff;
+
   border-color:#b8d1f2;
+
   color:#174c99;
 }
 
+
 .textbtn{
   display:block;
-  margin:12px auto 0;
+
+  margin:
+    12px auto 0;
+
   border:0;
+
   background:transparent;
+
   text-decoration:underline;
+
   color:#6b7b91;
+
   cursor:pointer;
 }
 
-details{
+
+details.teacher-settings{
   margin-top:18px;
+
   background:#fff;
-  border:1px solid #dce8f7;
+
+  border:
+    1px solid #dce8f7;
+
   border-radius:15px;
 }
 
-summary{
-  padding:14px 16px;
+
+details.teacher-settings>summary{
+  padding:
+    14px 16px;
+
   cursor:pointer;
+
   font-weight:800;
 }
 
+
 .teacher{
-  padding:0 16px 16px;
+  padding:
+    0 16px 16px;
 }
+
 
 @media(max-width:700px){
 
@@ -480,37 +757,68 @@ summary{
   }
 
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
   <div>
-    <h1>우리 학교 <span>유니버설 디자인 AI</span></h1>
+
+    <h1>
+      우리 학교
+      <span>
+        유니버설 디자인 AI
+      </span>
+    </h1>
+
     <p>
       학교에서 발견한 불편함을 살펴보고,
-      모두가 더 편리하게 이용할 수 있는 디자인으로 바꿔 보세요.
+      모두가 더 편리하게 이용할 수 있는
+      디자인으로 바꿔 보세요.
     </p>
+
   </div>
+
 </header>
+
 
 <main>
 
-<section id="inputView" class="card">
 
-  <!-- 1. 사진 -->
+<section
+  id="inputView"
+  class="card"
+>
+
+
+  <!-- 1 -->
+
   <div class="step">
 
     <h2>
-      <span class="num">1</span>
+
+      <span class="num">
+        1
+      </span>
+
       학교 사진을 올려 주세요.
+
     </h2>
 
+
     <p class="desc">
+
       이전 차시에 살펴본 학교 공간 중
       바꾸고 싶은 곳의 사진을 골라요.
+
     </p>
+
 
     <div class="upload">
 
@@ -520,20 +828,38 @@ summary{
         accept="image/*"
       >
 
+
       <label for="schoolPhoto">
+
         📷 학교 사진 선택하기
+
       </label>
 
+
       <small>
-        불편한 곳이 잘 보이는 사진을 선택하세요.<br>
-        학생 얼굴·이름 등 개인정보가 보이는 사진은 사용하지 않아요.
+
+        불편한 곳이 잘 보이는
+        사진을 선택하세요.
+
+        <br>
+
+        학생 얼굴·이름 등
+        개인정보가 보이는 사진은
+        사용하지 않아요.
+
       </small>
 
-      <div id="preview" class="preview hidden">
+
+      <div
+        id="preview"
+        class="preview hidden"
+      >
+
         <img
           id="previewImg"
           alt="학교 사진 미리보기"
         >
+
       </div>
 
     </div>
@@ -541,232 +867,378 @@ summary{
   </div>
 
 
-  <!-- 2. 불편 -->
+
+  <!-- 2 -->
+
   <div class="step">
 
     <h2>
-      <span class="num">2</span>
+
+      <span class="num">
+        2
+      </span>
+
       어디에서 어떤 불편이 있나요?
+
     </h2>
 
+
     <p class="desc">
-      사진 속 장소에서 무엇이 불편한지,
+
+      사진 속 장소에서
+      무엇이 불편한지,
       왜 불편한지를 자세히 써 보세요.
+
     </p>
 
-    <div class="example">
-      <b>예시</b><br>
-      학교 현관에 있는 안내판이 글자 중심이라
-      처음 학교에 온 사람은 장소를 찾기 어려워요.
-      안내판의 위치도 어린 학생에게는 너무 높아요.
+
+    <div class="help-box">
+
+      <b>
+        생각해 보기
+      </b>
+
+      <br>
+
+      어디에서 불편한가요?
+      무엇이 잘 보이지 않거나
+      사용하기 어려운가요?
+      왜 불편한가요?
+
     </div>
+
 
     <textarea
       id="problem"
-      maxlength="240"
-      placeholder="어디에서 무엇이 불편한지, 왜 불편한지 자세히 써 보세요."
+      maxlength="300"
+      placeholder="예) 학교 현관 안내판이 글자 중심이라 처음 학교에 온 사람은 장소를 찾기 어려워요. 안내판의 위치도 어린 학생에게는 너무 높아요."
     ></textarea>
 
-    <div class="count">
-      <span id="problemCount">0</span>/240
-    </div>
 
-    <div class="tips">
-      <span class="tip">어디에서?</span>
-      <span class="tip">무엇이 불편한가요?</span>
-      <span class="tip">왜 불편한가요?</span>
+    <div class="count">
+
+      <span id="problemCount">
+        0
+      </span>
+
+      /300
+
     </div>
 
   </div>
 
 
-  <!-- 3. 사람 -->
+
+  <!-- 3 -->
+
   <div class="step">
 
     <h2>
-      <span class="num">3</span>
+
+      <span class="num">
+        3
+      </span>
+
       누가 이 불편을 겪을 수 있나요?
+
     </h2>
 
+
     <p class="desc">
-      어떤 사람이 왜 더 불편할지 자세히 써 보세요.
+
+      어떤 사람이
+      왜 더 불편할지
+      자세히 써 보세요.
+
     </p>
 
-    <div class="example">
-      <b>예시</b><br>
-      처음 학교에 온 사람이나 한국어를 잘 모르는 사람은
-      안내판을 이해하기 어려울 수 있어요.
-      키가 작은 학생은 높은 곳에 있는 안내를 보기 어려울 수 있어요.
+
+    <div class="help-box">
+
+      <b>
+        생각해 보기
+      </b>
+
+      <br>
+
+      누가 불편할까요?
+      그 사람은 어떤 상황에서
+      더 어렵거나 불편할까요?
+
     </div>
+
 
     <textarea
       id="people"
-      maxlength="240"
-      placeholder="누가 이 불편을 겪을 수 있고, 왜 더 어려울지 써 보세요."
+      maxlength="300"
+      placeholder="예) 처음 학교에 온 사람이나 한국어를 잘 모르는 사람은 안내판을 이해하기 어려울 수 있어요. 키가 작은 학생은 높은 곳의 안내를 보기 어려울 수 있어요."
     ></textarea>
 
-    <div class="count">
-      <span id="peopleCount">0</span>/240
-    </div>
 
-    <div class="tips">
-      <span class="tip">처음 온 사람</span>
-      <span class="tip">어린이</span>
-      <span class="tip">한국어가 익숙하지 않은 사람</span>
-      <span class="tip">짐이 많은 사람</span>
-      <span class="tip">이동이 불편한 사람</span>
+    <div class="count">
+
+      <span id="peopleCount">
+        0
+      </span>
+
+      /300
+
     </div>
 
   </div>
 
 
-  <!-- 4. 디자인 -->
+
+  <!-- 4 -->
+
   <div class="step">
 
     <h2>
-      <span class="num">4</span>
+
+      <span class="num">
+        4
+      </span>
+
       어떤 디자인으로 바꾸고 싶나요?
+
     </h2>
 
+
     <p class="desc">
-      먼저 만들고 싶은 디자인을 한 문장으로 쓰고,
-      <b>꼭 들어가야 하는 핵심 요소를 2~3개</b>
-      번호 순서대로 써 보세요.
+
+      <b>
+        바꾸고 싶은 모습을
+        최대한 자세히
+      </b>
+
+      써 보세요.
+
+      AI가 글에서
+      중요한 특징을 찾아
+      디자인 시안에 반영합니다.
+
     </p>
 
-    <div class="example">
 
-      <b>이렇게 생각할 수 있어요.</b>
+    <div class="help-box">
 
-      <div class="example-row">
-        <b>안내 디자인</b> :
-        처음 온 사람도 쉽게 길을 찾을 수 있는 학교 안내판
-      </div>
+      <b>
+        자세히 쓰는 방법
+      </b>
 
-      <div class="example-row">
-        <b>공간 디자인</b> :
-        여러 사람이 편하게 이용할 수 있는 학교 쉼터
-      </div>
+      <br>
 
-      <div class="example-row">
-        <b>시설 디자인</b> :
-        어린이부터 어른까지 편하게 이용할 수 있는 급식실
-      </div>
+      <b>
+        색, 그림, 높이, 모양, 크기,
+        기능, 공간, 위치, 사용 방법
+      </b>
+
+      처럼 실제로 눈에 보일 수 있는
+      모습을 구체적으로 써 보세요.
+
+      생각나는 특징이 많으면
+      모두 써도 됩니다.
 
     </div>
+
+
+
+    <details class="example-wrap">
+
+      <summary>
+        💡 자세한 예시 3개 보기
+      </summary>
+
+
+      <div class="example-content">
+
+
+        <div class="example-card">
+
+          <b>
+            예시 1｜학교 안내판
+          </b>
+
+          <br>
+
+          학교 현관 안내판을 어린 학생도
+          보기 쉽도록 지금보다 낮은 높이에
+          설치하고 싶어요.
+
+          안내판은 모서리가 둥근
+          직사각형 모양으로 만들고,
+          도서관은 파란색,
+          급식실은 주황색,
+          보건실은 초록색처럼
+          장소마다 다른 색을 사용하고 싶어요.
+
+          글만 쓰지 말고
+          책, 식판, 십자가처럼
+          장소를 바로 알 수 있는
+          큰 그림을 넣고,
+          가야 할 방향은
+          굵고 큰 색깔 화살표로
+          보여 주고 싶어요.
+
+          처음 학교에 온 사람도
+          그림과 색깔만 보고
+          길을 찾을 수 있도록
+          한눈에 보기 쉽게 만들고 싶어요.
+
+        </div>
+
+
+
+        <div class="example-card">
+
+          <b>
+            예시 2｜학교 쉼터
+          </b>
+
+          <br>
+
+          학교 쉼터에
+          키와 몸의 크기가 다른 사람도
+          편하게 앉을 수 있도록
+          높이가 다른 의자와 벤치를
+          놓고 싶어요.
+
+          낮은 의자,
+          보통 높이 의자,
+          팔걸이가 있는 의자를
+          함께 두고,
+          모서리는 둥글게 만들고 싶어요.
+
+          휠체어나 유모차가
+          들어갈 수 있도록
+          벤치 사이에 넓은 빈 공간을 만들고,
+          옆에는 가방이나 짐을
+          놓을 수 있는 낮은 선반도
+          두고 싶어요.
+
+          바닥에는 미끄럽지 않은
+          재료를 사용하고,
+          쉼터 위치를 쉽게 찾을 수 있도록
+          밝은 색과 큰 그림 표시를
+          넣고 싶어요.
+
+        </div>
+
+
+
+        <div class="example-card">
+
+          <b>
+            예시 3｜급식실
+          </b>
+
+          <br>
+
+          급식실에서 줄을 서고
+          식판을 받는 방법을
+          쉽게 알 수 있도록
+          바닥에 이동 방향을 나타내는
+          굵은 색깔 선과 발자국 그림을
+          넣고 싶어요.
+
+          식판 받는 곳,
+          반찬 받는 곳,
+          식판 반납하는 곳마다
+          서로 다른 색깔과
+          큰 그림 표시를 사용하고 싶어요.
+
+          어린 학생도
+          편하게 이용할 수 있도록
+          식판을 놓는 곳의 높이를
+          너무 높지 않게 하고,
+          한쪽에는 키가 작은 학생이
+          사용할 수 있는
+          낮은 공간도 만들고 싶어요.
+
+          줄이 겹치지 않도록
+          이동 공간을 넓게 나누고,
+          어디로 가야 하는지
+          멀리서도 알 수 있도록
+          큰 화살표를 사용하고 싶어요.
+
+        </div>
+
+
+      </div>
+
+    </details>
+
+
 
     <textarea
       id="design"
-      maxlength="180"
-      placeholder="예) 처음 온 사람도 쉽게 길을 찾을 수 있는 학교 안내판으로 바꾸고 싶어요."
+      class="design-text"
+      maxlength="700"
+      placeholder="바꾸고 싶은 디자인을 자세히 써 보세요. 색, 그림, 높이, 모양, 크기, 기능, 공간, 위치, 사용 방법 등 눈에 보이는 특징을 많이 써도 좋아요."
     ></textarea>
 
+
     <div class="count">
-      <span id="designCount">0</span>/180
+
+      <span id="designCount">
+        0
+      </span>
+
+      /700
+
     </div>
 
 
-    <div class="feature-box">
+    <div class="tips">
 
-      <h3>
-        꼭 보여야 하는 핵심 요소
-      </h3>
+      <span class="tip">
+        색
+      </span>
 
-      <p class="feature-help">
-        색, 그림, 높이, 모양, 기능, 공간, 사용 방법처럼
-        <b>눈에 보이는 특징</b>을 구체적으로 써 보세요.<br>
-        1번과 2번은 꼭 쓰고, 3번은 필요할 때 쓰면 됩니다.
-      </p>
+      <span class="tip">
+        그림
+      </span>
 
+      <span class="tip">
+        높이
+      </span>
 
-      <div class="example">
+      <span class="tip">
+        모양·크기
+      </span>
 
-        <b>예시 A — 학교 안내판</b><br>
-        1. 장소를 나타내는 큰 그림이 있을 것<br>
-        2. 방향을 알려 주는 큰 색깔 화살표가 있을 것<br>
-        3. 어린 학생도 보기 쉬운 높이에 설치할 것
+      <span class="tip">
+        기능
+      </span>
 
-        <br><br>
+      <span class="tip">
+        공간·위치
+      </span>
 
-        <b>예시 B — 학교 쉼터</b><br>
-        1. 높이가 다른 의자가 있을 것<br>
-        2. 휠체어나 유모차가 들어갈 넓은 공간이 있을 것<br>
-        3. 가방이나 짐을 놓을 공간이 있을 것
-
-      </div>
-
-
-      <div class="feature-item">
-
-        <div class="feature-label">
-          <span class="feature-number">1</span>
-          핵심 요소 1
-        </div>
-
-        <textarea
-          id="feature1"
-          maxlength="160"
-          placeholder="가장 중요하게 보여야 하는 특징을 써 보세요."
-        ></textarea>
-
-        <div class="count">
-          <span id="feature1Count">0</span>/160
-        </div>
-
-      </div>
-
-
-      <div class="feature-item">
-
-        <div class="feature-label">
-          <span class="feature-number">2</span>
-          핵심 요소 2
-        </div>
-
-        <textarea
-          id="feature2"
-          maxlength="160"
-          placeholder="두 번째로 꼭 들어가야 하는 특징을 써 보세요."
-        ></textarea>
-
-        <div class="count">
-          <span id="feature2Count">0</span>/160
-        </div>
-
-      </div>
-
-
-      <div class="feature-item">
-
-        <div class="feature-label">
-          <span class="feature-number">3</span>
-          핵심 요소 3
-          <span class="optional">(선택)</span>
-        </div>
-
-        <textarea
-          id="feature3"
-          maxlength="160"
-          placeholder="더 넣고 싶은 중요한 특징이 있다면 써 보세요."
-        ></textarea>
-
-        <div class="count">
-          <span id="feature3Count">0</span>/160
-        </div>
-
-      </div>
+      <span class="tip">
+        사용 방법
+      </span>
 
     </div>
 
   </div>
+
 
 
   <div class="privacy">
-    🔒 학교 사진은 원래 모습을 보여 주고
+
+    🔒 학교 사진은
+    원래 모습을 보여 주고
     결과물을 저장하는 데만 사용합니다.
-    사진 자체는 AI 서버로 보내지 않고,
-    학생이 2·3·4번에 쓴 글만 디자인 생성에 사용합니다.
+
+    사진 자체는
+    AI 서버로 보내지 않고,
+
+    학생이 2·3·4번에 쓴 글만
+    디자인 생성에 사용합니다.
+
   </div>
+
 
 
   <button
@@ -774,68 +1246,116 @@ summary{
     class="primary"
     type="button"
   >
+
     ✨ 유니버설 디자인 시안 만들기
+
   </button>
 
 
   <p class="limit">
-    오늘 <b id="usedCount">0</b>/3회 사용했어요.
+
+    오늘
+
+    <b id="usedCount">
+      0
+    </b>
+
+    /3회 사용했어요.
+
   </p>
 
-  <p id="status" class="status"></p>
+
+  <p
+    id="status"
+    class="status"
+  ></p>
+
 
 </section>
 
 
-<!-- 결과 -->
-<section id="resultView" class="card hidden">
+
+
+<!-- 결과 화면 -->
+
+<section
+  id="resultView"
+  class="card hidden"
+>
+
 
   <h2 class="result-title">
-    우리 학교를 바꾸는 유니버설 디자인
+
+    우리 학교를 바꾸는
+    유니버설 디자인
+
   </h2>
 
+
   <p class="result-sub">
-    처음 모습과 학생의 아이디어를 바탕으로 만든 디자인 시안을 비교해 보세요.
+
+    처음 모습과
+    학생의 아이디어를 바탕으로 만든
+    디자인 시안을 비교해 보세요.
+
   </p>
+
 
 
   <div class="result-block">
 
     <h3>
+
       ① 우리 학교의 원래 모습
+
     </h3>
 
+
     <div class="photo-frame">
+
       <img
         id="originalResult"
         alt="원래 학교 사진"
       >
+
     </div>
 
   </div>
 
 
+
   <div class="result-block">
 
     <h3>
+
       ② 제안하는 유니버설 디자인
+
     </h3>
+
 
     <div class="proposal">
 
+
       <div class="design-frame">
+
         <img
           id="designResult"
           alt="AI가 만든 유니버설 디자인 시안"
         >
+
       </div>
+
 
 
       <div class="explain">
 
+
         <h4 id="designTitle">
+
           우리 학교 유니버설 디자인 제안
+
         </h4>
+
 
 
         <div class="item">
@@ -849,6 +1369,7 @@ summary{
         </div>
 
 
+
         <div class="item">
 
           <span class="label">
@@ -860,10 +1381,11 @@ summary{
         </div>
 
 
+
         <div class="item">
 
           <span class="label">
-            우리가 만들고 싶은 디자인
+            학생이 제안한 변화
           </span>
 
           <p id="resultDesign"></p>
@@ -871,18 +1393,20 @@ summary{
         </div>
 
 
+
         <div class="item">
 
           <span class="label">
-            꼭 들어가야 하는 핵심 요소
+            AI가 시안에 반영한 핵심 요소
           </span>
 
           <ol
             id="resultFeatures"
-            class="result-features"
+            class="feature-list"
           ></ol>
 
         </div>
+
 
       </div>
 
@@ -891,25 +1415,34 @@ summary{
   </div>
 
 
+
   <div class="actions">
+
 
     <button
       id="saveBtn"
       class="secondary save"
       type="button"
     >
+
       🖼 이미지로 저장하기
+
     </button>
+
 
     <button
       id="againBtn"
       class="secondary"
       type="button"
     >
+
       ↻ 다시 만들기
+
     </button>
 
+
   </div>
+
 
 
   <button
@@ -917,8 +1450,11 @@ summary{
     class="textbtn"
     type="button"
   >
+
     입력 내용 수정하기
+
   </button>
+
 
 
   <p
@@ -926,15 +1462,22 @@ summary{
     class="status"
   ></p>
 
+
 </section>
 
 
-<!-- 교사용 -->
-<details>
+
+
+<!-- 교사용 설정 -->
+
+<details class="teacher-settings">
 
   <summary>
+
     👩‍🏫 교사용 설정
+
   </summary>
+
 
   <div class="teacher">
 
@@ -943,7 +1486,9 @@ summary{
       class="secondary"
       type="button"
     >
+
       오늘 사용 횟수 초기화
+
     </button>
 
   </div>
@@ -954,105 +1499,175 @@ summary{
 </main>
 
 
+
+
 <script>
 
 (()=>{
 
+
 const API =
   "https://universal-design-ai-api.win2661.workers.dev";
 
+
 const MAX = 3;
 
-const $ = selector =>
-  document.querySelector(selector);
+
+const $ =
+  selector =>
+    document.querySelector(selector);
+
 
 let photo = "";
+
 let last = null;
+
+let lastFeatures = [];
+
 let busy = false;
+
 
 
 function dayKey(){
 
-  const d = new Date();
+  const d =
+    new Date();
 
-  return `udai-${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
-
-}
-
-
-function used(){
-
-  return Number(
-    localStorage.getItem(dayKey()) || 0
+  return (
+    `udai-${d.getFullYear()}-` +
+    `${d.getMonth()+1}-` +
+    `${d.getDate()}`
   );
 
 }
 
 
-function refreshLimit(){
 
-  const n = used();
+function used(){
 
-  $("#usedCount").textContent = n;
-
-  $("#generateBtn").disabled =
-    busy || n >= MAX;
-
-  $("#againBtn").disabled =
-    busy || n >= MAX;
+  return Number(
+    localStorage.getItem(
+      dayKey()
+    ) || 0
+  );
 
 }
 
 
-function setStatus(text, result = false){
+
+function refreshLimit(){
+
+  const n =
+    used();
+
+
+  $("#usedCount")
+    .textContent =
+      n;
+
+
+  $("#generateBtn")
+    .disabled =
+      busy ||
+      n >= MAX;
+
+
+  $("#againBtn")
+    .disabled =
+      busy ||
+      n >= MAX;
+
+}
+
+
+
+function setStatus(
+  text,
+  result = false
+){
 
   (
     result
       ? $("#resultStatus")
       : $("#status")
-  ).textContent = text || "";
+  ).textContent =
+    text || "";
 
 }
+
 
 
 function loadImg(src){
 
-  return new Promise((resolve,reject)=>{
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
 
-    const img = new Image();
+      const img =
+        new Image();
 
-    img.onload = () => resolve(img);
-    img.onerror = reject;
 
-    img.src = src;
+      img.onload =
+        () => resolve(img);
 
-  });
+
+      img.onerror =
+        reject;
+
+
+      img.src =
+        src;
+
+    }
+  );
 
 }
+
 
 
 function fileURL(file){
 
-  return new Promise((resolve,reject)=>{
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
 
-    const reader = new FileReader();
+      const reader =
+        new FileReader();
 
-    reader.onload =
-      () => resolve(reader.result);
 
-    reader.onerror =
-      reject;
+      reader.onload =
+        () =>
+          resolve(
+            reader.result
+          );
 
-    reader.readAsDataURL(file);
 
-  });
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
 
 }
 
 
+
 async function compress(file){
 
-  if(!file.type.startsWith("image/")){
+  if(
+    !file.type.startsWith(
+      "image/"
+    )
+  ){
 
     throw Error(
       "이미지 파일을 선택해 주세요."
@@ -1060,7 +1675,11 @@ async function compress(file){
 
   }
 
-  if(file.size > 15 * 1024 * 1024){
+
+  if(
+    file.size >
+    15 * 1024 * 1024
+  ){
 
     throw Error(
       "15MB 이하 사진을 사용해 주세요."
@@ -1068,13 +1687,22 @@ async function compress(file){
 
   }
 
+
   const raw =
-    await fileURL(file);
+    await fileURL(
+      file
+    );
+
 
   const img =
-    await loadImg(raw);
+    await loadImg(
+      raw
+    );
 
-  const max = 1800;
+
+  const max =
+    1800;
+
 
   const scale =
     Math.min(
@@ -1086,29 +1714,37 @@ async function compress(file){
       )
     );
 
+
   const canvas =
-    document.createElement("canvas");
+    document.createElement(
+      "canvas"
+    );
+
 
   canvas.width =
     Math.round(
-      img.naturalWidth * scale
+      img.naturalWidth *
+      scale
     );
+
 
   canvas.height =
     Math.round(
-      img.naturalHeight * scale
+      img.naturalHeight *
+      scale
     );
 
-  const ctx =
-    canvas.getContext("2d");
 
-  ctx.drawImage(
-    img,
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
+  canvas
+    .getContext("2d")
+    .drawImage(
+      img,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
 
   return canvas.toDataURL(
     "image/jpeg",
@@ -1118,75 +1754,115 @@ async function compress(file){
 }
 
 
+
 $("#schoolPhoto")
-.addEventListener(
-  "change",
-  async event => {
+  .addEventListener(
+    "change",
+    async event => {
 
-    const file =
-      event.target.files?.[0];
+      const file =
+        event
+          .target
+          .files?.[0];
 
-    if(!file) return;
 
-    try{
+      if(!file){
+        return;
+      }
 
-      photo =
-        await compress(file);
 
-      $("#previewImg").src =
-        photo;
+      try{
 
-      $("#preview")
-        .classList
-        .remove("hidden");
+        photo =
+          await compress(
+            file
+          );
 
-      setStatus("");
 
-    }catch(error){
+        $("#previewImg")
+          .src =
+            photo;
 
-      photo = "";
 
-      $("#preview")
-        .classList
-        .add("hidden");
+        $("#preview")
+          .classList
+          .remove(
+            "hidden"
+          );
 
-      setStatus(
-        error.message
-      );
+
+        setStatus("");
+
+
+      }catch(error){
+
+        photo = "";
+
+
+        $("#preview")
+          .classList
+          .add(
+            "hidden"
+          );
+
+
+        setStatus(
+          error.message
+        );
+
+      }
 
     }
+  );
+
+
+
+[
+  [
+    "problem",
+    "problemCount"
+  ],
+
+  [
+    "people",
+    "peopleCount"
+  ],
+
+  [
+    "design",
+    "designCount"
+  ]
+]
+.forEach(
+  (
+    [
+      inputId,
+      countId
+    ]
+  ) => {
+
+    $("#"+inputId)
+      .addEventListener(
+        "input",
+        () => {
+
+          $("#"+countId)
+            .textContent =
+              $("#"+inputId)
+                .value
+                .length;
+
+        }
+      );
 
   }
 );
 
 
-[
-  ["problem","problemCount"],
-  ["people","peopleCount"],
-  ["design","designCount"],
-  ["feature1","feature1Count"],
-  ["feature2","feature2Count"],
-  ["feature3","feature3Count"]
-]
-.forEach(([inputId,countId])=>{
-
-  $("#"+inputId)
-    .addEventListener(
-      "input",
-      ()=>{
-
-        $("#"+countId).textContent =
-          $("#"+inputId).value.length;
-
-      }
-    );
-
-});
-
 
 function values(){
 
-  return{
+  return {
 
     problem:
       $("#problem")
@@ -1201,21 +1877,6 @@ function values(){
     design:
       $("#design")
         .value
-        .trim(),
-
-    feature1:
-      $("#feature1")
-        .value
-        .trim(),
-
-    feature2:
-      $("#feature2")
-        .value
-        .trim(),
-
-    feature3:
-      $("#feature3")
-        .value
         .trim()
 
   };
@@ -1223,116 +1884,184 @@ function values(){
 }
 
 
+
 function check(v){
 
   if(!photo){
 
-    return "학교 사진을 먼저 올려 주세요.";
+    return (
+      "학교 사진을 먼저 올려 주세요."
+    );
 
   }
 
-  if(v.problem.length < 15){
-
-    return "2번의 불편한 상황을 조금 더 자세히 써 주세요.";
-
-  }
-
-  if(v.people.length < 8){
-
-    return "3번의 불편을 겪을 수 있는 사람을 조금 더 자세히 써 주세요.";
-
-  }
-
-  if(v.design.length < 10){
-
-    return "만들고 싶은 디자인을 조금 더 자세히 써 주세요.";
-
-  }
-
-  if(v.feature1.length < 8){
-
-    return "핵심 요소 1을 조금 더 구체적으로 써 주세요.";
-
-  }
-
-  if(v.feature2.length < 8){
-
-    return "핵심 요소 2를 조금 더 구체적으로 써 주세요.";
-
-  }
 
   if(
-    v.feature3.length > 0 &&
-    v.feature3.length < 5
+    v.problem.length < 15
   ){
 
-    return "핵심 요소 3을 조금 더 구체적으로 써 주세요.";
+    return (
+      "2번의 불편한 상황을 조금 더 자세히 써 주세요."
+    );
 
   }
+
+
+  if(
+    v.people.length < 8
+  ){
+
+    return (
+      "3번의 불편을 겪을 수 있는 사람을 조금 더 자세히 써 주세요."
+    );
+
+  }
+
+
+  if(
+    v.design.length < 30
+  ){
+
+    return (
+      "4번의 디자인을 조금 더 자세히 써 주세요. " +
+      "색, 그림, 높이, 모양, 기능, 공간, 사용 방법처럼 " +
+      "눈에 보이는 특징을 넣으면 좋아요."
+    );
+
+  }
+
 
   return "";
 
 }
 
 
-function featureArray(v){
 
-  return [
-    v.feature1,
-    v.feature2,
-    v.feature3
-  ].filter(Boolean);
-
-}
-
-
-function show(v,image,title){
-
-  $("#originalResult").src =
-    photo;
-
-  $("#designResult").src =
-    image;
-
-  $("#designTitle").textContent =
-    title ||
-    "우리 학교 유니버설 디자인 제안";
-
-  $("#resultProblem").textContent =
-    v.problem;
-
-  $("#resultPeople").textContent =
-    v.people;
-
-  $("#resultDesign").textContent =
-    v.design;
-
+function showFeatures(
+  features
+){
 
   const list =
     $("#resultFeatures");
 
-  list.innerHTML = "";
 
-  featureArray(v)
-    .forEach(text=>{
+  list.innerHTML =
+    "";
+
+
+  (
+    features || []
+  )
+  .forEach(
+    text => {
 
       const li =
-        document.createElement("li");
+        document.createElement(
+          "li"
+        );
 
-      li.textContent = text;
 
-      list.appendChild(li);
+      li.textContent =
+        text;
 
-    });
+
+      list.appendChild(
+        li
+      );
+
+    }
+  );
+
+
+  if(
+    !features ||
+    features.length === 0
+  ){
+
+    const li =
+      document.createElement(
+        "li"
+      );
+
+
+    li.textContent =
+      "학생이 쓴 디자인 특징을 중심으로 시안을 만들었습니다.";
+
+
+    list.appendChild(
+      li
+    );
+
+  }
+
+}
+
+
+
+function show(
+  v,
+  image,
+  title,
+  features
+){
+
+  $("#originalResult")
+    .src =
+      photo;
+
+
+  $("#designResult")
+    .src =
+      image;
+
+
+  $("#designTitle")
+    .textContent =
+      title ||
+      "우리 학교 유니버설 디자인 제안";
+
+
+  $("#resultProblem")
+    .textContent =
+      v.problem;
+
+
+  $("#resultPeople")
+    .textContent =
+      v.people;
+
+
+  $("#resultDesign")
+    .textContent =
+      v.design;
+
+
+  lastFeatures =
+    Array.isArray(
+      features
+    )
+      ? features
+      : [];
+
+
+  showFeatures(
+    lastFeatures
+  );
 
 
   $("#inputView")
     .classList
-    .add("hidden");
+    .add(
+      "hidden"
+    );
+
 
   $("#resultView")
     .classList
-    .remove("hidden");
+    .remove(
+      "hidden"
+    );
+
 
   window.scrollTo({
     top:0,
@@ -1342,31 +2071,49 @@ function show(v,image,title){
 }
 
 
-async function generate(reuse = false){
 
-  if(busy) return;
+async function generate(
+  reuse = false
+){
+
+  if(busy){
+    return;
+  }
+
 
   setStatus("");
-  setStatus("",true);
+
+  setStatus(
+    "",
+    true
+  );
+
 
   const v =
     reuse
       ? last
       : values();
 
-  if(!v) return;
+
+  if(!v){
+    return;
+  }
 
 
   const message =
     check(v);
 
+
   if(message){
 
     setStatus(
       message,
+
       !$("#resultView")
         .classList
-        .contains("hidden")
+        .contains(
+          "hidden"
+        )
     );
 
     return;
@@ -1374,13 +2121,18 @@ async function generate(reuse = false){
   }
 
 
-  if(used() >= MAX){
+  if(
+    used() >= MAX
+  ){
 
     setStatus(
       "오늘 만들 수 있는 횟수를 모두 사용했어요.",
+
       !$("#resultView")
         .classList
-        .contains("hidden")
+        .contains(
+          "hidden"
+        )
     );
 
     return;
@@ -1388,18 +2140,25 @@ async function generate(reuse = false){
   }
 
 
-  last = {...v};
+  last =
+    {...v};
 
-  busy = true;
+
+  busy =
+    true;
+
 
   refreshLimit();
 
 
-  $("#generateBtn").textContent =
-    "AI가 디자인 시안을 만들고 있어요…";
+  $("#generateBtn")
+    .textContent =
+      "AI가 디자인 시안을 만들고 있어요…";
 
-  $("#againBtn").textContent =
-    "다시 만드는 중…";
+
+  $("#againBtn")
+    .textContent =
+      "다시 만드는 중…";
 
 
   try{
@@ -1424,7 +2183,10 @@ async function generate(reuse = false){
     const raw =
       await response.text();
 
-    let data = {};
+
+    let data =
+      {};
+
 
     try{
 
@@ -1434,7 +2196,9 @@ async function generate(reuse = false){
     }catch{}
 
 
-    if(!response.ok){
+    if(
+      !response.ok
+    ){
 
       throw Error(
         data.error ||
@@ -1445,7 +2209,9 @@ async function generate(reuse = false){
     }
 
 
-    if(!data.image){
+    if(
+      !data.image
+    ){
 
       throw Error(
         "AI 이미지가 오지 않았습니다."
@@ -1456,6 +2222,7 @@ async function generate(reuse = false){
 
     localStorage.setItem(
       dayKey(),
+
       String(
         used() + 1
       )
@@ -1465,31 +2232,45 @@ async function generate(reuse = false){
     show(
       v,
       data.image,
-      data.title
+      data.title,
+      data.features
     );
 
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     setStatus(
       error.message ||
       "디자인을 만드는 중 오류가 발생했습니다.",
+
       !$("#resultView")
         .classList
-        .contains("hidden")
+        .contains(
+          "hidden"
+        )
     );
+
 
   }finally{
 
-    busy = false;
+    busy =
+      false;
 
-    $("#generateBtn").textContent =
-      "✨ 유니버설 디자인 시안 만들기";
 
-    $("#againBtn").textContent =
-      "↻ 다시 만들기";
+    $("#generateBtn")
+      .textContent =
+        "✨ 유니버설 디자인 시안 만들기";
+
+
+    $("#againBtn")
+      .textContent =
+        "↻ 다시 만들기";
+
 
     refreshLimit();
 
@@ -1498,31 +2279,46 @@ async function generate(reuse = false){
 }
 
 
-$("#generateBtn").onclick =
-  ()=>generate(false);
+
+$("#generateBtn")
+  .onclick =
+    () =>
+      generate(false);
 
 
-$("#againBtn").onclick =
-  ()=>generate(true);
+
+$("#againBtn")
+  .onclick =
+    () =>
+      generate(true);
 
 
-$("#editBtn").onclick =
-  ()=>{
 
-    $("#resultView")
-      .classList
-      .add("hidden");
+$("#editBtn")
+  .onclick =
+    () => {
 
-    $("#inputView")
-      .classList
-      .remove("hidden");
+      $("#resultView")
+        .classList
+        .add(
+          "hidden"
+        );
 
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
 
-  };
+      $("#inputView")
+        .classList
+        .remove(
+          "hidden"
+        );
+
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    };
+
 
 
 function fit(
@@ -1537,6 +2333,7 @@ function fit(
   ctx.fillStyle =
     "#eef4fb";
 
+
   ctx.fillRect(
     x,
     y,
@@ -1544,27 +2341,42 @@ function fit(
     height
   );
 
+
   const scale =
     Math.min(
-      width / img.naturalWidth,
-      height / img.naturalHeight
+      width /
+        img.naturalWidth,
+
+      height /
+        img.naturalHeight
     );
 
-  const drawWidth =
-    img.naturalWidth * scale;
 
-  const drawHeight =
-    img.naturalHeight * scale;
+  const dw =
+    img.naturalWidth *
+    scale;
+
+
+  const dh =
+    img.naturalHeight *
+    scale;
+
 
   ctx.drawImage(
     img,
-    x + (width - drawWidth) / 2,
-    y + (height - drawHeight) / 2,
-    drawWidth,
-    drawHeight
+
+    x +
+      (width-dw)/2,
+
+    y +
+      (height-dh)/2,
+
+    dw,
+    dh
   );
 
 }
+
 
 
 function wrapText(
@@ -1577,336 +2389,452 @@ function wrapText(
   maxLines = 10
 ){
 
-  const finalLines = [];
-
-  const paragraphs =
-    String(text || "")
-      .split("\n");
+  const lines =
+    [];
 
 
-  for(const paragraph of paragraphs){
+  for(
+    const paragraph
+    of String(
+      text || ""
+    ).split("\n")
+  ){
 
-    let line = "";
+    let line =
+      "";
 
-    for(const ch of [...paragraph]){
+
+    for(
+      const ch
+      of [...paragraph]
+    ){
 
       const test =
         line + ch;
 
+
       if(
         line &&
-        ctx.measureText(test).width > width
+        ctx.measureText(
+          test
+        ).width >
+        width
       ){
 
-        finalLines.push(line);
-        line = ch;
+        lines.push(
+          line
+        );
+
+        line =
+          ch;
 
       }else{
 
-        line = test;
+        line =
+          test;
 
       }
 
     }
 
+
     if(line){
-      finalLines.push(line);
+
+      lines.push(
+        line
+      );
+
     }
 
   }
 
 
-  finalLines
-    .slice(0,maxLines)
+  lines
+    .slice(
+      0,
+      maxLines
+    )
     .forEach(
-      (line,index)=>{
+      (
+        line,
+        index
+      ) => {
 
         ctx.fillText(
           line,
+
           x,
-          y + index * lineHeight
+
+          y +
+            index *
+            lineHeight
         );
 
       }
     );
 
 
-  return y +
+  return (
+    y +
     Math.min(
-      finalLines.length,
+      lines.length,
       maxLines
-    ) * lineHeight;
+    ) *
+    lineHeight
+  );
 
 }
 
 
-$("#saveBtn").onclick =
-async()=>{
 
-  setStatus(
-    "결과 이미지를 만들고 있어요…",
-    true
-  );
+$("#saveBtn")
+  .onclick =
+  async() => {
 
-
-  try{
-
-    const original =
-      await loadImg(
-        $("#originalResult").src
-      );
-
-    const designImg =
-      await loadImg(
-        $("#designResult").src
-      );
-
-
-    const canvas =
-      document.createElement("canvas");
-
-    const W = 1200;
-    const H = 1900;
-    const PAD = 60;
-
-    canvas.width = W;
-    canvas.height = H;
-
-    const ctx =
-      canvas.getContext("2d");
-
-
-    ctx.fillStyle = "#ffffff";
-
-    ctx.fillRect(
-      0,
-      0,
-      W,
-      H
+    setStatus(
+      "결과 이미지를 만들고 있어요…",
+      true
     );
 
 
-    ctx.fillStyle = "#173b72";
+    try{
 
-    ctx.font =
-      "800 42px system-ui";
-
-    ctx.fillText(
-      "우리 학교를 바꾸는 유니버설 디자인",
-      PAD,
-      70
-    );
+      const original =
+        await loadImg(
+          $("#originalResult").src
+        );
 
 
-    ctx.fillStyle = "#64748b";
-
-    ctx.font =
-      "24px system-ui";
-
-    ctx.fillText(
-      "처음 모습과 학생의 디자인 시안을 비교해 보세요.",
-      PAD,
-      110
-    );
+      const designImg =
+        await loadImg(
+          $("#designResult").src
+        );
 
 
-    ctx.fillStyle = "#24476f";
-
-    ctx.font =
-      "800 28px system-ui";
-
-    ctx.fillText(
-      "① 우리 학교의 원래 모습",
-      PAD,
-      165
-    );
+      const canvas =
+        document.createElement(
+          "canvas"
+        );
 
 
-    fit(
-      ctx,
-      original,
-      PAD,
-      190,
-      1080,
-      560
-    );
+      const W =
+        1200;
+
+      const H =
+        2000;
+
+      const PAD =
+        60;
 
 
-    ctx.fillStyle = "#24476f";
+      canvas.width =
+        W;
 
-    ctx.font =
-      "800 28px system-ui";
-
-    ctx.fillText(
-      "② 제안하는 유니버설 디자인",
-      PAD,
-      820
-    );
+      canvas.height =
+        H;
 
 
-    fit(
-      ctx,
-      designImg,
-      PAD,
-      850,
-      520,
-      520
-    );
+      const ctx =
+        canvas.getContext(
+          "2d"
+        );
 
-
-    let tx = 625;
-    let y = 875;
-
-
-    ctx.fillStyle = "#173b72";
-
-    ctx.font =
-      "800 26px system-ui";
-
-
-    y =
-      wrapText(
-        ctx,
-        $("#designTitle").textContent,
-        tx,
-        y,
-        510,
-        34,
-        2
-      ) + 18;
-
-
-    const featureText =
-      featureArray(last)
-        .map(
-          (item,index)=>
-            `${index+1}. ${item}`
-        )
-        .join("\n");
-
-
-    const sections = [
-
-      [
-        "해결하려는 불편",
-        $("#resultProblem").textContent
-      ],
-
-      [
-        "도움을 받을 수 있는 사람",
-        $("#resultPeople").textContent
-      ],
-
-      [
-        "우리가 만들고 싶은 디자인",
-        $("#resultDesign").textContent
-      ],
-
-      [
-        "꼭 들어가야 하는 핵심 요소",
-        featureText
-      ]
-
-    ];
-
-
-    for(
-      const [label,text]
-      of sections
-    ){
 
       ctx.fillStyle =
-        "#5b7390";
+        "#fff";
+
+
+      ctx.fillRect(
+        0,
+        0,
+        W,
+        H
+      );
+
+
+      ctx.fillStyle =
+        "#173b72";
+
 
       ctx.font =
-        "800 17px system-ui";
+        "800 42px system-ui";
+
 
       ctx.fillText(
-        label,
-        tx,
-        y
+        "우리 학교를 바꾸는 유니버설 디자인",
+        PAD,
+        70
       );
-
-      y += 27;
 
 
       ctx.fillStyle =
-        "#263d5b";
+        "#64748b";
+
 
       ctx.font =
-        "21px system-ui";
+        "24px system-ui";
+
+
+      ctx.fillText(
+        "처음 모습과 학생의 디자인 시안을 비교해 보세요.",
+        PAD,
+        110
+      );
+
+
+      ctx.fillStyle =
+        "#24476f";
+
+
+      ctx.font =
+        "800 28px system-ui";
+
+
+      ctx.fillText(
+        "① 우리 학교의 원래 모습",
+        PAD,
+        165
+      );
+
+
+      fit(
+        ctx,
+        original,
+        PAD,
+        190,
+        1080,
+        560
+      );
+
+
+      ctx.fillStyle =
+        "#24476f";
+
+
+      ctx.font =
+        "800 28px system-ui";
+
+
+      ctx.fillText(
+        "② 제안하는 유니버설 디자인",
+        PAD,
+        820
+      );
+
+
+      fit(
+        ctx,
+        designImg,
+        PAD,
+        850,
+        520,
+        520
+      );
+
+
+      let tx =
+        625;
+
+
+      let y =
+        875;
+
+
+      ctx.fillStyle =
+        "#173b72";
+
+
+      ctx.font =
+        "800 26px system-ui";
 
 
       y =
         wrapText(
           ctx,
-          text,
+          $("#designTitle")
+            .textContent,
+
           tx,
           y,
           510,
-          30,
-          7
-        ) + 18;
+          34,
+          2
+        ) +
+        18;
+
+
+      const featureText =
+        (
+          lastFeatures.length
+            ? lastFeatures
+            : [
+                "학생이 쓴 디자인 특징을 중심으로 시안을 만들었습니다."
+              ]
+        )
+        .map(
+          (
+            item,
+            index
+          ) =>
+            `${index+1}. ${item}`
+        )
+        .join("\n");
+
+
+      const sections = [
+
+        [
+          "해결하려는 불편",
+          $("#resultProblem")
+            .textContent
+        ],
+
+        [
+          "도움을 받을 수 있는 사람",
+          $("#resultPeople")
+            .textContent
+        ],
+
+        [
+          "학생이 제안한 변화",
+          $("#resultDesign")
+            .textContent
+        ],
+
+        [
+          "AI가 시안에 반영한 핵심 요소",
+          featureText
+        ]
+
+      ];
+
+
+      for(
+        const [
+          label,
+          text
+        ]
+        of sections
+      ){
+
+        ctx.fillStyle =
+          "#5b7390";
+
+
+        ctx.font =
+          "800 17px system-ui";
+
+
+        ctx.fillText(
+          label,
+          tx,
+          y
+        );
+
+
+        y +=
+          27;
+
+
+        ctx.fillStyle =
+          "#263d5b";
+
+
+        ctx.font =
+          "20px system-ui";
+
+
+        y =
+          wrapText(
+            ctx,
+            text,
+            tx,
+            y,
+            510,
+            29,
+
+            label ===
+            "학생이 제안한 변화"
+              ? 9
+              : 7
+          ) +
+          18;
+
+      }
+
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+
+      link.href =
+        canvas.toDataURL(
+          "image/png"
+        );
+
+
+      link.download =
+        "우리학교_유니버설디자인_결과.png";
+
+
+      link.click();
+
+
+      setStatus(
+        "결과 이미지를 저장했어요.",
+        true
+      );
+
+
+    }catch(error){
+
+      console.error(
+        error
+      );
+
+
+      setStatus(
+        "이미지 저장에 실패했어요.",
+        true
+      );
 
     }
 
+  };
 
-    const link =
-      document.createElement("a");
 
-    link.href =
-      canvas.toDataURL(
-        "image/png"
+
+$("#resetBtn")
+  .onclick =
+    () => {
+
+      localStorage.setItem(
+        dayKey(),
+        "0"
       );
 
-    link.download =
-      "우리학교_유니버설디자인_결과.png";
 
-    link.click();
+      refreshLimit();
 
 
-    setStatus(
-      "결과 이미지를 저장했어요.",
-      true
-    );
+      alert(
+        "오늘 사용 횟수를 초기화했습니다."
+      );
 
+    };
 
-  }catch(error){
-
-    console.error(error);
-
-    setStatus(
-      "이미지 저장에 실패했어요.",
-      true
-    );
-
-  }
-
-};
-
-
-$("#resetBtn").onclick =
-()=>{
-
-  localStorage.setItem(
-    dayKey(),
-    "0"
-  );
-
-  refreshLimit();
-
-  alert(
-    "오늘 사용 횟수를 초기화했습니다."
-  );
-
-};
 
 
 refreshLimit();
+
 
 })();
 
 </script>
 
+
 </body>
+
 </html>
