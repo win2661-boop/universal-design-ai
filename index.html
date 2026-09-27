@@ -2,332 +2,1493 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#2563eb">
-<title>우리 반 유니버설 디자인 AI</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>우리 학교 유니버설 디자인 AI</title>
+
 <style>
 *{box-sizing:border-box}
-:root{
-  --blue:#2563eb;--blue2:#1d4ed8;--ink:#16315b;--muted:#60708a;
-  --line:#d9e7fb;--bg:#f4f9ff;--shadow:0 12px 34px rgba(38,79,130,.12)
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;
+  background:#f3f8ff;
+  color:#183153
 }
-body{margin:0;font-family:Pretendard,"Noto Sans KR",system-ui,-apple-system,sans-serif;background:linear-gradient(#eef8ff,#f8fbff);color:#17233b}
-button,input,textarea{font:inherit}
-.hero{background:#fff;border-bottom:1px solid var(--line)}
-.hero-inner{max-width:1100px;margin:auto;padding:34px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.eyebrow{font-size:13px;font-weight:800;color:#0f766e;letter-spacing:.08em;margin:0}
-.hero h1{margin:4px 0 8px;font-size:clamp(30px,5vw,50px);color:#173b72}
-.hero h1 span{color:#0f9f8f}
-.hero p{margin:0;color:#5c6c84}
-.robot{font-size:72px}
-.wrap{max-width:980px;margin:34px auto;padding:0 18px}
-.card{background:#fff;border:1px solid #dce9f9;border-radius:28px;padding:28px;box-shadow:var(--shadow)}
-.step{padding:22px 0;border-top:1px solid #eef3f9}
-.step:first-child{border-top:0}
-.step h2{font-size:20px;color:var(--ink);margin:0 0 14px}
-.step h2 b{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#e7f0ff;color:var(--blue);margin-right:8px}
-.radio-hidden{position:absolute;opacity:0;pointer-events:none}
-.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.choice-label,.place-label{
-  border:2px solid #e2ecf8;background:#fff;cursor:pointer;transition:.15s;
-  user-select:none
-}
-.choice-label{border-radius:18px;padding:20px 12px;display:flex;flex-direction:column;gap:7px;align-items:center;text-align:center}
-.choice-label .emoji{font-size:30px}
-.choice-label strong{font-size:16px}
-.choice-label small{font-size:12px;color:var(--muted);line-height:1.5}
-.place-grid{display:flex;flex-wrap:wrap;gap:9px}
-.place-label{border-radius:16px;padding:12px 16px}
-.radio-hidden:checked + .choice-label,
-.radio-hidden:checked + .place-label{
-  border-color:var(--blue);
-  background:#eaf2ff;
-  box-shadow:0 0 0 3px #cfe0ff inset;
-  color:#123e83
-}
-.radio-hidden:focus-visible + .choice-label,
-.radio-hidden:focus-visible + .place-label{
-  outline:3px solid #93b7ff;outline-offset:2px
-}
-textarea,input[type="text"]{width:100%;border:1.5px solid #d8e4f3;border-radius:14px;padding:14px;background:#fbfdff;outline:none;font-size:16px}
-textarea:focus,input[type="text"]:focus{border-color:#6ea1f7;box-shadow:0 0 0 3px #e8f1ff}
-.counter{text-align:right;color:#8695aa;font-size:12px;margin-top:5px}
+button,textarea,input{font:inherit}
 .hidden{display:none!important}
-.privacy-note{background:#effaf7;color:#315f57;border:1px solid #cfeee4;border-radius:14px;padding:12px 14px;margin:16px 0;font-size:14px}
-.primary{width:100%;border:0;border-radius:16px;padding:16px 18px;background:linear-gradient(135deg,var(--blue),#4f7df5);color:#fff;font-weight:900;font-size:18px;cursor:pointer;box-shadow:0 8px 18px rgba(37,99,235,.22)}
-.primary:disabled{opacity:.55;cursor:not-allowed}
-.limit,.status{text-align:center;color:#68778d;font-size:13px}
-.status{min-height:20px;color:#b45309}
-.result-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start}
-.image-box{aspect-ratio:1/1;background:#eef5ff;border-radius:22px;overflow:hidden;display:grid;place-items:center;border:1px solid #d9e6f7}
-.image-box img{width:100%;height:100%;object-fit:cover}
-.summary{background:#f7faff;border-radius:15px;padding:16px;line-height:1.7;white-space:pre-line}
-.actions{display:grid;gap:9px;margin-top:14px}
-.secondary,.text-btn{border:1px solid #cdddf2;background:#fff;color:#24446f;border-radius:12px;padding:11px 14px;cursor:pointer}
-.text-btn{padding:6px 0;border:0}
-.teacher-panel{margin:22px 0;background:#fff;border:1px solid #dce8f8;border-radius:18px;overflow:hidden}
-.teacher-panel summary{cursor:pointer;font-weight:800;padding:17px 20px;color:#29486f}
-.teacher-body{padding:0 20px 20px;display:grid;gap:12px}
-.teacher-body label{display:grid;gap:7px;font-size:13px;font-weight:700}
-.switch-row{display:flex!important;align-items:center;gap:8px}
-.switch-row input{width:auto}
-.teacher-body p{font-size:12px;color:#718099;line-height:1.6;margin:0}
-footer{text-align:center;color:#8290a5;padding:20px;font-size:12px}
-@media(max-width:720px){
-  .robot{display:none}.choice-grid,.result-grid{grid-template-columns:1fr}
-  .choice-label{padding:14px 8px}.card{padding:18px;border-radius:20px}.step h2{font-size:17px}
+
+header{
+  background:#fff;
+  border-bottom:1px solid #dce8f7;
+  padding:28px 18px
+}
+header>div{
+  max-width:900px;
+  margin:auto
+}
+h1{
+  margin:0 0 8px;
+  color:#173b72;
+  font-size:clamp(28px,5vw,44px)
+}
+h1 span{color:#0f9f8f}
+header p{
+  margin:0;
+  color:#66768d
+}
+
+main{
+  max-width:900px;
+  margin:28px auto;
+  padding:0 16px 36px
+}
+.card{
+  background:#fff;
+  border:1px solid #dce8f7;
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 10px 28px rgba(40,80,130,.1)
+}
+
+.step{
+  padding:22px 0;
+  border-top:1px solid #edf2f8
+}
+.step:first-child{
+  border-top:0;
+  padding-top:0
+}
+.step h2{
+  margin:0 0 8px;
+  font-size:20px
+}
+.num{
+  display:inline-grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#e8f1ff;
+  color:#2563eb;
+  margin-right:8px
+}
+.desc{
+  margin:0 0 12px;
+  color:#66768d;
+  font-size:14px;
+  line-height:1.55
+}
+
+.example{
+  background:#f0f8ff;
+  border:1px solid #d9ebff;
+  border-radius:14px;
+  padding:12px 14px;
+  margin:10px 0;
+  color:#385678;
+  font-size:13px;
+  line-height:1.6
+}
+.example b{color:#174c99}
+
+textarea{
+  width:100%;
+  min-height:125px;
+  resize:vertical;
+  border:1.5px solid #d6e3f3;
+  border-radius:14px;
+  padding:14px;
+  background:#fbfdff;
+  outline:none;
+  line-height:1.65
+}
+textarea:focus,input:focus{
+  border-color:#6ea1f7;
+  box-shadow:0 0 0 3px #e8f1ff
+}
+
+.count{
+  text-align:right;
+  color:#8896a8;
+  font-size:12px;
+  margin-top:5px
+}
+
+.tips{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:9px
+}
+.tip{
+  padding:6px 10px;
+  border-radius:999px;
+  background:#f7fafc;
+  border:1px solid #dde7f1;
+  color:#52657e;
+  font-size:12px
+}
+
+.upload{
+  border:2px dashed #bfd4ef;
+  background:#f8fbff;
+  border-radius:18px;
+  padding:20px;
+  text-align:center
+}
+.upload label{
+  display:inline-block;
+  background:#eaf2ff;
+  color:#174c99;
+  font-weight:800;
+  padding:12px 16px;
+  border-radius:13px;
+  cursor:pointer
+}
+#schoolPhoto{
+  position:absolute;
+  opacity:0;
+  width:1px;
+  height:1px
+}
+.upload small{
+  display:block;
+  margin-top:9px;
+  color:#7b879a;
+  line-height:1.5
+}
+
+.preview{
+  margin-top:14px;
+  border-radius:16px;
+  overflow:hidden;
+  background:#edf4fb;
+  border:1px solid #d9e5f2
+}
+.preview img{
+  display:block;
+  max-width:100%;
+  max-height:440px;
+  margin:auto
+}
+
+.privacy{
+  margin:18px 0;
+  padding:12px 14px;
+  border-radius:13px;
+  background:#effaf7;
+  border:1px solid #cfeee4;
+  color:#315f57;
+  font-size:13px;
+  line-height:1.6
+}
+
+.primary{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:16px;
+  background:#2563eb;
+  color:#fff;
+  font-weight:900;
+  font-size:18px;
+  cursor:pointer
+}
+.primary:disabled,.secondary:disabled{
+  opacity:.5;
+  cursor:not-allowed
+}
+
+.status{
+  text-align:center;
+  min-height:22px;
+  color:#b45309;
+  font-size:13px
+}
+.limit{
+  text-align:center;
+  color:#6c7d92;
+  font-size:13px
+}
+
+.result-title{
+  text-align:center;
+  margin:0 0 8px
+}
+.result-sub{
+  text-align:center;
+  margin:0 0 24px;
+  color:#6b7b91
+}
+
+.result-block{
+  padding-top:22px;
+  margin-top:22px;
+  border-top:1px solid #edf2f8
+}
+.result-block:first-of-type{
+  border-top:0;
+  margin-top:0;
+  padding-top:0
+}
+.result-block h3{
+  margin:0 0 12px
+}
+
+.photo-frame{
+  background:#edf4fb;
+  border:1px solid #d9e5f2;
+  border-radius:18px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  min-height:220px
+}
+.photo-frame img{
+  max-width:100%;
+  max-height:540px;
+  display:block
+}
+
+.proposal{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:18px
+}
+.design-frame{
+  aspect-ratio:1/1;
+  background:#eef5ff;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #d9e6f7
+}
+.design-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+.explain{
+  background:#f7faff;
+  border:1px solid #e2ebf6;
+  border-radius:18px;
+  padding:18px
+}
+.explain h4{
+  margin:0 0 12px;
+  color:#173b72
+}
+.item{
+  padding:11px 0;
+  border-top:1px solid #e6edf6
+}
+.item:first-of-type{border-top:0}
+.label{
+  font-size:12px;
+  font-weight:900;
+  color:#56708f
+}
+.item p{
+  margin:5px 0 0;
+  line-height:1.65;
+  white-space:pre-wrap
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:22px
+}
+.secondary{
+  border:1.5px solid #cbdcf0;
+  background:#fff;
+  color:#24446f;
+  border-radius:13px;
+  padding:13px;
+  cursor:pointer;
+  font-weight:800
+}
+.save{
+  background:#edf5ff;
+  border-color:#b8d1f2;
+  color:#174c99
+}
+.textbtn{
+  display:block;
+  margin:12px auto 0;
+  border:0;
+  background:transparent;
+  text-decoration:underline;
+  color:#6b7b91;
+  cursor:pointer
+}
+
+details{
+  margin-top:18px;
+  background:#fff;
+  border:1px solid #dce8f7;
+  border-radius:15px
+}
+summary{
+  padding:14px 16px;
+  cursor:pointer;
+  font-weight:800
+}
+.teacher{
+  padding:0 16px 16px
+}
+
+@media(max-width:700px){
+  .card{padding:17px}
+  .proposal,.actions{grid-template-columns:1fr}
 }
 </style>
 </head>
+
 <body>
 
-<header class="hero">
-  <div class="hero-inner">
-    <div>
-      <p class="eyebrow">3학년 사회 × 예술 융합</p>
-      <h1>우리 반 <span>유니버설 디자인 AI</span></h1>
-      <p>다양한 문화가 함께하는 더 좋은 세상을 디자인해요.</p>
-    </div>
-    <div class="robot" aria-hidden="true">🤖</div>
+<header>
+  <div>
+    <h1>우리 학교 <span>유니버설 디자인 AI</span></h1>
+    <p>학교에서 발견한 불편함을 모두에게 더 편리한 디자인으로 바꿔 보세요.</p>
   </div>
 </header>
 
-<main class="wrap">
+<main>
 
-<section id="studentView" class="card">
+<section id="inputView" class="card">
 
-  <section class="step">
-    <h2><b>1</b> 누구를 위한 디자인인가요?</h2>
-    <div class="choice-grid">
-      <div>
-        <input class="radio-hidden" type="radio" name="audience" id="audience1" value="이주민·외국인">
-        <label class="choice-label" for="audience1">
-          <span class="emoji">🌏</span>
-          <strong>이주민·외국인</strong>
-          <small>다른 언어나 문화 때문에 불편한 사람</small>
-        </label>
-      </div>
-      <div>
-        <input class="radio-hidden" type="radio" name="audience" id="audience2" value="1인 가구">
-        <label class="choice-label" for="audience2">
-          <span class="emoji">🏠</span>
-          <strong>1인 가구</strong>
-          <small>혼자 생활하는 사람</small>
-        </label>
-      </div>
-      <div>
-        <input class="radio-hidden" type="radio" name="audience" id="audience3" value="반려동물 가구">
-        <label class="choice-label" for="audience3">
-          <span class="emoji">🐶</span>
-          <strong>반려동물 가구</strong>
-          <small>반려동물과 함께 생활하는 사람</small>
-        </label>
+  <div class="step">
+    <h2><span class="num">1</span>학교 사진을 올려 주세요.</h2>
+    <p class="desc">
+      이전 차시에 살펴본 학교 공간 중 바꾸고 싶은 곳의 사진을 골라요.
+    </p>
+
+    <div class="upload">
+      <input id="schoolPhoto" type="file" accept="image/*">
+
+      <label for="schoolPhoto">
+        📷 학교 사진 선택하기
+      </label>
+
+      <small>
+        불편한 곳이 잘 보이는 사진을 선택하세요.
+        학생 얼굴·이름 등 개인정보가 보이는 사진은 사용하지 않아요.
+      </small>
+
+      <div id="preview" class="preview hidden">
+        <img id="previewImg" alt="학교 사진 미리보기">
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="step">
-    <h2><b>2</b> 어디에서 사용하는 디자인인가요?</h2>
-    <div class="place-grid">
-      <div><input class="radio-hidden" type="radio" name="place" id="place1" value="학교"><label class="place-label" for="place1">🏫 학교</label></div>
-      <div><input class="radio-hidden" type="radio" name="place" id="place2" value="공원"><label class="place-label" for="place2">🌳 공원</label></div>
-      <div><input class="radio-hidden" type="radio" name="place" id="place3" value="마트"><label class="place-label" for="place3">🛒 마트</label></div>
-      <div><input class="radio-hidden" type="radio" name="place" id="place4" value="아파트"><label class="place-label" for="place4">🏢 아파트</label></div>
-      <div><input class="radio-hidden" type="radio" name="place" id="place5" value="버스·지하철"><label class="place-label" for="place5">🚌 버스·지하철</label></div>
-      <div><input class="radio-hidden" type="radio" name="place" id="place6" value="기타"><label class="place-label" for="place6">✏️ 기타</label></div>
+
+  <div class="step">
+    <h2><span class="num">2</span>어디에서 어떤 불편이 있나요?</h2>
+
+    <p class="desc">
+      사진 속 장소, 불편한 점, 왜 불편한지를 자세히 써 보세요.
+    </p>
+
+    <div class="example">
+      <b>예시</b><br>
+      학교 복도에서 도서관 위치를 찾기 어려워요.
+      안내판이 한국어로만 적혀 있고 그림이 없어서
+      처음 온 사람은 이해하기 어려워요.
     </div>
-    <input id="customPlace" type="text" class="hidden" maxlength="30" placeholder="장소를 짧게 써 주세요." style="margin-top:10px">
-  </section>
 
-  <section class="step">
-    <h2><b>3</b> 어떤 불편함이 있나요?</h2>
-    <textarea id="problem" maxlength="160" rows="4" placeholder="예) 한국어를 잘 모르면 도서관 안내판을 이해하기 어려워요."></textarea>
-    <div class="counter"><span id="problemCount">0</span>/160</div>
-  </section>
+    <textarea
+      id="problem"
+      maxlength="240"
+      placeholder="어디에서 무엇이 불편한지, 왜 불편한지 자세히 써 보세요."></textarea>
 
-  <section class="step">
-    <h2><b>4</b> 어떤 디자인을 만들고 싶나요?</h2>
-    <textarea id="idea" maxlength="160" rows="4" placeholder="예) 책 그림, 여러 나라 언어, 색깔 화살표가 있는 도서관 안내판을 만들고 싶어요."></textarea>
-    <div class="counter"><span id="ideaCount">0</span>/160</div>
-  </section>
+    <div class="count">
+      <span id="problemCount">0</span>/240
+    </div>
 
-  <div class="privacy-note">🔒 이름, 전화번호, 주소, 얼굴 사진 같은 개인정보는 입력하지 않아요.</div>
-  <button id="generateBtn" type="button" class="primary">✨ AI로 디자인 만들기</button>
-  <p class="limit">오늘 <b id="usedCount">0</b>/3회 사용했어요.</p>
-  <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div class="tips">
+      <span class="tip">어디에서?</span>
+      <span class="tip">무엇이 불편한가요?</span>
+      <span class="tip">왜 불편한가요?</span>
+    </div>
+  </div>
+
+
+  <div class="step">
+    <h2><span class="num">3</span>누가 이 불편을 겪을 수 있나요?</h2>
+
+    <p class="desc">
+      어떤 사람이 왜 더 어려울지 자세히 써 보세요.
+    </p>
+
+    <div class="example">
+      <b>예시</b><br>
+      한국어를 잘 모르는 사람이나 처음 학교에 온 보호자는
+      안내판의 뜻을 이해하기 어렵고
+      어디로 가야 하는지 헷갈릴 수 있어요.
+    </div>
+
+    <textarea
+      id="people"
+      maxlength="240"
+      placeholder="누가 이 불편을 겪을 수 있고, 왜 더 어려울지 써 보세요."></textarea>
+
+    <div class="count">
+      <span id="peopleCount">0</span>/240
+    </div>
+
+    <div class="tips">
+      <span class="tip">처음 온 사람</span>
+      <span class="tip">한국어가 익숙하지 않은 사람</span>
+      <span class="tip">어린이</span>
+      <span class="tip">짐이 많은 사람</span>
+      <span class="tip">이동이 불편한 사람</span>
+    </div>
+  </div>
+
+
+  <div class="step">
+    <h2><span class="num">4</span>어떤 디자인으로 바꾸고 싶나요?</h2>
+
+    <p class="desc">
+      무엇을 만들지와 꼭 들어가면 좋을 모습을
+      2~3가지 이상 자세히 써 보세요.
+    </p>
+
+    <div class="example">
+      <b>예시</b><br>
+      책 그림, 여러 언어, 큰 색깔 화살표를 넣어
+      글을 잘 몰라도 쉽게 찾을 수 있는
+      도서관 안내판으로 바꾸고 싶어요.
+    </div>
+
+    <textarea
+      id="design"
+      maxlength="240"
+      placeholder="무엇을 만들지, 어떤 그림·색·모양·기능을 넣을지 자세히 써 보세요."></textarea>
+
+    <div class="count">
+      <span id="designCount">0</span>/240
+    </div>
+
+    <div class="tips">
+      <span class="tip">무엇을 만들까요?</span>
+      <span class="tip">그림·색·화살표</span>
+      <span class="tip">크기·높이·모양</span>
+      <span class="tip">사용 방법</span>
+    </div>
+  </div>
+
+
+  <div class="privacy">
+    🔒 학교 사진은 원래 모습을 보여 주고 결과물을 저장하는 데만 사용합니다.
+    사진 자체는 AI 서버로 보내지 않고,
+    2·3·4번에 쓴 내용만 디자인 생성에 사용합니다.
+  </div>
+
+  <button
+    id="generateBtn"
+    class="primary"
+    type="button">
+    ✨ 유니버설 디자인 제안 만들기
+  </button>
+
+  <p class="limit">
+    오늘 <b id="usedCount">0</b>/3회 사용했어요.
+  </p>
+
+  <p id="status" class="status"></p>
 
 </section>
+
 
 <section id="resultView" class="card hidden">
-  <button id="backBtn" type="button" class="text-btn">← 다시 입력하기</button>
-  <h2>우리 아이디어로 만든 디자인 시안</h2>
-  <div class="result-grid">
-    <div class="image-box">
-      <img id="resultImage" alt="AI가 만든 유니버설 디자인 시안">
+
+  <h2 class="result-title">
+    우리 학교를 바꾸는 유니버설 디자인
+  </h2>
+
+  <p class="result-sub">
+    처음 모습과 제안한 디자인을 비교해 보세요.
+  </p>
+
+
+  <div class="result-block">
+
+    <h3>
+      ① 우리 학교의 원래 모습
+    </h3>
+
+    <div class="photo-frame">
+      <img
+        id="originalResult"
+        alt="원래 학교 사진">
     </div>
-    <div>
-      <h3 id="designName">우리의 유니버설 디자인</h3>
-      <div class="summary" id="summary"></div>
-      <div class="actions">
-        <button id="downloadBtn" type="button" class="secondary">💾 이미지 저장</button>
-        <button id="againBtn" type="button" class="secondary">↻ 다시 만들기</button>
-      </div>
-    </div>
+
   </div>
+
+
+  <div class="result-block">
+
+    <h3>
+      ② 제안하는 유니버설 디자인
+    </h3>
+
+    <div class="proposal">
+
+      <div class="design-frame">
+        <img
+          id="designResult"
+          alt="AI가 만든 유니버설 디자인">
+      </div>
+
+
+      <div class="explain">
+
+        <h4 id="designTitle">
+          우리의 유니버설 디자인 제안
+        </h4>
+
+
+        <div class="item">
+
+          <span class="label">
+            해결하려는 불편
+          </span>
+
+          <p id="resultProblem"></p>
+
+        </div>
+
+
+        <div class="item">
+
+          <span class="label">
+            도움을 받을 수 있는 사람
+          </span>
+
+          <p id="resultPeople"></p>
+
+        </div>
+
+
+        <div class="item">
+
+          <span class="label">
+            제안하는 변화
+          </span>
+
+          <p id="resultDesign"></p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+
+    <button
+      id="saveBtn"
+      class="secondary save"
+      type="button">
+      🖼 이미지로 저장하기
+    </button>
+
+    <button
+      id="againBtn"
+      class="secondary"
+      type="button">
+      ↻ 다시 만들기
+    </button>
+
+  </div>
+
+
+  <button
+    id="editBtn"
+    class="textbtn"
+    type="button">
+    입력 내용 수정하기
+  </button>
+
+
+  <p id="resultStatus" class="status"></p>
+
 </section>
 
-<details class="teacher-panel">
-  <summary>👩‍🏫 교사용 설정 보기</summary>
-  <div class="teacher-body">
-    <label>
-      AI 서버 주소
-      <input id="apiEndpoint" type="text">
-    </label>
-    <label class="switch-row">
-      <input id="mockMode" type="checkbox">
-      <span>미리보기 모드 사용</span>
-    </label>
-    <button id="saveSettings" type="button" class="secondary">설정 저장</button>
-    <button id="resetUsage" type="button" class="secondary">오늘 사용 횟수 초기화</button>
+
+<details>
+
+  <summary>
+    👩‍🏫 교사용 설정
+  </summary>
+
+  <div class="teacher">
+
+    <button
+      id="resetBtn"
+      class="secondary"
+      type="button">
+      오늘 사용 횟수 초기화
+    </button>
+
   </div>
+
 </details>
 
 </main>
 
-<footer>수업용 제한형 AI 활동 도구 · 자유 채팅 기능 없음</footer>
 
 <script>
-(() => {
-  const DEFAULT_ENDPOINT = "https://universal-design-ai-api.win2661.workers.dev";
-  const MAX_DAILY = 3;
-  const TODAY_KEY = "udai-usage-" + new Date().toISOString().slice(0,10);
-  const $ = (s) => document.querySelector(s);
 
-  function usage(){ return Number(localStorage.getItem(TODAY_KEY) || 0); }
-  function updateUsage(){
-    $("#usedCount").textContent = usage();
-    $("#generateBtn").disabled = usage() >= MAX_DAILY;
-  }
+(()=>{
 
-  document.querySelectorAll('input[name="place"]').forEach(radio => {
-    radio.addEventListener("change", () => {
-      $("#customPlace").classList.toggle("hidden", radio.value !== "기타" || !radio.checked);
-    });
+const API =
+"https://universal-design-ai-api.win2661.workers.dev";
+
+const MAX = 3;
+
+const $ = s =>
+document.querySelector(s);
+
+let photo = "";
+
+let last = null;
+
+let busy = false;
+
+
+
+function dayKey(){
+
+  const d = new Date();
+
+  return `udai-${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
+
+}
+
+
+
+function used(){
+
+  return Number(
+    localStorage.getItem(dayKey()) || 0
+  );
+
+}
+
+
+
+function refreshLimit(){
+
+  const n = used();
+
+  $("#usedCount").textContent = n;
+
+  $("#generateBtn").disabled =
+    busy || n >= MAX;
+
+  $("#againBtn").disabled =
+    busy || n >= MAX;
+
+}
+
+
+
+function status(t,result=false){
+
+  (
+    result
+      ? $("#resultStatus")
+      : $("#status")
+  ).textContent = t || "";
+
+}
+
+
+
+function loadImg(src){
+
+  return new Promise((ok,no)=>{
+
+    const i = new Image();
+
+    i.onload = () => ok(i);
+
+    i.onerror = no;
+
+    i.src = src;
+
   });
 
-  [["problem","problemCount"],["idea","ideaCount"]].forEach(([id,count]) => {
-    $("#"+id).addEventListener("input", e => {
-      $("#"+count).textContent = e.target.value.length;
-    });
+}
+
+
+
+function fileURL(f){
+
+  return new Promise((ok,no)=>{
+
+    const r = new FileReader();
+
+    r.onload = () => ok(r.result);
+
+    r.onerror = no;
+
+    r.readAsDataURL(f);
+
   });
 
-  function getValues(){
-    const audience = document.querySelector('input[name="audience"]:checked')?.value || "";
-    let place = document.querySelector('input[name="place"]:checked')?.value || "";
-    if(place === "기타") place = $("#customPlace").value.trim();
-    return {
-      audience,
-      place,
-      problem: $("#problem").value.trim(),
-      idea: $("#idea").value.trim()
-    };
+}
+
+
+
+async function compress(f){
+
+  if(!f.type.startsWith("image/"))
+    throw Error(
+      "이미지 파일을 선택해 주세요."
+    );
+
+  if(f.size > 15*1024*1024)
+    throw Error(
+      "15MB 이하 사진을 사용해 주세요."
+    );
+
+  const raw = await fileURL(f);
+
+  const img = await loadImg(raw);
+
+  const max = 1800;
+
+  const s =
+    Math.min(
+      1,
+      max /
+      Math.max(
+        img.naturalWidth,
+        img.naturalHeight
+      )
+    );
+
+  const c =
+    document.createElement("canvas");
+
+  c.width =
+    Math.round(
+      img.naturalWidth * s
+    );
+
+  c.height =
+    Math.round(
+      img.naturalHeight * s
+    );
+
+  c.getContext("2d")
+    .drawImage(
+      img,
+      0,
+      0,
+      c.width,
+      c.height
+    );
+
+  return c.toDataURL(
+    "image/jpeg",
+    .88
+  );
+
+}
+
+
+
+$("#schoolPhoto")
+.addEventListener(
+"change",
+async e=>{
+
+  const f =
+    e.target.files?.[0];
+
+  if(!f) return;
+
+  try{
+
+    photo =
+      await compress(f);
+
+    $("#previewImg").src =
+      photo;
+
+    $("#preview")
+      .classList
+      .remove("hidden");
+
+    status("");
+
+  }catch(err){
+
+    photo = "";
+
+    $("#preview")
+      .classList
+      .add("hidden");
+
+    status(err.message);
+
   }
 
-  function validate(v){
-    if(!v.audience) return "누구를 위한 디자인인지 선택해 주세요.";
-    if(!v.place) return "사용할 장소를 선택해 주세요.";
-    if(v.problem.length < 8) return "불편한 점을 한 문장 이상 써 주세요.";
-    if(v.idea.length < 8) return "만들고 싶은 디자인을 한 문장 이상 써 주세요.";
-    return "";
+});
+
+
+
+[
+  ["problem","problemCount"],
+  ["people","peopleCount"],
+  ["design","designCount"]
+]
+.forEach(([a,b])=>{
+
+  $("#"+a)
+  .addEventListener(
+    "input",
+    ()=>{
+      $("#"+b).textContent =
+        $("#"+a).value.length;
+    }
+  );
+
+});
+
+
+
+function values(){
+
+  return{
+
+    problem:
+      $("#problem")
+      .value
+      .trim(),
+
+    people:
+      $("#people")
+      .value
+      .trim(),
+
+    design:
+      $("#design")
+      .value
+      .trim()
+
+  };
+
+}
+
+
+
+function check(v){
+
+  if(!photo)
+    return "학교 사진을 먼저 올려 주세요.";
+
+  if(v.problem.length < 15)
+    return "2번 내용을 조금 더 자세히 써 주세요.";
+
+  if(v.people.length < 8)
+    return "3번 내용을 조금 더 자세히 써 주세요.";
+
+  if(v.design.length < 15)
+    return "4번 내용을 조금 더 자세히 써 주세요.";
+
+  return "";
+
+}
+
+
+
+function show(v,image,title){
+
+  $("#originalResult").src =
+    photo;
+
+  $("#designResult").src =
+    image;
+
+  $("#designTitle").textContent =
+    title ||
+    "우리의 유니버설 디자인 제안";
+
+  $("#resultProblem").textContent =
+    v.problem;
+
+  $("#resultPeople").textContent =
+    v.people;
+
+  $("#resultDesign").textContent =
+    v.design;
+
+  $("#inputView")
+    .classList
+    .add("hidden");
+
+  $("#resultView")
+    .classList
+    .remove("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+
+async function generate(reuse=false){
+
+  if(busy) return;
+
+  status("");
+  status("",true);
+
+  const v =
+    reuse
+      ? last
+      : values();
+
+  if(!v) return;
+
+  const msg =
+    check(v);
+
+  if(msg){
+
+    status(
+      msg,
+      !$("#resultView")
+        .classList
+        .contains("hidden")
+    );
+
+    return;
+
   }
 
-  function titleFor(v){
-    if(v.audience === "이주민·외국인") return "모두가 이해하는 " + v.place + " 디자인";
-    if(v.audience === "1인 가구") return "혼자서도 편리한 " + v.place + " 디자인";
-    return "함께 편안한 " + v.place + " 디자인";
+  if(used() >= MAX){
+
+    status(
+      "오늘 만들 수 있는 횟수를 모두 사용했어요.",
+      !$("#resultView")
+        .classList
+        .contains("hidden")
+    );
+
+    return;
+
   }
 
-  $("#generateBtn").addEventListener("click", async () => {
-    $("#status").textContent = "";
-    const v = getValues();
-    const err = validate(v);
-    if(err){ $("#status").textContent = err; return; }
-    if(usage() >= MAX_DAILY){ $("#status").textContent = "오늘 만들 수 있는 횟수를 모두 사용했어요."; return; }
+  last = {...v};
 
-    const endpoint = localStorage.getItem("udai-endpoint") || DEFAULT_ENDPOINT;
-    const mock = localStorage.getItem("udai-mock") === "true";
+  busy = true;
 
-    $("#generateBtn").disabled = true;
-    $("#generateBtn").textContent = "AI가 디자인 시안을 만들고 있어요…";
+  refreshLimit();
+
+  $("#generateBtn")
+    .textContent =
+    "AI가 디자인을 만들고 있어요…";
+
+  $("#againBtn")
+    .textContent =
+    "다시 만드는 중…";
+
+
+  try{
+
+    const r =
+      await fetch(
+        API + "/generate",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+            "application/json"
+          },
+
+          body:
+            JSON.stringify(v)
+        }
+      );
+
+
+    const text =
+      await r.text();
+
+
+    let data = {};
 
     try{
-      if(mock) throw new Error("미리보기 모드가 켜져 있습니다.");
+      data =
+        JSON.parse(text);
+    }catch{}
 
-      const res = await fetch(endpoint.replace(/\/$/,"") + "/generate", {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(v)
-      });
 
-      if(!res.ok) throw new Error(await res.text());
-      const data = await res.json();
-      if(!data.image) throw new Error("이미지가 없습니다.");
+    if(!r.ok)
+      throw Error(
+        data.error ||
+        text ||
+        `HTTP ${r.status}`
+      );
 
-      localStorage.setItem(TODAY_KEY, String(usage()+1));
-      $("#resultImage").src = data.image;
-      $("#designName").textContent = titleFor(v);
-      $("#summary").textContent =
-        "대상: " + v.audience + "\n\n" +
-        "장소: " + v.place + "\n\n" +
-        "우리가 해결하려는 불편함\n" + v.problem + "\n\n" +
-        "우리가 만들고 싶은 디자인\n" + v.idea;
 
-      $("#studentView").classList.add("hidden");
-      $("#resultView").classList.remove("hidden");
-      window.scrollTo({top:0,behavior:"smooth"});
-    }catch(e){
-      console.error(e);
-      $("#status").textContent = "디자인 생성에 실패했어요. 선생님께 알려 주세요.";
-    }finally{
-      $("#generateBtn").textContent = "✨ AI로 디자인 만들기";
-      updateUsage();
+    if(!data.image)
+      throw Error(
+        "AI 이미지가 오지 않았습니다."
+      );
+
+
+    localStorage.setItem(
+      dayKey(),
+      String(
+        used()+1
+      )
+    );
+
+
+    show(
+      v,
+      data.image,
+      data.title
+    );
+
+
+  }catch(e){
+
+    console.error(e);
+
+    status(
+      "Cloudflare Worker를 새 입력 방식으로 바꾸면 생성이 작동합니다.",
+      !$("#resultView")
+        .classList
+        .contains("hidden")
+    );
+
+  }finally{
+
+    busy = false;
+
+    $("#generateBtn")
+      .textContent =
+      "✨ 유니버설 디자인 제안 만들기";
+
+    $("#againBtn")
+      .textContent =
+      "↻ 다시 만들기";
+
+    refreshLimit();
+
+  }
+
+}
+
+
+
+$("#generateBtn").onclick =
+()=>generate(false);
+
+
+
+$("#againBtn").onclick =
+()=>generate(true);
+
+
+
+$("#editBtn").onclick =
+()=>{
+
+  $("#resultView")
+    .classList
+    .add("hidden");
+
+  $("#inputView")
+    .classList
+    .remove("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+};
+
+
+
+function fit(
+  ctx,
+  img,
+  x,
+  y,
+  w,
+  h
+){
+
+  ctx.fillStyle =
+    "#eef4fb";
+
+  ctx.fillRect(
+    x,y,w,h
+  );
+
+  const s =
+    Math.min(
+      w/img.naturalWidth,
+      h/img.naturalHeight
+    );
+
+  const dw =
+    img.naturalWidth*s;
+
+  const dh =
+    img.naturalHeight*s;
+
+  ctx.drawImage(
+    img,
+    x+(w-dw)/2,
+    y+(h-dh)/2,
+    dw,
+    dh
+  );
+
+}
+
+
+
+function wrap(
+  ctx,
+  text,
+  x,
+  y,
+  w,
+  lh,
+  max=6
+){
+
+  let line="";
+  let lines=[];
+
+  for(
+    const ch
+    of [...text]
+  ){
+
+    const t =
+      line+ch;
+
+    if(
+      line &&
+      ctx.measureText(t)
+      .width > w
+    ){
+
+      lines.push(line);
+
+      line=ch;
+
+    }else{
+
+      line=t;
+
     }
-  });
 
-  $("#backBtn").addEventListener("click", () => {
-    $("#resultView").classList.add("hidden");
-    $("#studentView").classList.remove("hidden");
-  });
+  }
 
-  $("#againBtn").addEventListener("click", () => {
-    $("#resultView").classList.add("hidden");
-    $("#studentView").classList.remove("hidden");
-  });
+  if(line)
+    lines.push(line);
 
-  $("#downloadBtn").addEventListener("click", () => {
-    const a = document.createElement("a");
-    a.href = $("#resultImage").src;
-    a.download = "universal-design.png";
-    a.click();
-  });
 
-  $("#apiEndpoint").value = localStorage.getItem("udai-endpoint") || DEFAULT_ENDPOINT;
-  $("#mockMode").checked = localStorage.getItem("udai-mock") === "true";
+  lines
+    .slice(0,max)
+    .forEach(
+      (s,i)=>
+        ctx.fillText(
+          s,
+          x,
+          y+i*lh
+        )
+    );
 
-  $("#saveSettings").addEventListener("click", () => {
-    localStorage.setItem("udai-endpoint", $("#apiEndpoint").value.trim() || DEFAULT_ENDPOINT);
-    localStorage.setItem("udai-mock", String($("#mockMode").checked));
-    alert("설정을 저장했습니다.");
-  });
 
-  $("#resetUsage").addEventListener("click", () => {
-    localStorage.setItem(TODAY_KEY, "0");
-    updateUsage();
-    alert("오늘 사용 횟수를 초기화했습니다.");
-  });
+  return y +
+    Math.min(
+      lines.length,
+      max
+    )*lh;
 
-  updateUsage();
+}
+
+
+
+$("#saveBtn").onclick =
+async()=>{
+
+  status(
+    "결과 이미지를 만들고 있어요…",
+    true
+  );
+
+
+  try{
+
+    const a =
+      await loadImg(
+        $("#originalResult").src
+      );
+
+    const b =
+      await loadImg(
+        $("#designResult").src
+      );
+
+
+    const c =
+      document.createElement(
+        "canvas"
+      );
+
+    const W=1200;
+    const H=1600;
+    const p=60;
+
+    c.width=W;
+    c.height=H;
+
+    const x =
+      c.getContext("2d");
+
+
+    x.fillStyle="#fff";
+
+    x.fillRect(
+      0,0,W,H
+    );
+
+
+    x.fillStyle="#173b72";
+
+    x.font=
+      "800 42px system-ui";
+
+    x.fillText(
+      "우리 학교를 바꾸는 유니버설 디자인",
+      p,
+      70
+    );
+
+
+    x.fillStyle="#64748b";
+
+    x.font=
+      "24px system-ui";
+
+    x.fillText(
+      "처음 모습과 제안한 디자인을 비교해 보세요.",
+      p,
+      110
+    );
+
+
+    x.fillStyle="#24476f";
+
+    x.font=
+      "800 28px system-ui";
+
+    x.fillText(
+      "① 우리 학교의 원래 모습",
+      p,
+      165
+    );
+
+
+    fit(
+      x,
+      a,
+      p,
+      190,
+      1080,
+      560
+    );
+
+
+    x.fillText(
+      "② 제안하는 유니버설 디자인",
+      p,
+      820
+    );
+
+
+    fit(
+      x,
+      b,
+      p,
+      850,
+      540,
+      600
+    );
+
+
+    let tx=640;
+    let y=885;
+
+
+    x.fillStyle="#173b72";
+
+    x.font=
+      "800 27px system-ui";
+
+
+    y=
+      wrap(
+        x,
+        $("#designTitle").textContent,
+        tx,
+        y,
+        500,
+        36,
+        2
+      )+18;
+
+
+    const sections=[
+
+      [
+        "해결하려는 불편",
+        $("#resultProblem")
+        .textContent
+      ],
+
+      [
+        "도움을 받을 수 있는 사람",
+        $("#resultPeople")
+        .textContent
+      ],
+
+      [
+        "제안하는 변화",
+        $("#resultDesign")
+        .textContent
+      ]
+
+    ];
+
+
+    for(
+      const [lab,txt]
+      of sections
+    ){
+
+      x.fillStyle=
+        "#5b7390";
+
+      x.font=
+        "800 18px system-ui";
+
+      x.fillText(
+        lab,
+        tx,
+        y
+      );
+
+      y+=28;
+
+
+      x.fillStyle=
+        "#263d5b";
+
+      x.font=
+        "22px system-ui";
+
+
+      y=
+        wrap(
+          x,
+          txt,
+          tx,
+          y,
+          500,
+          31,
+          5
+        )+18;
+
+    }
+
+
+    const link =
+      document.createElement(
+        "a"
+      );
+
+
+    link.href =
+      c.toDataURL(
+        "image/png"
+      );
+
+
+    link.download =
+      "우리학교_유니버설디자인_결과.png";
+
+
+    link.click();
+
+
+    status(
+      "결과 이미지를 저장했어요.",
+      true
+    );
+
+
+  }catch(e){
+
+    console.error(e);
+
+    status(
+      "이미지 저장에 실패했어요.",
+      true
+    );
+
+  }
+
+};
+
+
+
+$("#resetBtn").onclick =
+()=>{
+
+  localStorage.setItem(
+    dayKey(),
+    "0"
+  );
+
+  refreshLimit();
+
+  alert(
+    "오늘 사용 횟수를 초기화했습니다."
+  );
+
+};
+
+
+
+refreshLimit();
+
 })();
+
 </script>
 
 </body>
