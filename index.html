@@ -2,1022 +2,161 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>우리 학교 유니버설 디자인 AI</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173f39">
+<title>지구를 지켜ZOOM! | 생태동물 캐릭터 연구소</title>
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;
-  background:#f3f8ff;
-  color:#183153;
-}
-button,textarea,input{font:inherit}
-.hidden{display:none!important}
-
-header{
-  background:#fff;
-  border-bottom:1px solid #dce8f7;
-  padding:28px 18px;
-}
-header>div{max-width:900px;margin:auto}
-h1{
-  margin:0 0 8px;
-  color:#173b72;
-  font-size:clamp(28px,5vw,44px);
-}
-h1 span{color:#0f9f8f}
-header p{
-  margin:0;
-  color:#66768d;
-  line-height:1.6;
-}
-
-main{
-  max-width:900px;
-  margin:28px auto;
-  padding:0 16px 36px;
-}
-
-.card{
-  background:#fff;
-  border:1px solid #dce8f7;
-  border-radius:24px;
-  padding:24px;
-  box-shadow:0 10px 28px rgba(40,80,130,.1);
-}
-
-.step{
-  padding:24px 0;
-  border-top:1px solid #edf2f8;
-}
-.step:first-child{
-  border-top:0;
-  padding-top:0;
-}
-.step h2{
-  margin:0 0 8px;
-  font-size:20px;
-}
-.num{
-  display:inline-grid;
-  place-items:center;
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  background:#e8f1ff;
-  color:#2563eb;
-  margin-right:8px;
-}
-.desc{
-  margin:0 0 12px;
-  color:#66768d;
-  font-size:14px;
-  line-height:1.65;
-}
-
-.help-box{
-  background:#fff9e9;
-  border:1px solid #f1dfad;
-  border-radius:14px;
-  padding:12px 14px;
-  margin:10px 0 14px;
-  color:#705724;
-  font-size:13px;
-  line-height:1.65;
-}
-
-.example-wrap{margin:12px 0 14px}
-.example-wrap>summary{
-  cursor:pointer;
-  font-weight:850;
-  color:#174c99;
-  background:#f0f8ff;
-  border:1px solid #d9ebff;
-  border-radius:14px;
-  padding:12px 14px;
-}
-.example-content{
-  background:#f8fbff;
-  border:1px solid #d9ebff;
-  border-top:0;
-  border-radius:0 0 14px 14px;
-  padding:14px;
-  color:#385678;
-  font-size:13px;
-  line-height:1.75;
-}
-.example-card{
-  padding:12px 0;
-  border-top:1px solid #deebf7;
-}
-.example-card:first-child{
-  border-top:0;
-  padding-top:0;
-}
-.example-card b{color:#174c99}
-
-textarea{
-  width:100%;
-  min-height:125px;
-  resize:vertical;
-  border:1.5px solid #d6e3f3;
-  border-radius:14px;
-  padding:14px;
-  background:#fbfdff;
-  outline:none;
-  line-height:1.65;
-}
-textarea:focus,input:focus{
-  border-color:#6ea1f7;
-  box-shadow:0 0 0 3px #e8f1ff;
-}
-.design-text{min-height:230px}
-.fix-text{min-height:110px}
-.count{
-  text-align:right;
-  color:#8896a8;
-  font-size:12px;
-  margin-top:5px;
-}
-.tips{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:9px;
-}
-.tip{
-  padding:6px 10px;
-  border-radius:999px;
-  background:#f7fafc;
-  border:1px solid #dde7f1;
-  color:#52657e;
-  font-size:12px;
-}
-
-.upload{
-  border:2px dashed #bfd4ef;
-  background:#f8fbff;
-  border-radius:18px;
-  padding:20px;
-  text-align:center;
-}
-.upload label{
-  display:inline-block;
-  background:#eaf2ff;
-  color:#174c99;
-  font-weight:800;
-  padding:12px 16px;
-  border-radius:13px;
-  cursor:pointer;
-}
-#schoolPhoto{
-  position:absolute;
-  opacity:0;
-  width:1px;
-  height:1px;
-}
-.upload small{
-  display:block;
-  margin-top:9px;
-  color:#7b879a;
-  line-height:1.5;
-}
-.preview{
-  margin-top:14px;
-  border-radius:16px;
-  overflow:hidden;
-  background:#edf4fb;
-  border:1px solid #d9e5f2;
-}
-.preview img{
-  display:block;
-  max-width:100%;
-  max-height:440px;
-  margin:auto;
-}
-
-.privacy{
-  margin:18px 0;
-  padding:12px 14px;
-  border-radius:13px;
-  background:#effaf7;
-  border:1px solid #cfeee4;
-  color:#315f57;
-  font-size:13px;
-  line-height:1.6;
-}
-
-.primary{
-  width:100%;
-  border:0;
-  border-radius:15px;
-  padding:16px;
-  background:#2563eb;
-  color:#fff;
-  font-weight:900;
-  font-size:18px;
-  cursor:pointer;
-}
-.primary:disabled,.secondary:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-.status{
-  text-align:center;
-  min-height:22px;
-  color:#b45309;
-  font-size:13px;
-  line-height:1.6;
-}
-.limit{
-  text-align:center;
-  color:#6c7d92;
-  font-size:13px;
-}
-
-.result-title{
-  text-align:center;
-  margin:0 0 8px;
-}
-.result-sub{
-  text-align:center;
-  margin:0 0 24px;
-  color:#6b7b91;
-}
-.result-block{
-  padding-top:22px;
-  margin-top:22px;
-  border-top:1px solid #edf2f8;
-}
-.result-block:first-of-type{
-  border-top:0;
-  margin-top:0;
-  padding-top:0;
-}
-.result-block h3{margin:0 0 12px}
-
-.photo-frame{
-  background:#edf4fb;
-  border:1px solid #d9e5f2;
-  border-radius:18px;
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-  min-height:220px;
-}
-.photo-frame img{
-  max-width:100%;
-  max-height:540px;
-  display:block;
-}
-
-.proposal{
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:18px;
-}
-.design-frame{
-  aspect-ratio:1/1;
-  background:#eef5ff;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #d9e6f7;
-}
-.design-frame img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.explain{
-  background:#f7faff;
-  border:1px solid #e2ebf6;
-  border-radius:18px;
-  padding:18px;
-}
-.explain h4{
-  margin:0 0 12px;
-  color:#173b72;
-  font-size:20px;
-}
-.item{
-  padding:12px 0;
-  border-top:1px solid #e6edf6;
-}
-.item:first-of-type{border-top:0}
-.label{
-  font-size:12px;
-  font-weight:900;
-  color:#56708f;
-}
-.item p{
-  margin:5px 0 0;
-  line-height:1.7;
-  white-space:pre-wrap;
-}
-.feature-list{
-  margin:8px 0 0;
-  padding-left:24px;
-  line-height:1.75;
-}
-.feature-list li{margin:5px 0}
-
-.repair-box{
-  margin-top:22px;
-  background:#fff8ee;
-  border:1px solid #f0d8b5;
-  border-radius:18px;
-  padding:16px;
-}
-.repair-box h3{
-  margin:0 0 8px;
-  color:#8a4b08;
-}
-.repair-note{
-  color:#7a6448;
-  font-size:13px;
-  line-height:1.6;
-  margin:0 0 10px;
-}
-.repair-actions{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:10px;
-}
-.mini-help{
-  margin-top:6px;
-  color:#8a7a62;
-  font-size:12px;
-  line-height:1.55;
-}
-
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:22px;
-}
-.secondary{
-  border:1.5px solid #cbdcf0;
-  background:#fff;
-  color:#24446f;
-  border-radius:13px;
-  padding:13px;
-  cursor:pointer;
-  font-weight:800;
-}
-.save{
-  background:#edf5ff;
-  border-color:#b8d1f2;
-  color:#174c99;
-}
-.textbtn{
-  display:block;
-  margin:12px auto 0;
-  border:0;
-  background:transparent;
-  text-decoration:underline;
-  color:#6b7b91;
-  cursor:pointer;
-}
-
-details.teacher-settings{
-  margin-top:18px;
-  background:#fff;
-  border:1px solid #dce8f7;
-  border-radius:15px;
-}
-details.teacher-settings>summary{
-  padding:14px 16px;
-  cursor:pointer;
-  font-weight:800;
-}
-.teacher{padding:0 16px 16px}
-
-@media(max-width:700px){
-  .card{padding:17px}
-  .proposal,.actions{grid-template-columns:1fr}
-}
+:root{--ink:#223e3a;--forest:#173f39;--mint:#d9f2df;--cream:#fffbf1;--paper:#fff;--line:#e4e8df;--muted:#647b74;--coral:#fd876e;--yellow:#ffd879;--shadow:0 16px 40px rgba(27,58,49,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f7f2;color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #68b8a9;outline-offset:2px}a{color:inherit}
+header{background:var(--forest);color:#fff;padding:16px max(22px,calc((100vw - 1580px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px}.brand-emoji{height:50px;width:50px;border-radius:17px;background:#c4eaba;color:#214c3f;display:grid;place-items:center;font-size:28px}.brand h1{font-size:20px;letter-spacing:-.7px;margin:0;line-height:1.25}.brand p{font-size:12px;opacity:.8;margin:3px 0 0}.head-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.head-actions button{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);color:white;border-radius:11px;padding:9px 12px;font-size:12px;font-weight:800}.head-actions button:hover{background:rgba(255,255,255,.22)}
+.top-note{max-width:1560px;margin:20px auto 0;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.top-note .lead{font-weight:850;font-size:19px;letter-spacing:-.7px}.top-note .sublead{font-size:13px;color:var(--muted);margin-top:3px}.steps{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.step{background:#fff;padding:7px 10px;border-radius:20px;font-size:12px;font-weight:750;border:1px solid var(--line)}.step strong{color:#378e72}.step-sep{color:#a4aea8;font-size:14px}
+.workspace{max-width:1600px;margin:18px auto 26px;padding:0 20px;display:grid;grid-template-columns:minmax(260px,305px) minmax(390px,1fr) minmax(295px,345px);gap:16px;align-items:start}.panel,.stage{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.panel-head{padding:18px 18px 12px}.panel-title{margin:0;font-size:16px;letter-spacing:-.45px}.panel-sub{color:var(--muted);font-size:12px;margin:4px 0 0}.animal-search{background:#f7f9f4;border:1px solid var(--line);border-radius:12px;padding:11px 12px;width:100%;font-size:13px;margin:10px 0 10px}.filters{display:flex;gap:6px;flex-wrap:wrap}.filter{padding:7px 10px;font-size:12px;border:1px solid var(--line);border-radius:99px;color:#3f5e54;background:#fff;font-weight:750}.filter.active{background:#cbeadc;border-color:#9acbb7;color:#18533d}.animal-list{padding:0 12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:640px;overflow:auto}.animal{background:#fbfcf9;border:1.5px solid #e7ede7;border-radius:13px;min-height:83px;padding:10px 5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:all .15s}.animal:hover{transform:translateY(-2px);border-color:#9fc8b4}.animal.active{background:#e2f3e5;border-color:#488f70;box-shadow:inset 0 0 0 1px #488f70}.animal-emoji{font-size:25px;line-height:1.2}.animal-name{font-size:12px;font-weight:850;text-align:center;letter-spacing:-.3px}.animal-tip{font-size:10px;color:#71887b}.none{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padding:30px 5px}.panel-foot{padding:12px 18px;background:#f7faf5;border-top:1px solid var(--line);color:#587266;font-size:11px;line-height:1.6}
+.stage{padding:14px}.stage-top{padding:5px 7px 11px;display:flex;align-items:center;justify-content:space-between;gap:10px}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:5px 10px;font-size:11px;font-weight:850;color:#225d45;background:#e0f3e5}.stage-top .number{font-size:12px;color:#657d73;font-weight:750}.art-box{border-radius:18px;overflow:hidden;background:#edf4ef;position:relative;aspect-ratio:1/0.89;display:flex;align-items:center;justify-content:center}.art-box svg{width:100%;height:100%;display:block}.art-box .preview-flag{position:absolute;top:14px;left:14px;background:#fffdf0cc;border:1px solid #ffffff88;backdrop-filter:blur(6px);border-radius:99px;padding:7px 12px;font-size:11px;font-weight:800;color:#446456}.art-controls{display:flex;gap:8px;justify-content:center;padding:12px 3px 4px;flex-wrap:wrap}.art-controls button{border:1px solid #dbe6de;background:#fff;border-radius:11px;padding:10px 13px;font-size:12px;font-weight:800;color:#3a6454}.art-controls button:hover{background:#e9f7eb}.art-controls .primary{background:var(--forest);border-color:var(--forest);color:white}.art-controls .primary:hover{background:#28614e}.animal-info{margin-top:11px;border:1px solid #e3e9dd;border-radius:15px;background:#fffef8;padding:14px}.info-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.info-name{font-size:19px;font-weight:900;letter-spacing:-.6px}.info-tag{font-size:11px;color:#487d63;font-weight:800;border:1px solid #c6decf;background:#eef8ee;padding:3px 9px;border-radius:99px}.info-fact{font-size:13px;margin:7px 0 0;color:#4d6459}.thinking{font-size:12px;margin:9px 0 0;font-weight:850;color:#a05d39}.thinking span{color:#485c54;font-weight:500}.note-mini{margin-top:11px;color:var(--muted);font-size:11px;padding:0 6px}
+.editor .panel-head{padding-bottom:13px}.tabs{display:flex;gap:6px;padding:0 14px 14px}.tab{flex:1;border:1px solid #dce7df;border-radius:12px;padding:11px 8px;font-weight:850;background:#fafcf9;color:#557366;font-size:12px}.tab.active{background:var(--forest);color:white;border-color:var(--forest)}.editor-body{padding:0 18px 19px;max-height:790px;overflow:auto}.section{padding:16px 0;border-top:1px solid #ecf0e9}.section:first-child{border-top:0;padding-top:3px}.section-label{font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.section-label small{font-size:11px;color:#81938b;font-weight:500}.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.option{min-height:59px;padding:9px 3px;border:1.5px solid #e3eae2;border-radius:12px;background:#fcfdfa;color:#315348;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;font-size:11px;font-weight:750;text-align:center}.option .symbol{font-size:19px;line-height:1.4}.option:hover{background:#f0f8f0}.option.selected{border-color:#328b65;background:#e4f6e7;box-shadow:inset 0 0 0 1px #328b65}.palette-dot{display:block;border-radius:50%;width:21px;height:21px;border:2px solid #fff;box-shadow:0 0 0 1px #cadbd0}.hint{background:#f0f8ef;border-radius:12px;padding:11px 12px;color:#476f55;font-size:12px;margin:8px 0}.field{display:block;font-size:12px;font-weight:850;margin:14px 0 5px}.input,.textarea{border:1px solid #d8e5dc;border-radius:11px;background:#fbfcf9;color:var(--ink);width:100%;padding:11px;font-size:13px}.textarea{min-height:72px;resize:vertical}.help{font-size:11px;color:#768a7d;margin-top:5px}.quote-box{background:#f4faf0;border:1px dashed #a8cbae;border-radius:14px;padding:14px;font-size:13px;color:#37634b;line-height:1.8}.ecoline{border-radius:12px;padding:12px;background:#faf7f0;color:#5e6657;font-size:12px}.right-foot{padding:14px 18px;border-top:1px solid #ecf0e9;background:#fbfdfb}.savebig{background:#e56d51;color:white;border:0;width:100%;padding:13px;border-radius:12px;font-weight:900;font-size:14px}.savebig:hover{background:#c65d43}.switcher{padding:8px 15px;border-radius:99px;border:1px solid #b6d8c4;color:#2f6d51;background:#ebf8ec;font-size:12px;font-weight:800}.footer{max-width:1560px;margin:auto auto 28px;padding:0 20px;color:#74877d;font-size:11px;line-height:1.75;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);opacity:0;transition:.25s;background:#193f35;color:#fff;border-radius:50px;padding:11px 19px;box-shadow:0 10px 25px #173f3944;font-weight:800;font-size:13px;z-index:99;pointer-events:none}#toast.show{transform:translateX(-50%) translateY(0);opacity:1}.hidden{display:none!important}
+@media(max-width:1200px){.workspace{grid-template-columns:230px minmax(330px,1fr) 290px;gap:10px;padding:0 12px}.animal-list{gap:6px}.panel-head{padding:14px}.editor-body{padding:0 13px 18px}.stage{padding:10px}}
+@media(max-width:970px){.workspace{grid-template-columns:minmax(200px,270px) minmax(360px,1fr)}.editor{grid-column:1/-1}.editor-body{max-height:none}.editor .two-up{display:grid;grid-template-columns:1fr 1fr;gap:22px}.stage{grid-column:2}.animal-list{max-height:680px}}
+@media(max-width:640px){header{padding:12px 14px}.brand h1{font-size:15px}.brand p{font-size:10px}.brand-emoji{width:41px;height:41px;border-radius:12px;font-size:23px}.head-actions{gap:5px}.head-actions button{font-size:10px;padding:7px}.workspace{display:flex;flex-direction:column;padding:0 10px;margin-top:12px}.workspace>*{width:100%}.top-note{margin-top:14px;padding:0 13px}.top-note .lead{font-size:17px}.steps{display:none}.animal-list{display:flex;max-height:none;overflow-x:auto;gap:7px;padding-bottom:14px}.animal{min-width:89px;min-height:75px}.animal-tip{display:none}.filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:1px}.filter{white-space:nowrap}.stage{order:1}.animal-panel{order:0}.editor{order:2}.editor .two-up{display:block}.art-box{aspect-ratio:1/0.88}.footer{padding:0 13px}.panel-title{font-size:15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
 <header>
-  <div>
-    <h1>우리 학교 <span>유니버설 디자인 AI</span></h1>
-    <p>학교에서 발견한 불편함을 살펴보고, 모두가 더 편리하게 이용할 수 있는 디자인으로 바꿔 보세요.</p>
-  </div>
+ <div class="brand"><div class="brand-emoji">🌏</div><div><h1>지구를 지켜ZOOM!</h1><p>18종 생태동물 캐릭터 연구소 · 미락클 예술융합 프로젝트</p></div></div>
+ <div class="head-actions"><button id="randomBtn" title="동물과 꾸미기 요소를 무작위로 바꿉니다">🎲 랜덤 꾸미기</button><button id="resetBtn" title="현재 캐릭터 꾸미기를 초기화합니다">↺ 초기화</button><button id="saveProjectBtn">💾 작업 저장</button><button id="loadProjectBtn">📂 불러오기</button><input type="file" accept=".json,application/json" id="fileInput" hidden></div>
 </header>
-
-<main>
-
-<section id="inputView" class="card">
-
-  <div class="step">
-    <h2><span class="num">1</span>학교 사진을 올려 주세요.</h2>
-    <p class="desc">이전 차시에 살펴본 학교 공간 중 바꾸고 싶은 곳의 사진을 골라요.</p>
-
-    <div class="upload">
-      <input id="schoolPhoto" type="file" accept="image/*">
-      <label for="schoolPhoto">📷 학교 사진 선택하기</label>
-
-      <small>
-        불편한 곳이 잘 보이는 사진을 선택하세요.<br>
-        학생 얼굴·이름 등 개인정보가 보이는 사진은 사용하지 않아요.
-      </small>
-
-      <div id="preview" class="preview hidden">
-        <img id="previewImg" alt="학교 사진 미리보기">
-      </div>
-    </div>
-  </div>
-
-  <div class="step">
-    <h2><span class="num">2</span>어디에서 어떤 불편이 있나요?</h2>
-    <p class="desc">사진 속 장소에서 무엇이 불편한지, 왜 불편한지를 자세히 써 보세요.</p>
-
-    <div class="help-box">
-      <b>생각해 보기</b><br>
-      어디에서 불편한가요? 무엇이 잘 보이지 않거나 사용하기 어려운가요? 왜 불편한가요?
-    </div>
-
-    <textarea id="problem" maxlength="300" placeholder="예) 학교 현관 안내판이 글자 중심이고 너무 높이 있어서 처음 학교에 온 사람이나 어린 학생이 보기 어려워요."></textarea>
-    <div class="count"><span id="problemCount">0</span>/300</div>
-  </div>
-
-  <div class="step">
-    <h2><span class="num">3</span>누가 이 불편을 겪을 수 있나요?</h2>
-    <p class="desc">어떤 사람이 왜 더 불편할지 자세히 써 보세요.</p>
-
-    <div class="help-box">
-      <b>생각해 보기</b><br>
-      누가 불편할까요? 그 사람은 어떤 상황에서 더 어렵거나 불편할까요?
-    </div>
-
-    <textarea id="people" maxlength="300" placeholder="예) 처음 학교에 온 사람이나 한국어를 잘 모르는 사람은 안내판을 이해하기 어려울 수 있어요. 키가 작은 학생은 높은 곳의 안내를 보기 어려울 수 있어요."></textarea>
-    <div class="count"><span id="peopleCount">0</span>/300</div>
-  </div>
-
-  <div class="step">
-    <h2><span class="num">4</span>어떤 디자인으로 바꾸고 싶나요?</h2>
-    <p class="desc"><b>바꾸고 싶은 모습을 최대한 자세히</b> 써 보세요. AI가 글에서 중요한 특징을 찾아 디자인 시안에 반영합니다.</p>
-
-    <div class="help-box">
-      <b>자세히 쓰는 방법</b><br>
-      <b>색, 그림, 높이, 모양, 크기, 기능, 공간, 위치, 사용 방법</b>처럼 실제로 눈에 보일 수 있는 모습을 구체적으로 써 보세요.
-    </div>
-
-    <details class="example-wrap">
-      <summary>💡 자세한 예시 3개 보기</summary>
-      <div class="example-content">
-
-        <div class="example-card">
-          <b>예시 1｜학교 안내판</b><br>
-          학교 현관 안내판을 어린 학생도 보기 쉽도록 지금보다 낮은 높이에 설치하고 싶어요.
-          안내판은 모서리가 둥근 직사각형 모양으로 만들고, 도서관은 파란색, 급식실은 주황색, 보건실은 초록색처럼 장소마다 다른 색을 사용하고 싶어요.
-          책, 식판, 십자가처럼 장소를 바로 알 수 있는 큰 그림을 넣고, 가야 할 방향은 굵고 큰 색깔 화살표로 보여 주고 싶어요.
-          처음 학교에 온 사람도 그림과 색깔만 보고 길을 찾을 수 있도록 한눈에 보기 쉽게 만들고 싶어요.
-        </div>
-
-        <div class="example-card">
-          <b>예시 2｜학교 쉼터</b><br>
-          학교 쉼터에 키와 몸의 크기가 다른 사람도 편하게 앉을 수 있도록 높이가 다른 의자와 벤치를 놓고 싶어요.
-          낮은 의자, 보통 높이 의자, 팔걸이가 있는 의자를 함께 두고, 모서리는 둥글게 만들고 싶어요.
-          휠체어나 유모차가 들어갈 수 있도록 벤치 사이에 넓은 빈 공간을 만들고, 옆에는 가방이나 짐을 놓을 수 있는 낮은 선반도 두고 싶어요.
-          바닥에는 미끄럽지 않은 재료를 사용하고, 쉼터 위치를 쉽게 찾을 수 있도록 밝은 색과 큰 그림 표시를 넣고 싶어요.
-        </div>
-
-        <div class="example-card">
-          <b>예시 3｜급식실</b><br>
-          급식실에서 줄을 서고 식판을 받는 방법을 쉽게 알 수 있도록 바닥에 이동 방향을 나타내는 굵은 색깔 선과 발자국 그림을 넣고 싶어요.
-          식판 받는 곳, 반찬 받는 곳, 식판 반납하는 곳마다 서로 다른 색깔과 큰 그림 표시를 사용하고 싶어요.
-          어린 학생도 편하게 이용할 수 있도록 식판을 놓는 곳의 높이를 너무 높지 않게 하고, 한쪽에는 키가 작은 학생이 사용할 수 있는 낮은 공간도 만들고 싶어요.
-          줄이 겹치지 않도록 이동 공간을 넓게 나누고, 어디로 가야 하는지 멀리서도 알 수 있도록 큰 화살표를 사용하고 싶어요.
-        </div>
-
-      </div>
-    </details>
-
-    <textarea id="design" class="design-text" maxlength="700" placeholder="바꾸고 싶은 디자인을 자세히 써 보세요. 색, 그림, 높이, 모양, 크기, 기능, 공간, 위치, 사용 방법 등 눈에 보이는 특징을 많이 써도 좋아요."></textarea>
-    <div class="count"><span id="designCount">0</span>/700</div>
-
-    <div class="tips">
-      <span class="tip">색</span>
-      <span class="tip">그림</span>
-      <span class="tip">높이</span>
-      <span class="tip">모양·크기</span>
-      <span class="tip">기능</span>
-      <span class="tip">공간·위치</span>
-      <span class="tip">사용 방법</span>
-    </div>
-  </div>
-
-  <div class="privacy">
-    🔒 학교 사진은 원래 모습을 보여 주고 결과물을 저장하는 데만 사용합니다.
-    사진 자체는 AI 서버로 보내지 않고, 학생이 2·3·4번에 쓴 글만 디자인 생성에 사용합니다.
-  </div>
-
-  <button id="generateBtn" class="primary" type="button">✨ 유니버설 디자인 시안 만들기</button>
-
-  <p class="limit">오늘 <b id="usedCount">0</b>/3회 사용했어요.</p>
-  <p id="status" class="status"></p>
-</section>
-
-<section id="resultView" class="card hidden">
-
-  <h2 class="result-title">우리 학교를 바꾸는 유니버설 디자인</h2>
-  <p class="result-sub">처음 모습과 학생의 아이디어를 바탕으로 만든 디자인 시안을 비교해 보세요.</p>
-
-  <div class="result-block">
-    <h3>① 우리 학교의 원래 모습</h3>
-    <div class="photo-frame">
-      <img id="originalResult" alt="원래 학교 사진">
-    </div>
-  </div>
-
-  <div class="result-block">
-    <h3>② 제안하는 유니버설 디자인</h3>
-
-    <div class="proposal">
-      <div class="design-frame">
-        <img id="designResult" alt="AI가 만든 유니버설 디자인 시안">
-      </div>
-
-      <div class="explain">
-        <h4 id="designTitle">우리 학교 유니버설 디자인 제안</h4>
-
-        <div class="item">
-          <span class="label">해결하려는 불편</span>
-          <p id="resultProblem"></p>
-        </div>
-
-        <div class="item">
-          <span class="label">도움을 받을 수 있는 사람</span>
-          <p id="resultPeople"></p>
-        </div>
-
-        <div class="item">
-          <span class="label">학생이 제안한 변화</span>
-          <p id="resultDesign"></p>
-        </div>
-
-        <div class="item">
-          <span class="label">AI가 시안에 반영한 핵심 요소</span>
-          <ol id="resultFeatures" class="feature-list"></ol>
-        </div>
-
-        <div class="item">
-          <span class="label">AI가 보여 주려는 이용 모습</span>
-          <ol id="resultScenarios" class="feature-list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="repair-box">
-    <h3>③ 이상한 부분 수정하기</h3>
-    <p class="repair-note">
-      이미지에서 이상한 부분이 있으면 적어 보세요.<br>
-      예) 가운데 학생 몸과 책상이 붙어 보여요. 자연스럽게 수정해 주세요.
-    </p>
-
-    <textarea id="fixRequest" class="fix-text" maxlength="220" placeholder="예) 가운데 학생 몸과 책상이 붙어 보여요. 학생은 의자에 앉아 있고, 책상은 일반적인 학교 책상 모양으로 자연스럽게 수정해 주세요."></textarea>
-    <div class="count"><span id="fixCount">0</span>/220</div>
-
-    <div class="repair-actions">
-      <button id="fixBtn" class="secondary" type="button">🩹 이 부분 다시 만들기</button>
-      <div class="mini-help">부분 수정도 새로 이미지를 만드는 것이므로 오늘 사용 횟수 1회로 계산됩니다.</div>
-    </div>
-  </div>
-
-  <div class="actions">
-    <button id="saveBtn" class="secondary save" type="button">🖼 이미지로 저장하기</button>
-    <button id="againBtn" class="secondary" type="button">↻ 다시 만들기</button>
-  </div>
-
-  <button id="editBtn" class="textbtn" type="button">입력 내용 수정하기</button>
-
-  <p id="resultStatus" class="status"></p>
-</section>
-
-<details class="teacher-settings">
-  <summary>👩‍🏫 교사용 설정</summary>
-  <div class="teacher">
-    <button id="resetBtn" class="secondary" type="button">오늘 사용 횟수 초기화</button>
-  </div>
-</details>
-
+<div class="top-note"><div><div class="lead">동물을 관찰하고, 나만의 캐릭터를 디자인해요! <span aria-hidden="true">🐾</span></div><div class="sublead">18종 중 하나를 고르고 특징을 살린 뒤, 보호 메시지를 전해 보세요.</div></div><div class="steps"><span class="step"><strong>①</strong> 동물 선택</span><span class="step-sep">›</span><span class="step"><strong>②</strong> 특징 살려 꾸미기</span><span class="step-sep">›</span><span class="step"><strong>③</strong> 생태 메시지</span><span class="step-sep">›</span><span class="step"><strong>④</strong> 이미지 저장</span></div></div>
+<main class="workspace">
+ <aside class="panel animal-panel" aria-label="동물 선택">
+  <div class="panel-head"><h2 class="panel-title">01. 동물 친구 선택 <span style="color:#4a9b72">18종</span></h2><p class="panel-sub">누구를 캐릭터로 만들어 볼까요?</p><input class="animal-search" id="search" type="search" placeholder="🔎  동물 이름 검색" aria-label="동물 이름 검색"><div class="filters" id="filters"></div></div>
+  <div class="animal-list" id="animalList"></div>
+  <div class="panel-foot">📚 동물 목록과 신체 특징은 첨부된 「멸종위기 동물 특별전」 설명 자료를 참고했습니다. <strong>18종 모두가 IUCN 멸종위기종인 것은 아닙니다.</strong></div>
+ </aside>
+ <section class="stage" aria-label="캐릭터 미리보기">
+  <div class="stage-top"><span class="pill">✦ 캐릭터 미리보기</span><span class="number" id="stageCounter">1 / 18</span></div>
+  <div class="art-box" id="artBox" role="img" aria-label="내가 선택한 동물의 캐릭터 그림"><div class="preview-flag">🐾 실시간 미리보기</div></div>
+  <div class="art-controls"><button id="previousBtn">← 이전 동물</button><button id="nextBtn">다음 동물 →</button><button class="primary" id="downloadBtn">⬇️ 완성 카드 PNG 저장</button></div>
+  <div class="animal-info"><div class="info-row"><span class="info-name" id="animalName">황제펭귄</span><span class="info-tag" id="animalHabitat">남극 바다</span></div><p class="info-fact" id="animalFact"></p><p class="thinking">💡 생각해 봐요 <span id="animalQuestion"></span></p></div>
+  <p class="note-mini">※ 화면 속 캐릭터는 직접 그린 도형으로 조합한 예시입니다. 실제 동물 사진이 아닌 창작 이미지이며, 특징은 단순화했습니다.</p>
+ </section>
+ <section class="panel editor" aria-label="캐릭터 꾸미기">
+  <div class="panel-head"><h2 class="panel-title">02. 나만의 캐릭터 만들기 🎨</h2><p class="panel-sub">버튼을 누를 때마다 캐릭터가 바뀌어요.</p></div>
+  <div class="tabs"><button class="tab active" id="designTab" data-tab="design">🎨 캐릭터 꾸미기</button><button class="tab" id="storyTab" data-tab="story">🌱 생태 카드 쓰기</button></div>
+  <div class="editor-body" id="designPanel"><div class="two-up">
+   <div><div class="section"><div class="section-label">😊 표정 바꾸기 <small>5가지</small></div><div class="options" id="expressionOptions"></div></div><div class="section"><div class="section-label">🎨 색감 고르기 <small>5가지</small></div><div class="options" id="paletteOptions"></div><div class="help">‘실제 색’은 동물의 자연스러운 모습을 살려요.</div></div><div class="section"><div class="section-label">🐾 동작 바꾸기 <small>3가지</small></div><div class="options" id="poseOptions"></div></div></div>
+   <div><div class="section"><div class="section-label">✨ 무늬·장식 <small>3가지</small></div><div class="options" id="patternOptions"></div></div><div class="section"><div class="section-label">🎀 소품 넣기 <small>5가지</small></div><div class="options" id="accessoryOptions"></div></div><div class="section"><div class="section-label">🌿 배경 선택 <small>6가지</small></div><div class="options" id="backgroundOptions"></div></div></div>
+  </div></div>
+  <div class="editor-body hidden" id="storyPanel"><div class="hint">🌱 <strong>생태스위치 ON!</strong> 실제 특징을 살피고, 동물의 삶을 생각한 뒤, 우리 실천을 약속해 봐요.</div><label class="field" for="nickInput">① 내 캐릭터 이름</label><input class="input" maxlength="22" id="nickInput" placeholder="예: 설산을 지키는 설이"><label class="field" for="featureInput">② 내가 표현한 실제 동물의 특징</label><textarea class="textarea" maxlength="110" id="featureInput" placeholder="예: 눈표범의 두꺼운 털과 긴 꼬리를 표현했어요."></textarea><label class="field" for="messageInput">③ 동물 친구의 보호 메시지</label><textarea class="textarea" maxlength="110" id="messageInput" placeholder="예: 우리 함께 숲을 지켜요!"></textarea><label class="field" for="pledgeInput">④ 우리가 할 수 있는 실천</label><textarea class="textarea" maxlength="110" id="pledgeInput" placeholder="예: 물건을 오래 사용하고 자연을 소중히 여겨요."></textarea><div class="section"><div class="section-label">📝 생태 카드 미리보기</div><div class="quote-box" id="storyPreview"></div></div><div class="ecoline"><strong>생태적 지식</strong> 동물의 특징 알기 → <strong>생태적 감수성</strong> 동물 입장 생각하기 → <strong>생태적 실천</strong> 행동 약속하기</div></div>
+  <div class="right-foot"><button class="savebig" id="saveBig">🖼️ 내 캐릭터 보호 카드 저장하기</button><div class="help" style="text-align:center">로그인·AI·서버 없이 실행됩니다. 그림과 글은 다른 곳으로 전송되지 않습니다.</div></div>
+ </section>
 </main>
-
+<div class="footer"><span>제작 예시 | 3학년 생태·예술 융합 수업용 · HTML/SVG 단일 파일</span><span>동물 사실 정보: 사용자 제공 전시 설명 자료를 3학년 수준으로 재구성 · 보전 상태 확인: <a target="_blank" rel="noopener" href="https://www.iucnredlist.org/">IUCN Red List</a></span></div>
+<div id="toast" role="status" aria-live="polite"></div>
 <script>
-(()=>{
-const API = "https://universal-design-ai-api.win2661.workers.dev";
-const MAX = 3;
-const $ = selector => document.querySelector(selector);
-
-let photo = "";
-let last = null;
-let lastFeatures = [];
-let lastScenarios = [];
-let lastTitle = "";
-let busy = false;
-
-function dayKey(){
-  const d = new Date();
-  return `udai-${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
-}
-
-function used(){
-  return Number(localStorage.getItem(dayKey()) || 0);
-}
-
-function refreshLimit(){
-  const n = used();
-  $("#usedCount").textContent = n;
-  $("#generateBtn").disabled = busy || n >= MAX;
-  $("#againBtn").disabled = busy || n >= MAX;
-  $("#fixBtn").disabled = busy || n >= MAX;
-}
-
-function setStatus(text, result = false){
-  (result ? $("#resultStatus") : $("#status")).textContent = text || "";
-}
-
-function loadImg(src){
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = src;
-  });
-}
-
-function fileURL(file){
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
-async function compress(file){
-  if(!file.type.startsWith("image/")){
-    throw Error("이미지 파일을 선택해 주세요.");
-  }
-
-  if(file.size > 15 * 1024 * 1024){
-    throw Error("15MB 이하 사진을 사용해 주세요.");
-  }
-
-  const raw = await fileURL(file);
-  const img = await loadImg(raw);
-  const max = 1800;
-  const scale = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
-  const canvas = document.createElement("canvas");
-
-  canvas.width = Math.round(img.naturalWidth * scale);
-  canvas.height = Math.round(img.naturalHeight * scale);
-
-  canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-  return canvas.toDataURL("image/jpeg", .88);
-}
-
-$("#schoolPhoto").addEventListener("change", async event => {
-  const file = event.target.files?.[0];
-  if(!file) return;
-
-  try{
-    photo = await compress(file);
-    $("#previewImg").src = photo;
-    $("#preview").classList.remove("hidden");
-    setStatus("");
-  }catch(error){
-    photo = "";
-    $("#preview").classList.add("hidden");
-    setStatus(error.message);
-  }
-});
-
-[
-  ["problem","problemCount"],
-  ["people","peopleCount"],
-  ["design","designCount"],
-  ["fixRequest","fixCount"]
-].forEach(([inputId, countId]) => {
-  $("#"+inputId).addEventListener("input", () => {
-    $("#"+countId).textContent = $("#"+inputId).value.length;
-  });
-});
-
-function values(){
-  return {
-    problem: $("#problem").value.trim(),
-    people: $("#people").value.trim(),
-    design: $("#design").value.trim()
-  };
-}
-
-function check(v){
-  if(!photo){
-    return "학교 사진을 먼저 올려 주세요.";
-  }
-
-  if(v.problem.length < 15){
-    return "2번의 불편한 상황을 조금 더 자세히 써 주세요.";
-  }
-
-  if(v.people.length < 8){
-    return "3번의 불편을 겪을 수 있는 사람을 조금 더 자세히 써 주세요.";
-  }
-
-  if(v.design.length < 30){
-    return "4번의 디자인을 조금 더 자세히 써 주세요. 색, 그림, 높이, 모양, 기능, 공간, 사용 방법처럼 눈에 보이는 특징을 넣으면 좋아요.";
-  }
-
-  return "";
-}
-
-function showList(id, items, fallback){
-  const list = $(id);
-  list.innerHTML = "";
-
-  const source = Array.isArray(items) && items.length ? items : [fallback];
-
-  source.forEach(text => {
-    const li = document.createElement("li");
-    li.textContent = text;
-    list.appendChild(li);
-  });
-}
-
-function show(v, image, title, features, scenarios){
-  $("#originalResult").src = photo;
-  $("#designResult").src = image;
-  $("#designTitle").textContent = title || "우리 학교 유니버설 디자인 제안";
-  $("#resultProblem").textContent = v.problem;
-  $("#resultPeople").textContent = v.people;
-  $("#resultDesign").textContent = v.design;
-
-  lastTitle = title || "우리 학교 유니버설 디자인 제안";
-  lastFeatures = Array.isArray(features) ? features : [];
-  lastScenarios = Array.isArray(scenarios) ? scenarios : [];
-
-  showList("#resultFeatures", lastFeatures, "학생이 쓴 디자인 특징을 중심으로 시안을 만들었습니다.");
-  showList("#resultScenarios", lastScenarios, "불편을 겪는 사람이 바뀐 디자인을 실제로 이용하는 모습을 보여 주었습니다.");
-
-  $("#inputView").classList.add("hidden");
-  $("#resultView").classList.remove("hidden");
-
-  window.scrollTo({ top:0, behavior:"smooth" });
-}
-
-async function generate(mode = "create"){
-  if(busy) return;
-
-  setStatus("");
-  setStatus("", true);
-
-  const v = mode === "repair" ? last : values();
-
-  if(!v) return;
-
-  const message = check(v);
-  if(message){
-    setStatus(message, !$("#resultView").classList.contains("hidden"));
-    return;
-  }
-
-  if(mode === "repair"){
-    const fixText = $("#fixRequest").value.trim();
-    if(fixText.length < 8){
-      setStatus("수정하고 싶은 부분을 조금 더 자세히 써 주세요.", true);
-      return;
-    }
-  }
-
-  if(used() >= MAX){
-    setStatus("오늘 만들 수 있는 횟수를 모두 사용했어요.", !$("#resultView").classList.contains("hidden"));
-    return;
-  }
-
-  last = {...v};
-  busy = true;
-  refreshLimit();
-
-  $("#generateBtn").textContent = "AI가 디자인 시안을 만들고 있어요…";
-  $("#againBtn").textContent = "다시 만드는 중…";
-  $("#fixBtn").textContent = "수정 중…";
-
-  try{
-    const body = {
-      ...v,
-      mode,
-      fixRequest: mode === "repair" ? $("#fixRequest").value.trim() : "",
-      previousFeatures: lastFeatures,
-      previousScenarios: lastScenarios,
-      previousTitle: lastTitle
-    };
-
-    const response = await fetch(API + "/generate", {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify(body)
-    });
-
-    const raw = await response.text();
-    let data = {};
-
-    try{
-      data = JSON.parse(raw);
-    }catch{}
-
-    if(!response.ok){
-      throw Error(data.error || raw || `HTTP ${response.status}`);
-    }
-
-    if(!data.image){
-      throw Error("AI 이미지가 오지 않았습니다.");
-    }
-
-    localStorage.setItem(dayKey(), String(used() + 1));
-
-    show(last, data.image, data.title, data.features, data.userScenarios);
-
-    if(mode === "repair"){
-      $("#fixRequest").value = "";
-      $("#fixCount").textContent = "0";
-      setStatus("수정된 시안을 만들었어요.", true);
-    }
-
-  }catch(error){
-    console.error(error);
-    setStatus(error.message || "디자인을 만드는 중 오류가 발생했습니다.", !$("#resultView").classList.contains("hidden"));
-  }finally{
-    busy = false;
-    $("#generateBtn").textContent = "✨ 유니버설 디자인 시안 만들기";
-    $("#againBtn").textContent = "↻ 다시 만들기";
-    $("#fixBtn").textContent = "🩹 이 부분 다시 만들기";
-    refreshLimit();
-  }
-}
-
-$("#generateBtn").onclick = () => generate("create");
-$("#againBtn").onclick = () => generate("create");
-$("#fixBtn").onclick = () => generate("repair");
-
-$("#editBtn").onclick = () => {
-  $("#resultView").classList.add("hidden");
-  $("#inputView").classList.remove("hidden");
-  window.scrollTo({ top:0, behavior:"smooth" });
-};
-
-function fit(ctx, img, x, y, width, height){
-  ctx.fillStyle = "#eef4fb";
-  ctx.fillRect(x, y, width, height);
-
-  const scale = Math.min(width / img.naturalWidth, height / img.naturalHeight);
-  const dw = img.naturalWidth * scale;
-  const dh = img.naturalHeight * scale;
-
-  ctx.drawImage(
-    img,
-    x + (width-dw)/2,
-    y + (height-dh)/2,
-    dw,
-    dh
-  );
-}
-
-function wrapText(ctx, text, x, y, width, lineHeight, maxLines = 10){
-  const lines = [];
-
-  for(const paragraph of String(text || "").split("\n")){
-    let line = "";
-    for(const ch of [...paragraph]){
-      const test = line + ch;
-      if(line && ctx.measureText(test).width > width){
-        lines.push(line);
-        line = ch;
-      }else{
-        line = test;
-      }
-    }
-    if(line) lines.push(line);
-  }
-
-  lines.slice(0, maxLines).forEach((line, index) => {
-    ctx.fillText(line, x, y + index * lineHeight);
-  });
-
-  return y + Math.min(lines.length, maxLines) * lineHeight;
-}
-
-$("#saveBtn").onclick = async() => {
-  setStatus("결과 이미지를 만들고 있어요…", true);
-
-  try{
-    const original = await loadImg($("#originalResult").src);
-    const designImg = await loadImg($("#designResult").src);
-
-    const canvas = document.createElement("canvas");
-    const W = 1200;
-    const H = 2150;
-    const PAD = 60;
-
-    canvas.width = W;
-    canvas.height = H;
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, W, H);
-
-    ctx.fillStyle = "#173b72";
-    ctx.font = "800 42px system-ui";
-    ctx.fillText("우리 학교를 바꾸는 유니버설 디자인", PAD, 70);
-
-    ctx.fillStyle = "#64748b";
-    ctx.font = "24px system-ui";
-    ctx.fillText("처음 모습과 학생의 디자인 시안을 비교해 보세요.", PAD, 110);
-
-    ctx.fillStyle = "#24476f";
-    ctx.font = "800 28px system-ui";
-    ctx.fillText("① 우리 학교의 원래 모습", PAD, 165);
-    fit(ctx, original, PAD, 190, 1080, 560);
-
-    ctx.fillStyle = "#24476f";
-    ctx.font = "800 28px system-ui";
-    ctx.fillText("② 제안하는 유니버설 디자인", PAD, 820);
-    fit(ctx, designImg, PAD, 850, 520, 520);
-
-    let tx = 625;
-    let y = 875;
-
-    ctx.fillStyle = "#173b72";
-    ctx.font = "800 26px system-ui";
-    y = wrapText(ctx, $("#designTitle").textContent, tx, y, 510, 34, 2) + 18;
-
-    const featureText = (lastFeatures.length ? lastFeatures : ["학생이 쓴 디자인 특징을 중심으로 시안을 만들었습니다."])
-      .map((item, index) => `${index+1}. ${item}`)
-      .join("\n");
-
-    const scenarioText = (lastScenarios.length ? lastScenarios : ["불편을 겪는 사람이 바뀐 디자인을 실제로 이용하는 모습을 보여 주었습니다."])
-      .map((item, index) => `${index+1}. ${item}`)
-      .join("\n");
-
-    const sections = [
-      ["해결하려는 불편", $("#resultProblem").textContent],
-      ["도움을 받을 수 있는 사람", $("#resultPeople").textContent],
-      ["학생이 제안한 변화", $("#resultDesign").textContent],
-      ["AI가 시안에 반영한 핵심 요소", featureText],
-      ["AI가 보여 주려는 이용 모습", scenarioText]
-    ];
-
-    for(const [label, text] of sections){
-      ctx.fillStyle = "#5b7390";
-      ctx.font = "800 17px system-ui";
-      ctx.fillText(label, tx, y);
-      y += 27;
-
-      ctx.fillStyle = "#263d5b";
-      ctx.font = "20px system-ui";
-      y = wrapText(
-        ctx,
-        text,
-        tx,
-        y,
-        510,
-        29,
-        label === "학생이 제안한 변화" ? 9 : 7
-      ) + 18;
-    }
-
-    const link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
-    link.download = "우리학교_유니버설디자인_결과.png";
-    link.click();
-
-    setStatus("결과 이미지를 저장했어요.", true);
-
-  }catch(error){
-    console.error(error);
-    setStatus("이미지 저장에 실패했어요.", true);
-  }
-};
-
-$("#resetBtn").onclick = () => {
-  localStorage.setItem(dayKey(), "0");
-  refreshLimit();
-  alert("오늘 사용 횟수를 초기화했습니다.");
-};
-
-refreshLimit();
-})();
+'use strict';
+const ANIMALS=[
+{id:'penguin',name:'황제펭귄',emoji:'🐧',home:'극지',habitat:'남극의 얼음과 바다',bg:'ice',base:'#202e3c',belly:'#f7f9ed',detail:'#f4c96c',fact:'검은 등, 흰 배, 노란빛 목과 짧은 날개가 특징이에요. 남극에서 살고 바다에서 먹이를 구해요.',question:'바다 얼음이 줄어들면 어떤 어려움이 생길까요?',feature:'노란빛 목과 짧은 날개를 표현했어요.',message:'황제펭귄이 살아갈 남극의 얼음을 지켜 주세요!'},
+{id:'wolf',name:'회색 늑대',emoji:'🐺',home:'숲',habitat:'숲과 초원',bg:'forest',base:'#8c9a9e',belly:'#e5e3db',detail:'#62757c',fact:'회색 털과 뾰족한 귀가 있어요. 무리를 이루어 가족과 함께 생활하는 경우가 많아요.',question:'늑대가 살아갈 숲과 초원을 지키려면 무엇이 필요할까요?',feature:'뾰족한 귀와 회색 털을 표현했어요.',message:'야생동물이 안전하게 살아갈 공간을 남겨 주세요!'},
+{id:'gorilla',name:'고릴라',emoji:'🦍',home:'숲',habitat:'아프리카의 숲',bg:'forest',base:'#4d5660',belly:'#727a83',detail:'#313a43',fact:'튼튼한 몸과 긴 팔을 가진 동물이에요. 아프리카 숲에서 무리를 이루며 살아요.',question:'고릴라 가족에게 숲이 중요한 까닭은 무엇일까요?',feature:'큰 팔과 튼튼한 몸을 표현했어요.',message:'고릴라가 살아갈 숲을 함께 지켜요!'},
+{id:'redpanda',name:'레서판다',emoji:'🦝',home:'숲',habitat:'대나무가 자라는 산림',bg:'forest',base:'#c77143',belly:'#f7d4a2',detail:'#6b3b30',fact:'붉은 털과 얼굴의 흰 무늬, 줄무늬가 있는 긴 꼬리가 특징이에요. 대나무를 즐겨 먹어요.',question:'나무와 대나무가 사라지면 어떻게 될까요?',feature:'얼굴의 흰 무늬와 줄무늬 꼬리를 표현했어요.',message:'레서판다가 쉴 나무와 숲을 지켜 주세요!'},
+{id:'mandrill',name:'맨드릴 원숭이',emoji:'🐒',home:'숲',habitat:'아프리카 열대 숲',bg:'forest',base:'#62515d',belly:'#99858e',detail:'#38414f',fact:'수컷은 얼굴에 빨강과 파랑이 나타나요. 열대 숲에서 살며 과일 등을 먹어요.',question:'숲에 사는 동물들이 함께 살아가려면 무엇이 필요할까요?',feature:'얼굴의 파란 줄과 빨간 코를 표현했어요.',message:'열대 숲의 다양한 동물들을 지켜 주세요!'},
+{id:'sandcat',name:'모래 고양이',emoji:'🐱',home:'사막',habitat:'모래 사막',bg:'desert',base:'#e6c18a',belly:'#fff0ca',detail:'#c99a62',fact:'작은 몸과 넓은 귀를 가졌어요. 모래 사막에서 살며 발바닥에 털이 있어요.',question:'사막에서 더위와 모래를 견디는 데 어떤 몸의 특징이 도움 될까요?',feature:'모래색 털과 넓은 귀를 표현했어요.',message:'사막 동물들의 보금자리를 존중해 주세요!'},
+{id:'meerkat',name:'미어캣',emoji:'🐾',home:'초원',habitat:'건조한 아프리카 초원',bg:'savanna',base:'#c79b68',belly:'#f4dbaf',detail:'#7c5c45',fact:'몸을 세워 주변을 살펴보는 행동이 유명해요. 여러 마리가 무리로 함께 살아요.',question:'미어캣은 왜 서로 돕고 주변을 살필까요?',feature:'두 발로 서서 살피는 모습을 표현했어요.',message:'초원 동물들이 함께 살아갈 공간을 지켜요!'},
+{id:'polarbear',name:'북극곰',emoji:'🐻‍❄️',home:'극지',habitat:'북극의 바다 얼음',bg:'ice',base:'#f5f4e9',belly:'#fffefa',detail:'#c5d9db',fact:'하얗게 보이는 털과 큰 발을 가지고 있으며 수영을 잘해요. 북극의 얼음 환경에 적응했어요.',question:'북극의 바다 얼음이 줄어들면 어떤 일이 생길까요?',feature:'하얀 털과 커다란 발을 표현했어요.',message:'북극곰에게 필요한 바다 얼음을 지켜요!'},
+{id:'fennec',name:'사막여우',emoji:'🦊',home:'사막',habitat:'사하라 사막',bg:'desert',base:'#efd09c',belly:'#fff0cf',detail:'#d6a771',fact:'몸에 비해 매우 큰 귀가 특징이에요. 모래와 비슷한 털색을 가졌고 사막에 살아요.',question:'커다란 귀는 사막 생활에 어떤 도움을 줄까요?',feature:'사막여우의 아주 큰 귀를 표현했어요.',message:'사막의 작은 생명들도 소중히 여겨요!'},
+{id:'lion',name:'사자',emoji:'🦁',home:'초원',habitat:'아프리카의 초원',bg:'savanna',base:'#e8b465',belly:'#ffe0a5',detail:'#9c623d',fact:'수사자는 풍성한 갈기가 특징이에요. 가족이 무리 지어 살아가는 경우가 많아요.',question:'넓은 초원이 줄어들면 사자 가족에게 어떤 변화가 생길까요?',feature:'풍성한 갈기와 둥근 얼굴을 표현했어요.',message:'사자와 다른 동물들이 살아갈 초원을 지켜요!'},
+{id:'snowleopard',name:'눈표범',emoji:'🐆',home:'산',habitat:'눈 덮인 높은 산',bg:'mountain',base:'#d3d4d3',belly:'#f2f0e7',detail:'#707881',fact:'두꺼운 털, 검은 무늬, 길고 풍성한 꼬리가 특징이에요. 눈 덮인 높은 산에서 살아요.',question:'눈표범의 긴 꼬리는 추운 산에서 어떻게 도움이 될까요?',feature:'긴 꼬리와 검은 고리무늬를 표현했어요.',message:'눈표범이 살아갈 높은 산을 지켜 주세요!'},
+{id:'owl',name:'수리부엉이',emoji:'🦉',home:'산',habitat:'숲과 산의 절벽',bg:'mountain',base:'#9b7753',belly:'#dbc3a0',detail:'#5a4d45',fact:'머리에 귀처럼 솟은 깃털과 크고 동그란 눈이 있어요. 우리나라에서도 만날 수 있어요.',question:'수리부엉이가 조용하고 안전하게 쉴 곳은 어디일까요?',feature:'귀 모양 깃털과 커다란 눈을 표현했어요.',message:'야생 새들의 쉼터를 보호해 주세요!'},
+{id:'tiger',name:'호랑이',emoji:'🐯',home:'숲',habitat:'숲과 산',bg:'forest',base:'#e79b51',belly:'#fce3c4',detail:'#493d38',fact:'주황빛 털과 검은 줄무늬가 특징이에요. 숲에서 주로 홀로 생활해요.',question:'호랑이가 넓은 숲에서 안전하게 살려면 무엇이 필요할까요?',feature:'검은 줄무늬와 넓은 발을 표현했어요.',message:'호랑이가 살아갈 건강한 숲을 지켜요!'},
+{id:'lemur',name:'알락꼬리 여우 원숭이',emoji:'🐒',home:'숲',habitat:'마다가스카르의 숲',bg:'forest',base:'#a5a6a5',belly:'#f0efe8',detail:'#414a4b',fact:'검정과 흰색이 번갈아 나타나는 긴 꼬리가 있어요. 마다가스카르에 살아요.',question:'숲이 없어지면 이 동물은 어디서 먹고 쉬어야 할까요?',feature:'검정·흰색이 번갈아 있는 긴 꼬리를 표현했어요.',message:'마다가스카르의 숲을 지켜 주세요!'},
+{id:'seal',name:'웨델물범',emoji:'🦭',home:'극지',habitat:'남극의 바다와 얼음',bg:'ice',base:'#889caa',belly:'#c3d1d9',detail:'#586d7b',fact:'둥근 몸과 지느러미를 가졌어요. 남극 바다에 살며 잠수를 잘해요.',question:'남극 바다의 환경이 달라지면 물범에게 어떤 영향이 있을까요?',feature:'둥근 몸과 지느러미를 표현했어요.',message:'깨끗한 남극 바다를 함께 지켜요!'},
+{id:'caracal',name:'카라칼',emoji:'🐈',home:'초원',habitat:'건조한 초원과 숲 가장자리',bg:'savanna',base:'#ca885b',belly:'#efbe8b',detail:'#4c4440',fact:'귀 끝에 뾰족하게 솟은 검은 털이 있어요. 뛰어난 점프 실력을 가진 야생 고양이예요.',question:'카라칼의 귀 끝 검은 털이 어떤 모습인지 살펴볼까요?',feature:'귀 끝의 검은 털을 강조했어요.',message:'야생 고양이들이 사는 자연을 소중히 해요!'},
+{id:'gazelle',name:'톰슨 가젤',emoji:'🦌',home:'초원',habitat:'동아프리카의 초원',bg:'savanna',base:'#bc8153',belly:'#f1e1bc',detail:'#4f4138',fact:'가늘고 긴 다리와 뿔이 특징이에요. 풀을 먹으며 초원에서 무리 지어 살아요.',question:'빠르게 달리는 다리는 초원에서 어떻게 도움이 될까요?',feature:'긴 다리와 가늘고 굽은 뿔을 표현했어요.',message:'초원 동물의 이동 길을 지켜 주세요!'},
+{id:'cheetah',name:'치타',emoji:'🐆',home:'초원',habitat:'아프리카의 초원',bg:'savanna',base:'#e7b566',belly:'#ffebbd',detail:'#403831',fact:'검은 점무늬와 눈 아래 검은 줄이 특징이에요. 땅 위에서 매우 빠르게 달리는 동물이에요.',question:'치타가 마음껏 달릴 넓은 공간이 줄어들면 어떨까요?',feature:'검은 점과 눈 아래의 검은 줄을 표현했어요.',message:'치타가 달릴 넓은 초원을 지켜 주세요!'}
+];
+const OPTIONS={expression:[['happy','활짝 웃기','😄'],['calm','차분하게','🙂'],['surprise','깜짝!','😮'],['sleep','졸려요','😴'],['brave','씩씩하게','😎']],palette:[['natural','실제 색','🌿'],['warm','따뜻한 색','🍑'],['cool','시원한 색','🫧'],['pastel','파스텔','🧁'],['night','달빛 색','🌙']],pose:[['stand','가만히','🧍'],['wave','인사하기','👋'],['jump','신나게','✨']],pattern:[['natural','기본 무늬','🐾'],['bold','무늬 강조','🔸'],['sparkle','반짝 무늬','🌟']],accessory:[['none','소품 없음','⭕'],['leaf','잎사귀','🍀'],['heart','하트','❤️'],['scarf','목도리','🧣'],['flower','꽃','🌼']],background:[['ice','빙하','❄️'],['forest','숲','🌲'],['desert','사막','🏜️'],['savanna','초원','🌾'],['mountain','높은 산','🏔️'],['ocean','바다','🌊']]};
+const $=id=>document.getElementById(id);
+const s={animal:'penguin',expression:'happy',palette:'natural',pose:'stand',pattern:'natural',accessory:'none',background:'ice',nickname:'',feature:'',message:'',pledge:''};
+let filter='전체',tab='design',toastT;
+const animal=()=>ANIMALS.find(a=>a.id===s.animal)||ANIMALS[0];
+const clean=str=>String(str||'').replace(/[<>\x00-\x1f]/g,'').slice(0,130);
+const htmlEscape=str=>String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>$('toast').classList.remove('show'),2400)}
+function mixed(hex,other,ratio){const c=(h)=>[1,3,5].map(i=>parseInt(h[i]+h[i+1],16));let a=c(hex),b=c(other);return '#'+a.map((n,i)=>Math.round(n*(1-ratio)+b[i]*ratio).toString(16).padStart(2,'0')).join('')}
+function color(a){let primary=a.base,secondary=a.belly,accent=a.detail;if(s.palette==='warm'){primary=mixed(primary,'#ffc180',.26);secondary=mixed(secondary,'#ffd9bf',.2)}if(s.palette==='cool'){primary=mixed(primary,'#83c4cf',.27);secondary=mixed(secondary,'#d9f9ff',.22)}if(s.palette==='pastel'){primary=mixed(primary,'#fff7e7',.46);secondary=mixed(secondary,'#fff8e6',.18)}if(s.palette==='night'){primary=mixed(primary,'#6877b8',.42);secondary=mixed(secondary,'#b7bedf',.28)}return{primary,secondary,accent,ink:'#354950'}}
+const E=(x,y,rx,ry,fill,ex='')=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${fill}" ${ex}/>`;
+const C=(x,y,r,fill,ex='')=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" ${ex}/>`;
+const P=(d,fill,ex='')=>`<path d="${d}" fill="${fill}" ${ex}/>`;
+const line=(d,stroke='#43514e',w=6,ex='')=>`<path d="${d}" fill="none" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${ex}/>`;
+const ST='stroke="#354950" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"';
+function eye(x,y,scale=1){const expr=s.expression;let z='';if(expr==='sleep')return line(`M ${x-15*scale} ${y} Q ${x} ${y+12*scale} ${x+15*scale} ${y}`,'#354950',6);if(expr==='brave')z+=line(`M ${x-18*scale} ${y-24*scale} l ${30*scale} ${-6*scale}`,'#354950',6);if(expr==='surprise')return E(x,y,15*scale,20*scale,'#283b3d')+C(x-4*scale,y-7*scale,5*scale,'white');return E(x,y,11*scale,16*scale,'#283b3d')+C(x-4*scale,y-5*scale,4*scale,'white')+z}
+function mouth(y=-22){if(s.expression==='surprise')return E(0,y+2,12,17,'#704651');if(s.expression==='sleep')return line(`M -10 ${y} Q 1 ${y+3} 10 ${y}`,'#586666',4);if(s.expression==='brave')return line(`M -18 ${y+5} Q 0 ${y-1} 18 ${y+5}`,'#586666',5);return line(`M -22 ${y} Q 0 ${y+22} 22 ${y}`,'#835c53',5)}
+function face(y=-79,eyeWidth=47,mouthY=-19){return eye(-eyeWidth,y)+eye(eyeWidth,y)+E(-80,-45,17,10,'#ffb5a9','opacity=".42"')+E(80,-45,17,10,'#ffb5a9','opacity=".42"')+C(0,-40,12,'#484c4a')+mouth(mouthY)}
+function smallFace(y=-83,eyeW=42,mouthY=-19){return eye(-eyeW,y,.82)+eye(eyeW,y,.82)+C(0,-42,10,'#4c4745')+mouth(mouthY)}
+function paws(c,y=186,wide=69){return E(-wide,y,42,25,c.primary,ST)+E(wide,y,42,25,c.primary,ST)}
+function arms(c,wide=112,top=30){const wave=s.pose==='wave';const jump=s.pose==='jump';let lx=-wide,rx=wide;return `<g>${E(lx,top,39,78,c.primary,ST)}<g transform="rotate(${wave?-55:jump?-25:0} ${rx} ${top})">${E(rx,top,39,78,c.primary,ST)}</g></g>`}
+function ears(kind,c){let a='';if(kind==='round'){for(let x of [-104,104])a+=C(x,-175,43,c.primary,ST)+C(x,-177,20,c.secondary)}
+if(kind==='point'){for(let x of [-102,102])a+=P(`M ${x-42} -134 Q ${x-44} -226 ${x-12} -236 Q ${x+29} -228 ${x+46} -133 Z`,c.primary,ST)+P(`M ${x-23} -156 L ${x-13} -211 Q ${x+11} -185 ${x+22} -156 Z`,c.secondary)}
+if(kind==='large'){for(let x of [-115,115])a+=P(`M ${x-48} -130 Q ${x-78} -276 ${x-12} -280 Q ${x+64} -258 ${x+47} -124 Z`,c.primary,ST)+P(`M ${x-30} -147 Q ${x-48} -240 ${x-8} -252 Q ${x+30} -230 ${x+29} -146 Z`,c.secondary)}
+if(kind==='tuft'){for(let x of [-101,101])a+=P(`M ${x-38} -140 Q ${x-32} -231 ${x-12} -242 Q ${x+5} -266 ${x+9} -241 L ${x+19} -213 Q ${x+50} -209 ${x+42} -132 Z`,c.primary,ST)+P(`M ${x-18} -161 L ${x-11} -207 L ${x+17} -157 Z`,c.secondary)}
+return a}
+function bodyBase(c,opt={}){return (opt.tail||'')+paws(c,opt.footY||185,opt.feetX||70)+E(0,76,opt.w||115,opt.h||130,c.primary,ST)+E(0,78,opt.bellyW||79,opt.bellyH||96,c.secondary)+arms(c,opt.armW||112,opt.armY||34)}
+function headBase(c,earType='point',headRx=128,headRy=112){return ears(earType,c)+E(0,-89,headRx,headRy,c.primary,ST)}
+function spots(c,n=17,radius=9,body=true){let p='';let points=[[-72,-131],[-13,-147],[55,-136],[-93,-86],[-40,-94],[25,-96],[89,-83],[-73,-30],[65,-31],[-68,45],[12,25],[79,45],[-55,95],[31,120],[77,112],[-8,155],[-100,122]];for(let i=0;i<Math.min(n,points.length);i++){let [x,y]=points[i];if(!body&&y>0)continue;p+=E(x,y,radius+(i%3)*2,radius-2,c.accent,'opacity=".8"')}return p}
+function stripes(c){let z='';for(let side of [-1,1]){for(let i=0;i<3;i++){let y=-135+i*43;z+=P(`M ${side*125} ${y} Q ${side*75} ${y+8} ${side*75} ${y+29} Q ${side*105} ${y+21} ${side*124} ${y+31} Z`,c.accent)}}z+=P('M -33 -193 L -13 -146 L 0 -173 L 15 -147 L 34 -195 Z',c.accent);for(let side of [-1,1]){for(let i=0;i<2;i++){let y=29+i*57;z+=P(`M ${side*115} ${y} Q ${side*55} ${y+12} ${side*61} ${y+29} L ${side*110} ${y+18} Z`,c.accent)}}return z}
+function tail(c,style='plain'){if(style==='fluffy')return P('M 100 94 Q 242 -5 217 -89 Q 213 -112 199 -104 Q 147 -62 125 37 Q 120 60 100 94 Z',c.primary,ST);
+if(style==='ringed'){let z=P('M 92 113 Q 227 103 207 -65 Q 199 -133 234 -164 Q 275 -178 268 -121 Q 267 -20 246 72 Q 219 160 91 138 Z',c.primary,ST);for(let i=0;i<5;i++)z+=line(`M ${194+i*8} ${85-i*43} l 42 -9`,'#394548',16);return z}
+if(style==='tuft')return P('M 113 105 Q 208 128 203 1', 'none','stroke="'+c.primary+'" stroke-width="24" stroke-linecap="round"')+P('M 189 -9 Q 204 -54 222 -44 Q 244 -4 211 16 Z',c.accent,ST);
+if(style==='slim')return P('M 104 118 Q 198 181 235 97','none',`stroke="${c.primary}" stroke-width="20" stroke-linecap="round"`);
+return P('M 115 109 Q 204 134 216 58','none',`stroke="${c.primary}" stroke-width="23" stroke-linecap="round"`)}
+function blackWhiskers(){return line('M -23 -17 l -78 -12 M -23 -6 l -87 11 M 23 -17 l 78 -12 M 23 -6 l 87 11','#6a6660',3)}
+function animalDrawing(a,c){let b='', h='',mark='';switch(a.id){
+case 'penguin': b=paws(c,187,67)+E(0,29,112,176,c.primary,ST)+E(0,70,79,123,c.belly||c.secondary)+`<g transform="rotate(${s.pose==='wave'?-33:0} -116 39)">`+E(-120,36,31,96,c.primary,ST)+'</g>'+E(121,36,31,96,c.primary,ST)+E(0,-84,116,112,c.primary,ST)+E(-74,-78,30,50,c.accent,'opacity=".88"')+E(74,-78,30,50,c.accent,'opacity=".88"')+eye(-43,-107,.9)+eye(43,-107,.9)+P('M -23 -57 L 23 -57 Q 0 -2 0 -12 Z','#e69e53',ST)+mouth(-15);break;
+case 'wolf': b=bodyBase(c,{tail:tail(c,'fluffy')});h=headBase(c,'point')+P('M -109 -88 Q -71 -24 0 -21 Q 73 -24 112 -89 Q 92 27 0 40 Q -101 28 -109 -88 Z',c.secondary)+face(-93,47,-13);break;
+case 'gorilla': b=paws(c,194,85)+E(0,56,154,145,c.primary,ST)+E(0,86,95,101,c.secondary)+E(-145,76,49,128,c.primary,ST)+`<g transform="rotate(${s.pose==='wave'?-36:0} 145 76)">`+E(145,76,49,128,c.primary,ST)+'</g>';h=ears('round',c)+E(0,-99,122,112,c.primary,ST)+E(0,-56,98,69,'#a8a1a2')+E(0,-28,66,48,'#b4aeb0')+eye(-43,-95,1)+eye(43,-95,1)+E(0,-55,36,16,'#636064')+mouth(-23);break;
+case 'redpanda': b=bodyBase(c,{tail:tail(c,'ringed'),w:109});h=headBase(c,'point')+P('M -125 -100 Q -81 -70 -46 -57 Q 0 -81 46 -57 Q 85 -75 125 -100 Q 117 -19 0 17 Q -117 -19 -125 -100 Z','#fff2e5')+E(-70,-77,36,28,c.primary)+E(70,-77,36,28,c.primary)+smallFace(-83,47,-15);break;
+case 'mandrill': b=bodyBase(c,{w:120,armW:119});h=ears('round',c)+E(0,-88,120,118,c.primary,ST)+E(-65,-80,25,26,'#d6be96')+E(65,-80,25,26,'#d6be96')+E(-47,-67,26,52,'#5bb9d5')+E(47,-67,26,52,'#5bb9d5')+E(0,-38,19,71,'#d9505b')+eye(-57,-112,.9)+eye(57,-112,.9)+mouth(2);break;
+case 'sandcat': b=bodyBase(c,{tail:tail(c,'slim')});h=headBase(c,'large',124,107)+E(-59,-69,30,19,c.secondary)+E(59,-69,30,19,c.secondary)+P('M -16 -191 L -10 -161 L 10 -161 L 16 -191 Z',c.accent)+smallFace(-88,43,-14)+blackWhiskers();break;
+case 'meerkat':b=P('M 71 125 Q 164 189 205 123','none',`stroke="${c.accent}" stroke-width="20" stroke-linecap="round"`)+E(-35,184,28,20,c.primary,ST)+E(35,184,28,20,c.primary,ST)+E(0,53,73,152,c.primary,ST)+E(0,68,48,105,c.secondary)+E(-75,19,23,68,c.primary,ST)+E(75,19,23,68,c.primary,ST);h=ears('round',c)+E(0,-117,97,95,c.primary,ST)+E(-40,-132,29,26,c.accent)+E(40,-132,29,26,c.accent)+smallFace(-135,41,-72);break;
+case 'polarbear':b=bodyBase(c,{tail:'',w:132,h:133,armW:124});h=headBase(c,'round',130,108)+E(0,-40,73,43,c.secondary)+face(-94,46,-7);break;
+case 'fennec': b=bodyBase(c,{tail:tail(c,'fluffy'),w:100});h=headBase(c,'large',115,103)+P('M -115 -63 Q 0 39 115 -63 Q 62 33 0 41 Q -62 29 -115 -63 Z',c.secondary)+smallFace(-95,45,-14);break;
+case 'lion': b=bodyBase(c,{tail:tail(c,'tuft')});h=E(0,-93,174,153,c.accent,ST)+P('M -162 -112 l -23 -20 l 40 -12 l 7 -39 l 36 22 l 33 -37 l 21 29 l 49 -30 l 18 30 l 45 -19 l 19 42 l 41 0 l -3 44 l 29 25 l -23 27 l 14 43 l -39 14 l -9 35 l -41 -8 l -19 31 l -32 -22 l -39 24 l -25 -32 l -37 10 l -9 -33 l -39 -13 l 19 -33 l -21 -34 Z',c.accent,'opacity=".35"')+ears('round',c)+E(0,-89,117,104,c.primary,ST)+E(0,-40,85,59,c.secondary)+face(-98,45,-10);break;
+case 'snowleopard':b=bodyBase(c,{tail:tail(c,'ringed'),w:119})+spots(c,s.pattern==='bold'?17:12,7);h=headBase(c,'round',131,112)+spots(c,9,8,false)+E(0,-37,70,38,c.secondary)+face(-95,48,-7)+blackWhiskers();break;
+case 'owl':b=E(-57,190,36,19,c.accent,ST)+E(57,190,36,19,c.accent,ST)+E(0,35,132,163,c.primary,ST)+E(0,62,94,110,c.secondary)+E(-113,49,33,103,c.primary,ST)+E(113,49,33,103,c.primary,ST)+P('M -115 -130 L -128 -233 L -63 -180 Z',c.primary,ST)+P('M 115 -130 L 128 -233 L 63 -180 Z',c.primary,ST)+E(0,-86,125,110,c.primary,ST)+E(-55,-95,47,51,'#f2d59a',ST)+E(55,-95,47,51,'#f2d59a',ST)+eye(-55,-98,1.3)+eye(55,-98,1.3)+P('M -15 -37 L 15 -37 L 0 -9 Z','#e7ae56',ST)+mouth(3);break;
+case 'tiger':b=bodyBase(c,{tail:tail(c,'ringed')})+stripes(c);h=headBase(c,'round')+stripes(c)+E(-54,-25,49,27,c.secondary)+E(54,-25,49,27,c.secondary)+face(-92,47,-5)+blackWhiskers();break;
+case 'lemur':b=bodyBase(c,{tail:tail(c,'ringed'),w:90,armW:98})+E(0,55,55,93,c.secondary);h=ears('point',c)+E(0,-92,114,114,c.primary,ST)+P('M -90 -155 L -20 -175 L -38 -28 L -92 -42 Z','#f4f4ec')+P('M 90 -155 L 20 -175 L 38 -28 L 92 -42 Z','#f4f4ec')+E(-48,-92,35,43,'#424b4c')+E(48,-92,35,43,'#424b4c')+eye(-49,-93,.87)+eye(49,-93,.87)+P('M -16 -22 L 16 -22 L 0 1 Z','#444d4d')+mouth(1);break;
+case 'seal':b=E(0,109,171,109,c.primary,ST)+E(0,154,128,53,c.secondary)+P('M -139 118 Q -239 143 -247 185 Q -214 222 -126 166 Z',c.primary,ST)+P('M 144 125 Q 239 137 246 183 Q 214 225 125 164 Z',c.primary,ST)+P('M -27 171 L -18 238 L 31 204 L 68 235 L 73 169 Z',c.primary,ST);h=E(0,-54,130,124,c.primary,ST)+E(0,-10,75,52,c.secondary)+eye(-49,-80,1.05)+eye(49,-80,1.05)+C(0,-26,14,'#485259')+mouth(-2)+blackWhiskers();break;
+case 'caracal':b=bodyBase(c,{tail:tail(c,'slim')});h=ears('tuft',c)+E(0,-91,129,110,c.primary,ST)+E(0,-38,75,46,c.secondary)+smallFace(-92,47,-7)+blackWhiskers();break;
+case 'gazelle':b=P('M 80 131 Q 186 161 211 111','none',`stroke="${c.accent}" stroke-width="17" stroke-linecap="round"`)+P('M -68 80 L -78 227 M 65 80 L 88 227','none',`stroke="${c.primary}" stroke-width="25" stroke-linecap="round"`)+E(0,56,96,105,c.primary,ST)+E(0,60,62,76,c.secondary)+E(-87,95,25,65,c.primary,ST)+E(87,95,25,65,c.primary,ST);h=P('M -66 -160 Q -119 -243 -87 -286 Q -82 -239 -37 -171 M 66 -160 Q 119 -243 87 -286 Q 82 -239 37 -171','none','stroke="#715642" stroke-width="15" stroke-linecap="round"')+ears('point',c)+E(0,-92,104,103,c.primary,ST)+E(0,-31,68,39,c.secondary)+E(-83,-58,15,46,c.accent)+E(83,-58,15,46,c.accent)+smallFace(-93,43,-5);break;
+case 'cheetah':b=bodyBase(c,{tail:tail(c,'slim'),w:114})+spots(c,s.pattern==='bold'?17:13,6);h=headBase(c,'round')+spots(c,8,6,false)+E(0,-32,67,43,c.secondary)+face(-95,47,-4)+line('M -48 -80 Q -55 -32 -64 -13 M 48 -80 Q 55 -32 64 -13','#3b3d3e',9)+blackWhiskers();break;
+}return b+h}
+function accessory(c){const kind=s.accessory;if(kind==='none')return '';if(kind==='leaf')return `<g transform="translate(0,88)">${P('M -8 8 Q -65 -53 -16 -57 Q 32 -53 9 -8 Z','#5da571',ST)}${line('M -27 -42 Q 6 -13 19 22','#367351',4)}</g>`;if(kind==='heart')return P('M 0 103 Q -67 67 -37 42 Q -14 25 0 49 Q 22 24 41 43 Q 68 65 0 103 Z','#ee806e','stroke="#a85653" stroke-width="5"');if(kind==='scarf')return P('M -83 -9 Q 0 13 83 -9 L 73 21 Q 13 41 -65 19 Z','#ef9279',ST)+P('M 47 17 L 75 110 L 43 105 L 13 22 Z','#ee9279',ST)+line('M 39 55 L 62 54','#c96553',4);if(kind==='flower')return `<g transform="translate(53,57)">${Array.from({length:6},(_,i)=>E(Math.cos(i*Math.PI/3)*19,Math.sin(i*Math.PI/3)*19,15,22,'#ffe9a0',`transform="rotate(${i*60} ${Math.cos(i*Math.PI/3)*19} ${Math.sin(i*Math.PI/3)*19})"`)).join('')}${C(0,0,15,'#e78c67')}</g>`;return ''}
+function star(x,y,r,c='#fff'){return P(`M ${x} ${y-r} L ${x+r*.28} ${y-r*.25} L ${x+r} ${y} L ${x+r*.28} ${y+r*.25} L ${x} ${y+r} L ${x-r*.28} ${y+r*.25} L ${x-r} ${y} L ${x-r*.28} ${y-r*.25} Z`,c)}
+function environment(kind){let x='';const clouds=(fill)=>E(145,96,56,20,fill,'opacity=".68"')+E(182,88,40,28,fill,'opacity=".68"')+E(570,133,65,25,fill,'opacity=".62"')+E(616,121,39,29,fill,'opacity=".62"');
+if(kind==='ice')x=clouds('white')+P('M 0 467 L 120 363 L 177 415 L 288 333 L 398 425 L 513 355 L 720 467 Z','#bbdee9')+P('M 0 503 Q 180 445 350 491 Q 535 445 720 495 L 720 650 L 0 650 Z','#d5f0f4')+P('M 0 579 Q 190 546 350 590 Q 557 545 720 583 L 720 650 L 0 650 Z','#f8fdff')+E(590,88,42,42,'#f8f9d0');
+else if(kind==='forest')x=clouds('#fffdf1')+P('M 0 453 Q 140 385 285 449 Q 465 387 720 444 L 720 650 L 0 650 Z','#99cbae')+P('M 0 541 Q 220 463 410 526 Q 570 487 720 526 L 720 650 L 0 650 Z','#d9eac7')+Array.from({length:6},(_,i)=>{let px=40+i*136,py=325+(i%3)*33;return P(`M ${px} ${py+147} L ${px-75} ${py+48} L ${px-28} ${py+49} L ${px-69} ${py} L ${px} ${py-85} L ${px+64} ${py} L ${px+26} ${py+47} L ${px+75} ${py+48} Z`,i%2?'#6da98b':'#4d927a')+P(`M ${px-7} ${py+113} L ${px+7} ${py+113} L ${px+7} ${py+181} L ${px-7} ${py+181} Z`,'#8e7661')}).join('');
+else if(kind==='desert')x=E(594,93,56,56,'#ffdda0')+clouds('#fff9e4')+P('M 0 480 Q 150 344 333 464 Q 477 352 720 458 L 720 650 L 0 650 Z','#e8b87f')+P('M 0 530 Q 230 460 420 525 Q 570 487 720 503 L 720 650 L 0 650 Z','#f8d7a0')+P('M 74 496 L 74 425 M 74 464 Q 38 459 39 421 M 74 450 Q 109 451 107 412','none','stroke="#7eac8b" stroke-width="18" stroke-linecap="round"')+P('M 650 517 L 650 442 M 650 464 Q 620 468 620 431','none','stroke="#7eac8b" stroke-width="15" stroke-linecap="round"');
+else if(kind==='savanna')x=E(580,118,58,58,'#ffdda4')+clouds('#fff7d8')+P('M 0 472 Q 178 417 332 472 Q 505 410 720 466 L 720 650 L 0 650 Z','#bed395')+P('M 0 541 Q 199 486 374 525 Q 572 480 720 531 L 720 650 L 0 650 Z','#dfe7a8')+P('M 72 510 L 72 386 M 637 523 L 637 400','none','stroke="#987d54" stroke-width="19"')+E(72,384,82,30,'#76ae82')+E(637,398,89,33,'#76ae82');
+else if(kind==='mountain')x=clouds('#ffffff')+P('M 0 490 L 119 322 L 196 422 L 331 247 L 448 432 L 570 299 L 720 474 L 720 650 L 0 650 Z','#9fb3b2')+P('M 266 338 L 331 247 L 401 346 L 351 327 L 330 313 L 304 338 Z','#f7f9f5')+P('M 0 532 Q 205 465 408 536 Q 600 462 720 532 L 720 650 L 0 650 Z','#d9e5d8');
+else x=clouds('#fdfdfd')+P('M 0 452 Q 200 395 380 441 Q 530 401 720 450 L 720 650 L 0 650 Z','#c0e0cf')+P('M 0 518 Q 200 481 360 517 Q 535 472 720 518 L 720 650 L 0 650 Z','#80c5cc')+P('M 0 591 Q 190 564 360 591 Q 550 555 720 591 L 720 650 L 0 650 Z','#65acb7')+line('M 15 532 Q 59 519 106 532 M 585 547 Q 630 530 685 547','#d8f6ee',6);
+return x}
+function svgArt(){const a=animal(),c=color(a), bgCols={ice:['#cbe7f2','#f9f8ef'],forest:['#c8e5ce','#fdf5dd'],desert:['#fbe2ba','#fff1cc'],savanna:['#fff1ce','#f7dfb8'],mountain:['#d8e7e1','#fff9e9'],ocean:['#bcdef0','#f3f6e3']},bc=bgCols[s.background];let decorations='';if(s.pattern==='sparkle')decorations=star(107,182,16,'#fff7b1')+star(582,280,23,'#fff8b6')+star(591,66,12,'#fff')+star(143,329,10,'#fff')+star(488,145,9,'#fff');if(s.pattern==='bold')decorations=star(117,213,9,'#fffcde')+star(590,310,13,'#fffcde');let poseTransform=s.pose==='jump'?'translate(0 -39) rotate(-7)':'translate(0 0)';return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 650" width="720" height="650" role="img" aria-label="${htmlEscape(a.name)} 동물 캐릭터"><defs><linearGradient id="bgGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="${bc[0]}"/><stop offset="100%" stop-color="${bc[1]}"/></linearGradient></defs><rect width="720" height="650" fill="url(#bgGradient)"/>${environment(s.background)}${decorations}${E(359,571,172,26,'#425c4b','opacity=".16"')}<g transform="translate(360 347)"><g transform="${poseTransform}">${animalDrawing(a,c)}${accessory(c)}</g></g><g opacity=".85">${star(62,90,9,'#fff')}${star(661,226,9,'#fff')}</g></svg>`}
+function renderAnimalList(){let q=$('search').value.trim().replaceAll(' ','');let list=ANIMALS.filter(a=>(filter==='전체'||a.home===filter)&&a.name.replaceAll(' ','').includes(q));$('animalList').innerHTML=list.map(a=>`<button class="animal ${a.id===s.animal?'active':''}" type="button" data-animal="${a.id}" aria-pressed="${a.id===s.animal}"><span class="animal-emoji">${a.emoji}</span><span class="animal-name">${a.name}</span><span class="animal-tip">${a.home} 동물</span></button>`).join('')||'<div class="none">찾은 동물이 없어요.</div>'}
+function renderOptions(){for(const type of Object.keys(OPTIONS)){$(`${type}Options`).innerHTML=OPTIONS[type].map(([id,label,emoji])=>`<button type="button" data-group="${type}" data-value="${id}" class="option ${s[type]===id?'selected':''}" aria-pressed="${s[type]===id}"><span class="symbol">${type==='palette'?`<span class="palette-dot" style="background:${{natural:'#b3bc91',warm:'#f5ad81',cool:'#85bfcd',pastel:'#e8d8dc',night:'#717db2'}[id]}"></span>`:emoji}</span>${label}</button>`).join('')}}
+function renderStory(){let a=animal();$('nickInput').value=s.nickname;$('featureInput').value=s.feature;$('messageInput').value=s.message;$('pledgeInput').value=s.pledge;$('storyPreview').textContent=`🐾 ${s.nickname||'내 동물 캐릭터'} (${a.name})\n\n🔍 특징: ${s.feature||'어떤 특징을 표현했나요?'}\n💬 메시지: ${s.message||'자연을 지키는 말을 적어 보세요.'}\n🌱 실천: ${s.pledge||'우리가 할 수 있는 일을 생각해 보세요.'}`;$('storyPreview').style.whiteSpace='pre-wrap'}
+function render(){const a=animal();$('artBox').innerHTML=svgArt()+'<div class="preview-flag">🐾 실시간 미리보기</div>';$('stageCounter') .textContent=`${ANIMALS.indexOf(a)+1} / 18`;$('animalName').textContent=a.name;$('animalHabitat').textContent=a.habitat;$('animalFact').textContent=a.fact;$('animalQuestion').textContent=a.question;renderAnimalList();renderOptions();renderStory()}
+function selectAnimal(id){const a=ANIMALS.find(x=>x.id===id);if(!a)return;s.animal=id;s.background=a.bg;s.expression='happy';s.pose='stand';s.palette='natural';s.pattern='natural';s.accessory='none';s.nickname=`${a.name} 지킴이`;s.feature=a.feature;s.message=a.message;s.pledge='동물들이 살아가는 자연을 소중히 대하겠습니다.';render()}
+function showTab(which){tab=which;for(let b of document.querySelectorAll('.tab'))b.classList.toggle('active',b.dataset.tab===which);$('designPanel').classList.toggle('hidden',which!=='design');$('storyPanel').classList.toggle('hidden',which!=='story')}
+function saveAs(blob,filename){let url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2500)}
+function filename(){return '생태동물캐릭터_'+animal().name.replaceAll(' ','_')}
+function wrapCanvas(ctx,text,maxWidth,maxLines){const result=[];let buf='';for(let c of String(text||'')){if(c==='\n'){result.push(buf);buf='';continue}if(ctx.measureText(buf+c).width>maxWidth && buf){result.push(buf);buf=c}else buf+=c}if(buf)result.push(buf);return result.slice(0,maxLines)}
+function rounded(ctx,x,y,w,h,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
+function drawText(ctx,text,x,y,maxWidth,lines=2){let out=wrapCanvas(ctx,text,maxWidth,lines);out.forEach((t,i)=>ctx.fillText(t,x,y+i*48));return out.length}
+async function downloadPNG(){const btn=$('downloadBtn');const old=btn.textContent;btn.disabled=true;btn.textContent='이미지 만드는 중…';try{const svg=svgArt(),blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(blob),img=new Image();try{await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=url});let cv=document.createElement('canvas');cv.width=1200;cv.height=1580;let x=cv.getContext('2d');x.fillStyle='#fffaf0';x.fillRect(0,0,1200,1580);rounded(x,44,38,1112,1520,32,'#ffffff');x.fillStyle='#1e5443';x.font='bold 29px "Noto Sans KR","Malgun Gothic",sans-serif';x.fillText('🌎  지구를 지켜ZOOM!  |  생태동물 캐릭터 카드',94,110);rounded(x,90,155,1020,925,28,'#f0f6f2');x.drawImage(img,90,170,1020,922);x.fillStyle='#21483e';x.font='bold 62px "Noto Sans KR","Malgun Gothic",sans-serif';x.fillText(clean(s.nickname)||`${animal().name} 지킴이`,95,1171,1000);x.font='bold 28px "Noto Sans KR","Malgun Gothic",sans-serif';x.fillStyle='#608376';x.fillText('동물 이름  ·  '+animal().name+'     /     서식지  ·  '+animal().habitat,97,1227,1000);x.font='26px "Noto Sans KR","Malgun Gothic",sans-serif';x.fillStyle='#38584c';x.fillText('🔍  '+(clean(s.feature)||animal().feature),97,1304,1000);rounded(x,90,1330,1020,120,18,'#e6f5e8');x.fillStyle='#245943';x.font='bold 30px "Noto Sans KR","Malgun Gothic",sans-serif';drawText(x,'💬  '+(clean(s.message)||animal().message),119,1381,960,2);x.font='22px "Noto Sans KR","Malgun Gothic",sans-serif';x.fillStyle='#506d5e';x.fillText('🌱  나의 실천  ·  '+(clean(s.pledge)||'자연을 소중히 여겨요.'),102,1507,985);let out=await new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error('PNG 변환 실패')),'image/png'));saveAs(out,filename()+'.png');toast('보호 카드 이미지가 저장되었어요!')}finally{URL.revokeObjectURL(url)}}catch(err){console.error(err);toast('저장에 실패했습니다. 다른 브라우저에서 다시 시도해 주세요.')}finally{btn.disabled=false;btn.textContent=old}}
+function saveProject(){const data={app:'jigu-zoom-character-18',version:1,selection:{...s}};saveAs(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),filename()+'_작업.json');toast('이어 꾸밀 수 있는 작업 파일을 저장했어요!')}
+async function loadProject(file){try{if(!file||file.size>50000)throw new Error('올바른 작업 파일이 아닙니다.');let data=JSON.parse(await file.text());if(data.app!=='jigu-zoom-character-18'||!data.selection||!ANIMALS.some(a=>a.id===data.selection.animal))throw new Error('이 앱의 작업 파일만 불러올 수 있어요.');for(const k of Object.keys(s)){if(k in data.selection){let v=data.selection[k];if(['nickname','feature','message','pledge'].includes(k))s[k]=clean(v);else if(k==='animal'){if(ANIMALS.some(a=>a.id===v))s[k]=v}else if(OPTIONS[k]?.some(([id])=>id===v))s[k]=v}}render();toast('이전 작업을 불러왔어요!')}catch(err){toast('작업 파일을 읽지 못했어요.');console.error(err)}}
+function setup(){const homes=['전체','극지','숲','사막','초원','산'];$('filters').innerHTML=homes.map(h=>`<button type="button" class="filter ${filter===h?'active':''}" data-filter="${h}">${h}</button>`).join('');$('filters').addEventListener('click',e=>{let v=e.target.closest('[data-filter]');if(!v)return;filter=v.dataset.filter;[...$('filters').children].forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));renderAnimalList()});$('animalList').addEventListener('click',e=>{let btn=e.target.closest('[data-animal]');if(btn)selectAnimal(btn.dataset.animal)});$('search').addEventListener('input',renderAnimalList);for(let area of ['designPanel','storyPanel'])$(area).addEventListener('click',e=>{let btn=e.target.closest('[data-group]');if(!btn)return;s[btn.dataset.group]=btn.dataset.value;render()});for(let b of document.querySelectorAll('.tab'))b.addEventListener('click',()=>showTab(b.dataset.tab));for(let [id,k] of [['nickInput','nickname'],['featureInput','feature'],['messageInput','message'],['pledgeInput','pledge']])$(id).addEventListener('input',e=>{s[k]=e.target.value;updateStoryPreview()});$('previousBtn').addEventListener('click',()=>{let i=ANIMALS.findIndex(a=>a.id===s.animal);selectAnimal(ANIMALS[(i+17)%18].id)});$('nextBtn').addEventListener('click',()=>{let i=ANIMALS.findIndex(a=>a.id===s.animal);selectAnimal(ANIMALS[(i+1)%18].id)});$('randomBtn').addEventListener('click',()=>{let id=ANIMALS[Math.floor(Math.random()*18)].id;selectAnimal(id);for(let k of ['expression','palette','pose','pattern','accessory']){let items=OPTIONS[k];s[k]=items[Math.floor(Math.random()*items.length)][0]}render();toast('새로운 캐릭터가 만들어졌어요!')});$('resetBtn').addEventListener('click',()=>{selectAnimal(s.animal);toast('현재 동물의 기본 모습으로 돌아왔어요!')});$('downloadBtn').addEventListener('click',downloadPNG);$('saveBig').addEventListener('click',downloadPNG);$('saveProjectBtn').addEventListener('click',saveProject);$('loadProjectBtn').addEventListener('click',()=>$('fileInput').click());$('fileInput').addEventListener('change',async e=>{await loadProject(e.target.files[0]);e.target.value=''});selectAnimal('penguin')}
+function updateStoryPreview(){let a=animal();$('storyPreview').textContent=`🐾 ${s.nickname||'내 동물 캐릭터'} (${a.name})\n\n🔍 특징: ${s.feature||'어떤 특징을 표현했나요?'}\n💬 메시지: ${s.message||'자연을 지키는 말을 적어 보세요.'}\n🌱 실천: ${s.pledge||'우리가 할 수 있는 일을 생각해 보세요.'}`}
+setup();
 </script>
 </body>
 </html>
